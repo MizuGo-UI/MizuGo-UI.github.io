@@ -28,7 +28,7 @@
 <meta property="og:description" content="第一节 HTMLHTML（Hyper Text Markup Language）：超文本标记语言">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-10T01:07:04.000Z">
-<meta property="article:modified_time" content="2021-10-27T03:15:19.393Z">
+<meta property="article:modified_time" content="2021-10-28T02:22:07.208Z">
 <meta property="article:author" content="Yu Rui">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
@@ -115,6 +115,10 @@
           站点概览
         </li>
       </ul>
+ <!--网易云插件-->
+   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=86 height=86 src="//music.163.com/outchain/player?type=2&id=467952048&auto=1&height=66">
+</iframe>
+
 
       <div class="sidebar-panel-container">
         <!--noindex-->
@@ -139,7 +143,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -215,7 +219,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-27 11:15:19" itemprop="dateModified" datetime="2021-10-27T11:15:19+08:00">2021-10-27</time>
+        <time title="修改时间：2021-10-28 10:22:07" itemprop="dateModified" datetime="2021-10-28T10:22:07+08:00">2021-10-28</time>
       </span>
 
   
@@ -252,7 +256,7 @@
 <p>src 图片路径地址  ../  代表上一级地址 </p>
 <p>alt 图片名称；往往用于备注说明，当图片加载未成功时显示</p>
 <p>title 悬停图片上所显示的文字</p>
-<h3 id="链接标签"><a href="#链接标签" class="headerlink" title="链接标签"></a>链接标签</h3><h4 id="超链接标签"><a href="#超链接标签" class="headerlink" title="超链接标签"></a>超链接标签</h4><p><a>标签</p>
+<h3 id="链接标签"><a href="#链接标签" class="headerlink" title="链接标签"></a>链接标签</h3><h4 id="超链接标签"><a href="#超链接标签" class="headerlink" title="超链接标签"></a>超链接标签</h4><p><a>标签</a></p>
 <p>href:表示要跳转到的页面（必填）</p>
 <p>target:表示页面要打开的位置</p>
 <p>​    _blank:表示在新标签页打开</p>
@@ -344,7 +348,7 @@
         <td>2-3</td>
     </tr>
     <tr>
-        <td >3-1</td>
+        <td>3-1</td>
          <td>3-2</td>
         <td>3-3</td>
     </tr>
@@ -354,6 +358,8 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--src：资源路径</span></span><br><span class="line"><span class="comment">controls：控制条（无此项会导致资源不显示）</span></span><br><span class="line"><span class="comment">autoplay：自动播放--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--视频元素--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">&quot;../resources/video/1.mp4 controls autoplay&quot;</span> <span class="attr">width</span>=<span class="string">&quot;300px&quot;</span> <span class="attr">height</span>=<span class="string">&quot;600px&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--音频元素--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">src</span>=<span class="string">&quot;../resources/video/2.mp3 controls&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <!--视频元素-->
+
+
 
 <p>效果图如下：</p>
 <p><video src="../video/1.mp4" width="300px" height="600px"></video></p>
@@ -373,7 +379,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--b站视频导入--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;//player.bilibili.com/player.html?aid=632543773&amp;bvid=BV1qb4y1S7p4&amp;cid=396396792&amp;page=1&quot;</span> <span class="attr">width</span>=<span class="string">&quot;400px&quot;</span> <span class="attr">height</span>=<span class="string">&quot;300px&quot;</span><span class="attr">scrolling</span>=<span class="string">&quot;no&quot;</span> <span class="attr">border</span>=<span class="string">&quot;0&quot;</span> <span class="attr">frameborder</span>=<span class="string">&quot;no&quot;</span> <span class="attr">framespacing</span>=<span class="string">&quot;0&quot;</span> <span class="attr">allowfullscreen</span>=<span class="string">&quot;true&quot;</span>&gt;</span> <span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>效果图如下：</p>
-<iframe src="//player.bilibili.com/player.html?aid=632543773&bvid=BV1qb4y1S7p4&cid=396396792&page=1" width="400px" height="300px"scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe src="//player.bilibili.com/player.html?aid=632543773&bvid=BV1qb4y1S7p4&cid=396396792&page=1" width="400px" height="300px" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 
@@ -421,14 +427,13 @@
 
 
 
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--button按钮</span></span><br><span class="line"><span class="comment">image图像</span></span><br><span class="line"><span class="comment">value：按钮所显示的文字--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">name</span>=<span class="string">&quot;btn1&quot;</span> <span class="attr">value</span>=<span class="string">&quot;变长&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;image&quot;</span> <span class="attr">src</span>=<span class="string">&quot;../Blog/resources/images/1.png&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--button按钮</span></span><br><span class="line"><span class="comment">image图像</span></span><br><span class="line"><span class="comment">value：按钮所显示的文字--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">name</span>=<span class="string">&quot;btn1&quot;</span> <span class="attr">value</span>=<span class="string">&quot;变长&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;image&quot;</span> <span class="attr">src</span>=<span class="string">&quot;../../source/images/JSP学习日志/1.png&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>效果如下：</p>
 <p>
     <input type="button" name="btn1" value="变长">
-    <input type="image" src="../Blog/resources/images/1.png">
+    <input type="image" src="../../source/images/JSP学习日志/1.png">
 </p>
-
 
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--滑块--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>音量</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;range&quot;</span> <span class="attr">name</span>=<span class="string">&quot;voice&quot;</span> <span class="attr">max</span>=<span class="string">&quot;100&quot;</span> <span class="attr">min</span>=<span class="string">&quot;0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -514,7 +519,7 @@
 
 
 
-<hr/>
+<hr>
 
 <h2 id="第二节-CSS"><a href="#第二节-CSS" class="headerlink" title="第二节 CSS"></a>第二节 CSS</h2><p>CSS：层叠级联样式表</p>
 <h3 id="CSS的优势"><a href="#CSS的优势" class="headerlink" title="CSS的优势"></a>CSS的优势</h3><ol>
@@ -596,7 +601,7 @@
 <h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><p>​            属性选择器是将id选择器和类选择器结合的一种选择器。</p>
 <p>格式为：</p>
 <p>​        a[属性名]{对应的属性}</p>
-<hr/>
+<hr>
 
 <h2 id="第三节-JSP"><a href="#第三节-JSP" class="headerlink" title="第三节 JSP"></a>第三节 JSP</h2><h3 id="引入JavaScript"><a href="#引入JavaScript" class="headerlink" title="引入JavaScript"></a>引入JavaScript</h3><p>1.内部标签</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">  alert(<span class="string">&quot;hello world&quot;</span>)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -782,6 +787,11 @@
 
 
 </div>
+
+<div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+
   </main>
 
   <footer class="footer">

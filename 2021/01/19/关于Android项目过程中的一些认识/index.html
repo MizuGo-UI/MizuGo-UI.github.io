@@ -27,15 +27,15 @@
 <meta property="og:site_name" content="MizuGo学习档案">
 <meta property="og:description" content="写在前面： ​        Android Studio升级到4.1后，之前很多的包都不可用了，需要寻找其他办法。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="d:/Workspaces/hexo/source_posts/关于Android项目过程中的一些认识.assets/Androidx.png">
-<meta property="og:image" content="d:/Workspaces/hexo/source_posts/关于Android项目过程中的一些认识.assets/image-20210120154553213.png">
-<meta property="og:image" content="d:/Workspaces/hexo/source_posts/关于Android项目过程中的一些认识.assets/image-20210202152418181.png">
+<meta property="og:image" content="http://example.com/images/%E5%85%B3%E4%BA%8EAndroid%E9%A1%B9%E7%9B%AE%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/Androidx.png">
+<meta property="og:image" content="http://example.com/images/%E5%85%B3%E4%BA%8EAndroid%E9%A1%B9%E7%9B%AE%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/image-20210120154553213.png">
+<meta property="og:image" content="http://example.com/images/%E5%85%B3%E4%BA%8EAndroid%E9%A1%B9%E7%9B%AE%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/image-20210202152418181.png">
 <meta property="article:published_time" content="2021-01-19T13:03:14.000Z">
-<meta property="article:modified_time" content="2021-10-27T03:10:23.678Z">
+<meta property="article:modified_time" content="2021-10-28T02:23:48.364Z">
 <meta property="article:author" content="Yu Rui">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:/Workspaces/hexo/source_posts/关于Android项目过程中的一些认识.assets/Androidx.png">
+<meta name="twitter:image" content="http://example.com/images/%E5%85%B3%E4%BA%8EAndroid%E9%A1%B9%E7%9B%AE%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/Androidx.png">
 
 
 <link rel="canonical" href="http://example.com/2021/01/19/%E5%85%B3%E4%BA%8EAndroid%E9%A1%B9%E7%9B%AE%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/">
@@ -119,6 +119,10 @@
           站点概览
         </li>
       </ul>
+ <!--网易云插件-->
+   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=86 height=86 src="//music.163.com/outchain/player?type=2&id=467952048&auto=1&height=66">
+</iframe>
+
 
       <div class="sidebar-panel-container">
         <!--noindex-->
@@ -136,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -212,7 +216,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-27 11:10:23" itemprop="dateModified" datetime="2021-10-27T11:10:23+08:00">2021-10-27</time>
+        <time title="修改时间：2021-10-28 10:23:48" itemprop="dateModified" datetime="2021-10-28T10:23:48+08:00">2021-10-28</time>
       </span>
 
   
@@ -230,9 +234,9 @@
 <span id="more"></span>
 
 <p> Android Studio 3.4推出了AndroidX要取代原来的support库。创建新项目的时候，如果没有勾选“Use androidx.* artifacts”，那么导入外部模块不会报错；只有勾选了“Use androidx.* artifacts”，导入外部模块才会报上面的错。勾选界面如下图所示：</p>
-<p><img src="D:\Workspaces\hexo\source_posts\关于Android项目过程中的一些认识.assets\Androidx.png"></p>
+<p><img src="/../images/%E5%85%B3%E4%BA%8EAndroid%E9%A1%B9%E7%9B%AE%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/Androidx.png"></p>
 <p>如果已经勾选了“Use androidx.* artifacts”，可以在gradle.properties目录下更改信息，如下图：</p>
-<p><img src="D:\Workspaces\hexo\source_posts\关于Android项目过程中的一些认识.assets\image-20210120154553213.png"></p>
+<p><img src="/../images/%E5%85%B3%E4%BA%8EAndroid%E9%A1%B9%E7%9B%AE%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/image-20210120154553213.png"></p>
 <p>详细的support依赖库的新旧对应关系见下表：</p>
 <table>
 <thead>
@@ -361,7 +365,7 @@
 <h2 id="Banner相关的一些认识"><a href="#Banner相关的一些认识" class="headerlink" title="Banner相关的一些认识"></a>Banner相关的一些认识</h2><h2 id="Glide相关的一些认识"><a href="#Glide相关的一些认识" class="headerlink" title="Glide相关的一些认识"></a>Glide相关的一些认识</h2><h2 id="Adapter相关的一些认识"><a href="#Adapter相关的一些认识" class="headerlink" title="Adapter相关的一些认识"></a>Adapter相关的一些认识</h2><h2 id="Bean相关的一些认识"><a href="#Bean相关的一些认识" class="headerlink" title="Bean相关的一些认识"></a>Bean相关的一些认识</h2><h2 id="Gson相关的一些认识"><a href="#Gson相关的一些认识" class="headerlink" title="Gson相关的一些认识"></a>Gson相关的一些认识</h2><p>​         首先需要导入Gson的第三方包，且由于Android Studio 4.1无GsonFormat的插件，只能用SGsonFormat代替使用，在操作上基本上一致。</p>
 <p>​        将所要解析的数据导入SGson中进行解析会自动得到类中方法。        </p>
 <p>下图为json数据解析的具体流程：</p>
-<p><img src="D:\Workspaces\hexo\source_posts\关于Android项目过程中的一些认识.assets\image-20210202152418181.png" alt="image-20210202152418181"></p>
+<p><img src="/../images/%E5%85%B3%E4%BA%8EAndroid%E9%A1%B9%E7%9B%AE%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/image-20210202152418181.png"></p>
 
     </div>
 
@@ -398,6 +402,11 @@
 
 
 </div>
+
+<div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+
   </main>
 
   <footer class="footer">
