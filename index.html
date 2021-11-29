@@ -131,13 +131,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -175,6 +175,234 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yu Rui">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MizuGo学习档案">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-title-link" itemprop="url">计算机网络</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-20 19:36:50" itemprop="dateCreated datePublished" datetime="2021-11-20T19:36:50+08:00">2021-11-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-22 15:53:11" itemprop="dateModified" datetime="2021-11-22T15:53:11+08:00">2021-11-22</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><ul>
+<li>Http将两台计算机视为不同的角色：客户端和服务器。客户端向服务器请求数据，服务器回应请求</li>
+<li>Http为无状态协议，通过TCP建立到服务器的连接，当一次请求完成之后，会立即断开TCP连接，因此http是短连接。无状态是指：Http向服务器发起请求的时候，不是一直通过同一个连接发送请求，而是每一次请求都建立一个新的连接，不会记录任何客户端操作（见补充说明）</li>
+<li>不管是客户端的请求信息还是服务器的回应信息，都带有一块头部信息（Header），头部信息是自定义的，用于传递额外信息（浏览器信息、请求的内容类型、相应的语言）</li>
+</ul>
+<blockquote>
+<p>PS：</p>
+<ol>
+<li>HTTP/1.0:客户端的每次请求都要求建立一次单独的连接，在请求结束后会立即断开连接</li>
+<li>HTTP/1.1:客户端的一次连接中可以处理多个请求，多个请求可以重叠进行，不需要等待一个请求结束再发送下一个请求</li>
+<li><strong>HTTP是一种短连接，要保持客户端的在线状态，就需要每隔一段时间向服务器发送一次“保持连接”的请求，服务器在收到请求后也会对客户端回复，表明知道客户端“在线”。当服务器长时间未收到客户端的“保持连接”请求，则会认为客户端“下线”，客户端长时间无法收到服务器的回复，则认为网络已经断开</strong></li>
+</ol>
+</blockquote>
+<h3 id="以实际应用看HTTP"><a href="#以实际应用看HTTP" class="headerlink" title="以实际应用看HTTP"></a>以实际应用看HTTP</h3><ul>
+<li>TCP的主要作用就是用来建立连接，而传送数据还是交给了HTTP来完成</li>
+<li>HTTP协议同样是一个请求、确认、连接的过程</li>
+</ul>
+<p>HTTP将传输数据的两边称为客户端（Client）和服务器（Server）</p>
+<blockquote>
+<p><strong>第一：发送一个http请求给S，这个请求包括请求头和请求内容</strong></p>
+<p>request header：</p>
+<ol>
+<li><p>请求的方法：POST/GET</p>
+</li>
+<li><p>请求的URL，HTTP协议版本</p>
+</li>
+<li><p>请求的数据、编码方式</p>
+</li>
+<li><p>是否有Cookies，是否缓存</p>
+<p>post和get请求方式的区别是，get把请求内容放在URL后面，但是URL长度有限制。而post是以表单的形势，适合要输入密码之类的，因为不在URL中显示，所以比较安全。</p>
+</li>
+</ol>
+<p>request body：</p>
+<p>即请求的内容.</p>
+<p><strong>第二：S收到了http请求，然后根据请求头，返回http响应</strong></p>
+<p>response header：</p>
+<ol>
+<li>cookies或session</li>
+<li>状态码</li>
+<li>内容大小</li>
+</ol>
+<p>response body：</p>
+<p>   即响应的内容，包括，JS什么的。</p>
+<p><strong>第三，C收到了以后，就由浏览器完成一系列的渲染，包括执行JS脚本等</strong></p>
+</blockquote>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/baizhanshi/p/8482612.html">https://www.cnblogs.com/baizhanshi/p/8482612.html</a></p>
+<h2 id="TCP与UDP"><a href="#TCP与UDP" class="headerlink" title="TCP与UDP"></a>TCP与UDP</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>TCP是一种可靠协议，必须要成功建立连接后才能够传输数据，有超时重传机制</li>
+<li>UDP是一种面向无连接，不可靠的协议，不需要建立连接即可传输数据，可以直接发送信息报文，尽最大努力将数据传输，但是不保证传输结果</li>
+<li>TCP传输数据慢，建立连接、超时重传、拥塞机制都会消耗时间，比较占用系统资源，且由于三次握手机制，导致TCP容易被攻击</li>
+<li>UDP传输数据快，且由于是无状态传输，没有TCP的机制，被利用的漏洞更少，反而更加安全，但是用UDP传输数据无法保证数据可达，容易发生丢包</li>
+<li>TCP和UDP是两种独立的协议，因此各自的端口号也相互独立</li>
+</ul>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p><strong>TCP应用场景</strong><br>当对网络通信质量有要求时，比如：整个数据要准确无误的传递给对方，这往往对于一些要求可靠的应用，比如HTTP,HTTPS,FTP等传输文件的协议，POP,SMTP等邮件的传输协议。常见使用TCP协议的应用：</p>
+<ol>
+<li>浏览器使用的：HTTP</li>
+<li>FlashFXP:FTP</li>
+<li>Outlook:POP，SMTP</li>
+<li>QQ文件传输</li>
+</ol>
+<p><strong>UDP 应用场景</strong><br>对当前网络通讯质量要求不高的时候，要求网络通讯速度尽量的快，这时就使用UDP<br>日常生活中常见使用UDP协议：</p>
+<ol>
+<li>QQ语音</li>
+<li>QQ视频</li>
+<li>TFTP</li>
+</ol>
+<p><strong>TCP的三次握手即建立了一次连接，四次挥手则为断开一次连接</strong></p>
+<h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><p>所谓的端口，就好像是门牌号一样，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AE%A2%E6%88%B7%E7%AB%AF/101081">客户端</a>可以通过ip地址找到对应的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF/3369401">服务器端</a>，但是服务器端是有很多端口的，每个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/5985445">应用程序</a>对应一个端口号，通过类似门牌号的端口号，客户端才能真正的访问到该服务器。为了对端口进行区分，将每个端口进行了编号，这就是端口号</p>
+<blockquote>
+<p><strong>端口分为物理端口和逻辑端口，这里主要论述逻辑端口</strong></p>
+</blockquote>
+<h3 id="周知端口"><a href="#周知端口" class="headerlink" title="周知端口"></a>周知端口</h3><p>众所周知的端口，范围从0-1023。</p>
+<p>如：访问<a target="_blank" rel="noopener" href="http://www.baidu.com,是不必指定端口号的,因为www的默认端口号为80/">www.baidu.com，是不必指定端口号的，因为www的默认端口号为80</a></p>
+<p>如果使用非默认端口号去访问，则需要在地址后面加上对应的端口号</p>
+<p><strong>常见端口号：</strong></p>
+<p>21端口：FTP 文件传输服务<br>22端口：SSH 远程连接服务<br>23端口：TELNET 终端仿真服务<br>25端口：SMTP 简单邮件传输服务<br>53端口：DNS 域名解析服务<br>80端口：HTTP 超文本传输服务<br>443端口：HTTPS 加密的超文本传输服务</p>
+<p>3306端口：MYSQL数据库端口<br>5432端口：PostgreSQL数据库端口<br>6379端口：Redis数据库端口<br>8080端口：TCP服务端默认端口<br>8888端口：Nginx服务器的端口<br>9200端口：Elasticsearch服务器端口<br>27017端口：mongoDB数据库默认端口<br>22122端口：fastdfs服务器默认端口</p>
+<blockquote>
+<p>查看端口状态：</p>
+<p>netstat -an</p>
+</blockquote>
+<h3 id="动态端口"><a href="#动态端口" class="headerlink" title="动态端口"></a>动态端口</h3><p>动态端口的范围是从1024-65535。一般不固定分配某种服务，而是动态分配，当一个系统进程或者应用程序进程需要网络通信时，它向主机申请一个端口，主机从可用的端口号中分配一个供它临时使用，当进程关闭时，同时也释放所占用的端口号。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+<div>
+    
+ </div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/20/HTTP%E4%B8%8ETCP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yu Rui">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MizuGo学习档案">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/20/HTTP%E4%B8%8ETCP/" class="post-title-link" itemprop="url">HTTP与TCP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-20 19:17:28 / 修改时间：19:18:28" itemprop="dateCreated datePublished" datetime="2021-11-20T19:17:28+08:00">2021-11-20</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><ul>
+<li>Http将两台计算机视为不同的角色：客户端和服务器。客户端向服务器请求数据，服务器回应请求</li>
+<li>Http为无状态协议，通过TCP建立到服务器的连接，当一次请求完成之后，会立即断开TCP连接，因此http是短连接。无状态是指：Http向服务器发起请求的时候，不是一直通过同一个连接发送请求，而是每一次请求都建立一个新的连接，不会记录任何客户端操作</li>
+<li>不管是客户端的请求信息还是服务器的回应信息，都带有一块头部信息（Header），头部信息是自定义的，用于传递额外信息（浏览器信息、请求的内容类型、相应的语言）</li>
+</ul>
+<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>TCP的三次握手即建立了一次连接，四次挥手则为断开一次连接</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+<div>
+    
+ </div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/18/Linux%E5%85%A5%E9%97%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -200,7 +428,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-11-18 19:35:10 / 修改时间：19:36:50" itemprop="dateCreated datePublished" datetime="2021-11-18T19:35:10+08:00">2021-11-18</time>
+      <time title="创建时间：2021-11-18 19:35:10 / 修改时间：20:35:12" itemprop="dateCreated datePublished" datetime="2021-11-18T19:35:10+08:00">2021-11-18</time>
     </span>
 
   
@@ -213,7 +441,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h1>
+          <h1 id="Shell编程"><a href="#Shell编程" class="headerlink" title="Shell编程"></a>Shell编程</h1><h3 id="执行方式"><a href="#执行方式" class="headerlink" title="执行方式"></a>执行方式</h3><ol>
+<li><p>作为可执行程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ./test.sh #使脚本具有执行权限</span><br><span class="line">./test.sh #执行脚本</span><br></pre></td></tr></table></figure>
+
+<p>需要先cd到对应的目录，否则会报错找不到对应的文件</p>
+</li>
+<li><p>作为解释器参数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/bin/sh test.sh</span><br><span class="line">/bin/php test.php</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="shell变量"><a href="#shell变量" class="headerlink" title="shell变量"></a>shell变量</h3><blockquote>
+<p>命名规则</p>
+<ul>
+<li>命名只能使用英文字母，数字和下划线，首个字符不能以数字开头</li>
+<li>中间不能有空格，可以使用下划线 _</li>
+<li>不能使用标点符号</li>
+<li>不能使用bash里的关键字（可用help命令查看保留关键字）</li>
+</ul>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name=&quot;yr&quot;</span><br><span class="line">str=&quot;name is $&#123;name&#125;&quot;#双引号中可以带有变量</span><br><span class="line"><span class="meta">-&gt;</span><span class="bash"> name is yr</span></span><br><span class="line">str1=&#x27;name is $&#123;name&#125;&#x27;#单引号会直接将内容直接输出.</span><br><span class="line"><span class="meta">-&gt;</span><span class="bash"> name is <span class="variable">$&#123;name&#125;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>变量{}可以不加</p>
+
       
     </div>
 
@@ -273,7 +522,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-18 19:38:12" itemprop="dateModified" datetime="2021-11-18T19:38:12+08:00">2021-11-18</time>
+        <time title="修改时间：2021-11-29 17:24:15" itemprop="dateModified" datetime="2021-11-29T17:24:15+08:00">2021-11-29</time>
       </span>
 
   
@@ -354,7 +603,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-14 16:45:40" itemprop="dateModified" datetime="2021-11-14T16:45:40+08:00">2021-11-14</time>
+        <time title="修改时间：2021-11-27 15:54:18" itemprop="dateModified" datetime="2021-11-27T15:54:18+08:00">2021-11-27</time>
       </span>
 
   
@@ -808,155 +1057,9 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/11/Android%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yu Rui">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MizuGo学习档案">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/11/Android%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6/" class="post-title-link" itemprop="url">Android基本控件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-01-11 21:40:50" itemprop="dateCreated datePublished" datetime="2021-01-11T21:40:50+08:00">2021-01-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-28 10:14:19" itemprop="dateModified" datetime="2021-10-28T10:14:19+08:00">2021-10-28</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="RadioGroup"><a href="#RadioGroup" class="headerlink" title="RadioGroup"></a>RadioGroup</h2><p>​       RdioGroup是单选组合框，可以容纳多个RadioButton的一个容器。在没有RadioGroup的情况下，RadioButton可以全部被选中；当多个RadioButton被RadioGroup包含的情况下，RadioButton只可以选择一个，从而达到了单选的目的。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/11/Android%E5%9F%BA%E6%9C%AC%E6%8E%A7%E4%BB%B6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-<div>
-    
- </div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/07/%E5%85%B3%E4%BA%8Eidea%E9%85%8D%E7%BD%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yu Rui">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MizuGo学习档案">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/01/07/%E5%85%B3%E4%BA%8Eidea%E9%85%8D%E7%BD%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" class="post-title-link" itemprop="url">关于idea配置中遇到的坑</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-01-07 10:14:23 / 修改时间：10:16:56" itemprop="dateCreated datePublished" datetime="2021-01-07T10:14:23+08:00">2021-01-07</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>​       配置idea时一定弄清楚http proxy，这是http代理，个人理解相当于是VPN，配置了这个后而导致gradle无法正常下载，从而引发了一系列问题，谨记。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-<div>
-    
- </div>
-
-
-
-
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 </div>
 

@@ -907,7 +907,7 @@
 <ul>
 <li>服务器会给每个用户（浏览器）创建一个Session对象</li>
 <li>一个Session独占一个浏览器，只要浏览器没有关闭，这个Session就存在</li>
-<li>用户登录之后哦，整个网站都可以访问；-&gt;保存用户信息；保存购物车信息</li>
+<li>用户登录之后，整个网站都可以访问；-&gt;保存用户信息；保存购物车信息</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//得到Session</span></span><br><span class="line">HttpSession session = req.getSession();</span><br><span class="line"><span class="comment">//给Session中存东西</span></span><br><span class="line">session.setAttribute(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;yr&quot;</span>);</span><br><span class="line"><span class="comment">//获取Session的id</span></span><br><span class="line">String id = session.getId();</span><br><span class="line"><span class="comment">//判断session是不是新创建</span></span><br><span class="line">session.isNew();</span><br><span class="line"><span class="comment">//从Session中取东西</span></span><br><span class="line">session.getAttribute(<span class="string">&quot;name&quot;</span>);</span><br></pre></td></tr></table></figure>
 
@@ -1275,7 +1275,28 @@
   <entry>
     <title>Linux入门</title>
     <url>/2021/11/18/Linux%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h1>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="Shell编程"><a href="#Shell编程" class="headerlink" title="Shell编程"></a>Shell编程</h1><h3 id="执行方式"><a href="#执行方式" class="headerlink" title="执行方式"></a>执行方式</h3><ol>
+<li><p>作为可执行程序</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod +x ./test.sh #使脚本具有执行权限</span><br><span class="line">./test.sh #执行脚本</span><br></pre></td></tr></table></figure>
+
+<p>需要先cd到对应的目录，否则会报错找不到对应的文件</p>
+</li>
+<li><p>作为解释器参数</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">/bin/sh test.sh</span><br><span class="line">/bin/php test.php</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="shell变量"><a href="#shell变量" class="headerlink" title="shell变量"></a>shell变量</h3><blockquote>
+<p>命名规则</p>
+<ul>
+<li>命名只能使用英文字母，数字和下划线，首个字符不能以数字开头</li>
+<li>中间不能有空格，可以使用下划线 _</li>
+<li>不能使用标点符号</li>
+<li>不能使用bash里的关键字（可用help命令查看保留关键字）</li>
+</ul>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">name=&quot;yr&quot;</span><br><span class="line">str=&quot;name is $&#123;name&#125;&quot;#双引号中可以带有变量</span><br><span class="line"><span class="meta">-&gt;</span><span class="bash"> name is yr</span></span><br><span class="line">str1=&#x27;name is $&#123;name&#125;&#x27;#单引号会直接将内容直接输出.</span><br><span class="line"><span class="meta">-&gt;</span><span class="bash"> name is <span class="variable">$&#123;name&#125;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>变量{}可以不加</p>
+]]></content>
       <tags>
         <tag>Linux</tag>
       </tags>
@@ -1311,11 +1332,165 @@
 <h2 id="Hello，Mybatis！"><a href="#Hello，Mybatis！" class="headerlink" title="Hello，Mybatis！"></a>Hello，Mybatis！</h2><blockquote>
 <p>步骤：搭建环境-&gt;导入Mybatis-&gt;编写代码-&gt;测试</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#创建数据库</span><br><span class="line"><span class="keyword">CREATE</span> DATABASE `mybatis`;</span><br><span class="line">USE `mybatis`;</span><br><span class="line">#创建表</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `<span class="keyword">user</span>`(</span><br><span class="line">`id` <span class="type">INT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">`name` <span class="type">VARCHAR</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">`pwd` <span class="type">VARCHAR</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>)</span><br><span class="line">ENGINE<span class="operator">=</span>INNODB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8;</span><br><span class="line">#插入数据</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `<span class="keyword">user</span>`(`id`,`name`,`pwd`)<span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">1</span>,<span class="string">&#x27;张三&#x27;</span>,<span class="string">&#x27;123456&#x27;</span>),</span><br><span class="line">(<span class="number">2</span>,<span class="string">&#x27;李四&#x27;</span>,<span class="string">&#x27;123456&#x27;</span>),</span><br><span class="line">(<span class="number">3</span>,<span class="string">&#x27;王二&#x27;</span>,<span class="string">&#x27;12345&#x27;</span>);<span class="number">8</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">#创建数据库</span><br><span class="line"><span class="keyword">CREATE</span> DATABASE `mybatis`;</span><br><span class="line">USE `mybatis`;</span><br><span class="line">#创建表</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `<span class="keyword">user</span>`(</span><br><span class="line">`id` <span class="type">INT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">PRIMARY</span> KEY,</span><br><span class="line">`name` <span class="type">VARCHAR</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>,</span><br><span class="line">`pwd` <span class="type">VARCHAR</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span>)</span><br><span class="line">ENGINE<span class="operator">=</span>INNODB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8;</span><br><span class="line">#插入数据</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> `<span class="keyword">user</span>`(`id`,`name`,`pwd`)<span class="keyword">VALUES</span></span><br><span class="line">(<span class="number">1</span>,<span class="string">&#x27;张三&#x27;</span>,<span class="string">&#x27;123456&#x27;</span>),</span><br><span class="line">(<span class="number">2</span>,<span class="string">&#x27;李四&#x27;</span>,<span class="string">&#x27;123456&#x27;</span>),</span><br><span class="line">(<span class="number">3</span>,<span class="string">&#x27;王二&#x27;</span>,<span class="string">&#x27;12345&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
+<h3 id="创建模块"><a href="#创建模块" class="headerlink" title="创建模块"></a>创建模块</h3><p><img src="/../images/Mybatis/image-20211129154958031.png" alt="image-20211129154958031"></p>
+<p><strong>配置xml</strong></p>
+<blockquote>
+<ul>
+<li>url：连接数据库，可能会涉及到时区问题，需要与数据库的时区保持一致</li>
+<li>每一个Mapper.xml都需要在配置文件中注册</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--xml配置文件--&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--环境配置，连接的数据库，这里使用的是MySQL--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;mysql&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;mysql&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--指定事务管理的类型，这里简单使用Java的JDBC的提交和回滚设置--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--dataSource 指连接源配置，POOLED是JDBC连接对象的数据源连接池的实现--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://127.0.0.1:3306/mybatis?useSSL=true<span class="symbol">&amp;amp;</span>useUnicode=true<span class="symbol">&amp;amp;</span>characterEncoding=UTF-8<span class="symbol">&amp;amp;</span>serverTimezone=UTC&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;username&#125;&quot;</span>/&gt;</span></span><br><span class="line">        		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;password&#125;&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--每一个Mapper.xml都需要在Mybatis核心配置文件中注册--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;Mapper/UserMapper&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>编写util工具类</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*Util工具类</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MybatisUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SqlSessionFactory sqlSessionFactory;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="comment">//mybatis配置文件</span></span><br><span class="line">            String resource = <span class="string">&quot;mybatis-config.xml&quot;</span>;</span><br><span class="line">            InputStream inputStream = Resources.getResourceAsStream(resource);</span><br><span class="line">             sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//单例模式</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SqlSession <span class="title">getSqlSession</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sqlSessionFactory.openSession();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码</h3><ol>
+<li><p>实体类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String pwd;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPwd</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pwd;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPwd</span><span class="params">(String pwd)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.pwd = pwd;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;User&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;id=&quot;</span> + id +</span><br><span class="line">                <span class="string">&quot;, name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, pwd=&#x27;&quot;</span> + pwd + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Dao接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*UserDao</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line">    <span class="function">List&lt;User&gt; <span class="title">getUserList</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>接口实现类</p>
+<blockquote>
+<ul>
+<li>namespace：绑定一个对应的Dao/Mapper</li>
+<li>select id：绑定类中对应的方法，相当于用数据库语句实现了接口中的方法</li>
+<li>resultType：对应返回值的类型</li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--UserMapper.xml--&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.MizuGo.dao.UserDao&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUserList&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.MizuGo.pojo.User&quot;</span>&gt;</span></span><br><span class="line">        select *from mybatis.user</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//第一步，获取SqlSession对象</span></span><br><span class="line">        SqlSession sqlSession = MybatisUtils.getSqlSession();</span><br><span class="line">        <span class="comment">//方式一：getMapper</span></span><br><span class="line">        <span class="comment">//getMapper映射Dao接口</span></span><br><span class="line">        UserDao userDao = sqlSession.getMapper(UserDao.class);</span><br><span class="line">        List&lt;User&gt; userList = userDao.getUserList();</span><br><span class="line">        <span class="keyword">for</span> (User user : userList) &#123;</span><br><span class="line">            System.out.println(user);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//关闭SqlSession</span></span><br><span class="line">        sqlSession.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CURD（增删改查）"><a href="#CURD（增删改查）" class="headerlink" title="CURD（增删改查）"></a>CURD（增删改查）</h2><h3 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select</h3><ul>
+<li>select id:方法名</li>
+<li>ResultType:返回值类型</li>
+<li>ParamType:参数类型</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--根据id查询用户--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUserByID&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.MizuGo.pojo.User&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span>&gt;</span></span><br><span class="line">    select * from mybatis.user where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserByID</span><span class="params">()</span></span>&#123;</span><br><span class="line">	SqlSession sqlSession = MybatisUtils.getSqlSession();</span><br><span class="line">	UserDao userDao = sqlSession.getMapper(UserDao.class);</span><br><span class="line">    </span><br><span class="line">	User user = userDao.getUserByID(<span class="number">3</span>);</span><br><span class="line">	System.out.println(user);</span><br><span class="line">	sqlSession.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Add"><a href="#Add" class="headerlink" title="Add"></a>Add</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--新增用户--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;addUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.MizuGo.pojo.User&quot;</span>&gt;</span></span><br><span class="line">    insert into mybatis.user value (#&#123;id&#125;,#&#123;name&#125;,#&#123;pwd&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addUser</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SqlSession sqlSession = MybatisUtils.getSqlSession();</span><br><span class="line">    UserDao userDao = sqlSession.getMapper(UserDao.class);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> res = userDao.addUser(<span class="keyword">new</span> User(<span class="number">4</span>, <span class="string">&quot;test&quot;</span>, <span class="string">&quot;112233&quot;</span>));</span><br><span class="line">    <span class="comment">//增删改提交事务才能够在数据库中生效</span></span><br><span class="line">    sqlSession.commit();</span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--修改用户--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;updateUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.MizuGo.pojo.User&quot;</span>&gt;</span></span><br><span class="line">    update  mybatis.user set name = #&#123;name&#125;,pwd =#&#123;pwd&#125; where id =#&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateUser</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SqlSession sqlSession = MybatisUtils.getSqlSession();</span><br><span class="line">    UserDao userDao = sqlSession.getMapper(UserDao.class);</span><br><span class="line">    </span><br><span class="line">    userDao.updateUser(<span class="keyword">new</span> User(<span class="number">1</span>,<span class="string">&quot;改&quot;</span>,<span class="string">&quot;987654&quot;</span>));</span><br><span class="line">    <span class="comment">//上传事务</span></span><br><span class="line">    sqlSession.commit();</span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--删除用户--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">&quot;deleteUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span>&gt;</span></span><br><span class="line">    delete from mybatis.user where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteUser</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SqlSession sqlSession = MybatisUtils.getSqlSession();</span><br><span class="line">    UserDao userDao = sqlSession.getMapper(UserDao.class);</span><br><span class="line"></span><br><span class="line">    userDao.deleteUser(<span class="number">4</span>);</span><br><span class="line">    sqlSession.commit();</span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
         <tag>SSM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTTP与TCP</title>
+    <url>/2021/11/20/HTTP%E4%B8%8ETCP/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><ul>
+<li>Http将两台计算机视为不同的角色：客户端和服务器。客户端向服务器请求数据，服务器回应请求</li>
+<li>Http为无状态协议，通过TCP建立到服务器的连接，当一次请求完成之后，会立即断开TCP连接，因此http是短连接。无状态是指：Http向服务器发起请求的时候，不是一直通过同一个连接发送请求，而是每一次请求都建立一个新的连接，不会记录任何客户端操作</li>
+<li>不管是客户端的请求信息还是服务器的回应信息，都带有一块头部信息（Header），头部信息是自定义的，用于传递额外信息（浏览器信息、请求的内容类型、相应的语言）</li>
+</ul>
+<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>TCP的三次握手即建立了一次连接，四次挥手则为断开一次连接</p>
+]]></content>
+      <tags>
+        <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络</title>
+    <url>/2021/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><ul>
+<li>Http将两台计算机视为不同的角色：客户端和服务器。客户端向服务器请求数据，服务器回应请求</li>
+<li>Http为无状态协议，通过TCP建立到服务器的连接，当一次请求完成之后，会立即断开TCP连接，因此http是短连接。无状态是指：Http向服务器发起请求的时候，不是一直通过同一个连接发送请求，而是每一次请求都建立一个新的连接，不会记录任何客户端操作（见补充说明）</li>
+<li>不管是客户端的请求信息还是服务器的回应信息，都带有一块头部信息（Header），头部信息是自定义的，用于传递额外信息（浏览器信息、请求的内容类型、相应的语言）</li>
+</ul>
+<blockquote>
+<p>PS：</p>
+<ol>
+<li>HTTP/1.0:客户端的每次请求都要求建立一次单独的连接，在请求结束后会立即断开连接</li>
+<li>HTTP/1.1:客户端的一次连接中可以处理多个请求，多个请求可以重叠进行，不需要等待一个请求结束再发送下一个请求</li>
+<li><strong>HTTP是一种短连接，要保持客户端的在线状态，就需要每隔一段时间向服务器发送一次“保持连接”的请求，服务器在收到请求后也会对客户端回复，表明知道客户端“在线”。当服务器长时间未收到客户端的“保持连接”请求，则会认为客户端“下线”，客户端长时间无法收到服务器的回复，则认为网络已经断开</strong></li>
+</ol>
+</blockquote>
+<h3 id="以实际应用看HTTP"><a href="#以实际应用看HTTP" class="headerlink" title="以实际应用看HTTP"></a>以实际应用看HTTP</h3><ul>
+<li>TCP的主要作用就是用来建立连接，而传送数据还是交给了HTTP来完成</li>
+<li>HTTP协议同样是一个请求、确认、连接的过程</li>
+</ul>
+<p>HTTP将传输数据的两边称为客户端（Client）和服务器（Server）</p>
+<blockquote>
+<p><strong>第一：发送一个http请求给S，这个请求包括请求头和请求内容</strong></p>
+<p>request header：</p>
+<ol>
+<li><p>请求的方法：POST/GET</p>
+</li>
+<li><p>请求的URL，HTTP协议版本</p>
+</li>
+<li><p>请求的数据、编码方式</p>
+</li>
+<li><p>是否有Cookies，是否缓存</p>
+<p>post和get请求方式的区别是，get把请求内容放在URL后面，但是URL长度有限制。而post是以表单的形势，适合要输入密码之类的，因为不在URL中显示，所以比较安全。</p>
+</li>
+</ol>
+<p>request body：</p>
+<p>即请求的内容.</p>
+<p><strong>第二：S收到了http请求，然后根据请求头，返回http响应</strong></p>
+<p>response header：</p>
+<ol>
+<li>cookies或session</li>
+<li>状态码</li>
+<li>内容大小</li>
+</ol>
+<p>response body：</p>
+<p>   即响应的内容，包括，JS什么的。</p>
+<p><strong>第三，C收到了以后，就由浏览器完成一系列的渲染，包括执行JS脚本等</strong></p>
+</blockquote>
+<p>参考文章：<a href="https://www.cnblogs.com/baizhanshi/p/8482612.html">https://www.cnblogs.com/baizhanshi/p/8482612.html</a></p>
+<h2 id="TCP与UDP"><a href="#TCP与UDP" class="headerlink" title="TCP与UDP"></a>TCP与UDP</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>TCP是一种可靠协议，必须要成功建立连接后才能够传输数据，有超时重传机制</li>
+<li>UDP是一种面向无连接，不可靠的协议，不需要建立连接即可传输数据，可以直接发送信息报文，尽最大努力将数据传输，但是不保证传输结果</li>
+<li>TCP传输数据慢，建立连接、超时重传、拥塞机制都会消耗时间，比较占用系统资源，且由于三次握手机制，导致TCP容易被攻击</li>
+<li>UDP传输数据快，且由于是无状态传输，没有TCP的机制，被利用的漏洞更少，反而更加安全，但是用UDP传输数据无法保证数据可达，容易发生丢包</li>
+<li>TCP和UDP是两种独立的协议，因此各自的端口号也相互独立</li>
+</ul>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p><strong>TCP应用场景</strong><br>当对网络通信质量有要求时，比如：整个数据要准确无误的传递给对方，这往往对于一些要求可靠的应用，比如HTTP,HTTPS,FTP等传输文件的协议，POP,SMTP等邮件的传输协议。常见使用TCP协议的应用：</p>
+<ol>
+<li>浏览器使用的：HTTP</li>
+<li>FlashFXP:FTP</li>
+<li>Outlook:POP，SMTP</li>
+<li>QQ文件传输</li>
+</ol>
+<p><strong>UDP 应用场景</strong><br>对当前网络通讯质量要求不高的时候，要求网络通讯速度尽量的快，这时就使用UDP<br>日常生活中常见使用UDP协议：</p>
+<ol>
+<li>QQ语音</li>
+<li>QQ视频</li>
+<li>TFTP</li>
+</ol>
+<p><strong>TCP的三次握手即建立了一次连接，四次挥手则为断开一次连接</strong></p>
+<h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><p>所谓的端口，就好像是门牌号一样，<a href="https://baike.baidu.com/item/%E5%AE%A2%E6%88%B7%E7%AB%AF/101081">客户端</a>可以通过ip地址找到对应的<a href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF/3369401">服务器端</a>，但是服务器端是有很多端口的，每个<a href="https://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/5985445">应用程序</a>对应一个端口号，通过类似门牌号的端口号，客户端才能真正的访问到该服务器。为了对端口进行区分，将每个端口进行了编号，这就是端口号</p>
+<blockquote>
+<p><strong>端口分为物理端口和逻辑端口，这里主要论述逻辑端口</strong></p>
+</blockquote>
+<h3 id="周知端口"><a href="#周知端口" class="headerlink" title="周知端口"></a>周知端口</h3><p>众所周知的端口，范围从0-1023。</p>
+<p>如：访问<a href="http://www.baidu.com,是不必指定端口号的,因为www的默认端口号为80/">www.baidu.com，是不必指定端口号的，因为www的默认端口号为80</a></p>
+<p>如果使用非默认端口号去访问，则需要在地址后面加上对应的端口号</p>
+<p><strong>常见端口号：</strong></p>
+<p>21端口：FTP 文件传输服务<br>22端口：SSH 远程连接服务<br>23端口：TELNET 终端仿真服务<br>25端口：SMTP 简单邮件传输服务<br>53端口：DNS 域名解析服务<br>80端口：HTTP 超文本传输服务<br>443端口：HTTPS 加密的超文本传输服务</p>
+<p>3306端口：MYSQL数据库端口<br>5432端口：PostgreSQL数据库端口<br>6379端口：Redis数据库端口<br>8080端口：TCP服务端默认端口<br>8888端口：Nginx服务器的端口<br>9200端口：Elasticsearch服务器端口<br>27017端口：mongoDB数据库默认端口<br>22122端口：fastdfs服务器默认端口</p>
+<blockquote>
+<p>查看端口状态：</p>
+<p>netstat -an</p>
+</blockquote>
+<h3 id="动态端口"><a href="#动态端口" class="headerlink" title="动态端口"></a>动态端口</h3><p>动态端口的范围是从1024-65535。一般不固定分配某种服务，而是动态分配，当一个系统进程或者应用程序进程需要网络通信时，它向主机申请一个端口，主机从可用的端口号中分配一个供它临时使用，当进程关闭时，同时也释放所占用的端口号。</p>
+]]></content>
+      <tags>
+        <tag>网络</tag>
       </tags>
   </entry>
 </search>
