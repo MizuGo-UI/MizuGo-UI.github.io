@@ -1344,14 +1344,6 @@
 </blockquote>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--xml配置文件--&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--环境配置，连接的数据库，这里使用的是MySQL--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;mysql&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;mysql&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--指定事务管理的类型，这里简单使用Java的JDBC的提交和回滚设置--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--dataSource 指连接源配置，POOLED是JDBC连接对象的数据源连接池的实现--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://127.0.0.1:3306/mybatis?useSSL=true<span class="symbol">&amp;amp;</span>useUnicode=true<span class="symbol">&amp;amp;</span>characterEncoding=UTF-8<span class="symbol">&amp;amp;</span>serverTimezone=UTC&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;username&#125;&quot;</span>/&gt;</span></span><br><span class="line">        		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;password&#125;&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--每一个Mapper.xml都需要在Mybatis核心配置文件中注册--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;Mapper/UserMapper&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>如果一个属性在不只一个地方进行了配置，那么，MyBatis 将按照下面的顺序来加载：</p>
-<ul>
-<li>首先读取在 properties 元素体内指定的属性。</li>
-<li>然后根据 properties 元素中的 resource 属性读取类路径下属性文件，或根据 url 属性指定的路径读取属性文件，并覆盖之前读取过的同名属性。</li>
-<li>最后读取作为方法参数传递的属性，并覆盖之前读取过的同名属性。</li>
-</ul>
-</blockquote>
 <p><strong>编写util工具类</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*Util工具类</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MybatisUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SqlSessionFactory sqlSessionFactory;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="comment">//mybatis配置文件</span></span><br><span class="line">            String resource = <span class="string">&quot;mybatis-config.xml&quot;</span>;</span><br><span class="line">            InputStream inputStream = Resources.getResourceAsStream(resource);</span><br><span class="line">             sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//单例模式</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SqlSession <span class="title">getSqlSession</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sqlSessionFactory.openSession();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -1385,9 +1377,32 @@
 
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addUser</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SqlSession sqlSession = MybatisUtils.getSqlSession();</span><br><span class="line">    UserDao userDao = sqlSession.getMapper(UserDao.class);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> res = userDao.addUser(<span class="keyword">new</span> User(<span class="number">4</span>, <span class="string">&quot;test&quot;</span>, <span class="string">&quot;112233&quot;</span>));</span><br><span class="line">    <span class="comment">//增删改提交事务才能够在数据库中生效</span></span><br><span class="line">    sqlSession.commit();</span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p><strong>万能的Map</strong></p>
 <blockquote>
-<p>PS:这种新增方式有个弊端，当字段过多的时候会导致</p>
+<p>PS:这种新增方式有个弊端，当字段过多的时候同样需要人为地一个一个全部添加，极其麻烦，因此在实际的运用中，可能会采用Map的办法。</p>
+<p>如下：可实现仅对应id插入密码</p>
 </blockquote>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--通过Map查询用户--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;addUser2&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;map&quot;</span>&gt;</span></span><br><span class="line">    insert into mybatis.user (id,pwd) values (#&#123;userid&#125;,#&#123;password&#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addUser2</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SqlSession sqlSession = MybatisUtils.getSqlSession();</span><br><span class="line">    UserDao userDao = sqlSession.getMapper(UserDao.class);</span><br><span class="line">    </span><br><span class="line">   Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">    map.put(<span class="string">&quot;userid&quot;</span>,<span class="number">4</span>);</span><br><span class="line">    map.put(<span class="string">&quot;password&quot;</span>,<span class="string">&quot;13258&quot;</span>);</span><br><span class="line">    userDao.addUser2(map);</span><br><span class="line">    </span><br><span class="line">    sqlSession.commit();</span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>父类的引用指向子类的对象的好处：多态、动态链接，向上转型</p>
+<ol>
+<li>Map&lt;String, Object&gt; map = new HashMap&lt;String,Object&gt;();</li>
+<li>HashMap&lt;String, Object&gt; map = new HashMap&lt;String,Object&gt;();</li>
+</ol>
+<p>Map为HashMap的父类</p>
+<p>第一种声明方式更加灵活，当添加新的子类的时候，不用再修改</p>
+<p>第二种声明方式当需要实例化其他的子类，需要重新修改</p>
+<p>当前面已经声明尖括号类型，后面尖括号中的内容可以省略</p>
+</blockquote>
+<ul>
+<li>Map传递参数，直接在sql中取出key即可     [parameterType=”map”]</li>
+<li>对象传递参数，直接在sql中取对象的属性即可  [parameterType=”Object”]</li>
+<li>只有一个基本类型参数的情况下，可以直接在sql中取到，省略参数类型</li>
+<li>多个参数用Map，或者注解</li>
+</ul>
 <h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--修改用户--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;updateUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.MizuGo.pojo.User&quot;</span>&gt;</span></span><br><span class="line">    update  mybatis.user set name = #&#123;name&#125;,pwd =#&#123;pwd&#125; where id =#&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateUser</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SqlSession sqlSession = MybatisUtils.getSqlSession();</span><br><span class="line">    UserDao userDao = sqlSession.getMapper(UserDao.class);</span><br><span class="line">    </span><br><span class="line">    userDao.updateUser(<span class="keyword">new</span> User(<span class="number">1</span>,<span class="string">&quot;改&quot;</span>,<span class="string">&quot;987654&quot;</span>));</span><br><span class="line">    <span class="comment">//上传事务</span></span><br><span class="line">    sqlSession.commit();</span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1395,6 +1410,118 @@
 <h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--删除用户--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">&quot;deleteUser&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span>&gt;</span></span><br><span class="line">    delete from mybatis.user where id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteUser</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SqlSession sqlSession = MybatisUtils.getSqlSession();</span><br><span class="line">    UserDao userDao = sqlSession.getMapper(UserDao.class);</span><br><span class="line"></span><br><span class="line">    userDao.deleteUser(<span class="number">4</span>);</span><br><span class="line">    sqlSession.commit();</span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h3><ol>
+<li><p>在sql语句使用通配符</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span><span class="keyword">from</span> mybatis.user <span class="keyword">where</span> name <span class="keyword">like</span> &quot;%&quot;#&#123;<span class="keyword">value</span>&#125;&quot;%&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>Java执行语句中使用通配符</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;User&gt; list = UserDao.likeUser(<span class="string">&quot;王%&quot;</span>)；</span><br></pre></td></tr></table></figure></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--模糊查询--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;likeUser&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.MizuGo.pojo.User&quot;</span>&gt;</span></span><br><span class="line">    select *from mybatis.user where name like #&#123;value&#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">likeUser</span><span class="params">()</span></span>&#123;</span><br><span class="line">    SqlSession sqlSession = MybatisUtils.getSqlSession();</span><br><span class="line">    UserDao userDao = sqlSession.getMapper(UserDao.class);</span><br><span class="line"></span><br><span class="line">    List&lt;User&gt; list = userDao.likeUser(<span class="string">&quot;王%&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (User user : list) &#123;</span><br><span class="line">        System.out.println(user);</span><br><span class="line">    &#125;</span><br><span class="line">    sqlSession.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置解析"><a href="#配置解析" class="headerlink" title="配置解析"></a>配置解析</h2><h3 id="属性-properties"><a href="#属性-properties" class="headerlink" title="属性(properties)"></a>属性(properties)</h3><p><strong>db.properties</strong></p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">driver</span>=<span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line"><span class="attr">url</span> = <span class="string">jdbc:mysql://127.0.0.1:3306/mybatis?useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</span></span><br><span class="line"><span class="attr">username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">password</span>=<span class="string">981218</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>mybatis-config.xml</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--第二步读取，将相关配置连接到db.properties--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">&quot;db.properties&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--首先读取--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span> = <span class="string">&quot;username&quot;</span> <span class="attr">value</span> = <span class="string">&quot;11&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;mysql&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;mysql&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--指定事务管理的类型，分为JDBC和MANAGED两种，往往使用JDBC--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--dataSource 指连接源配置，POOLED是JDBC连接对象的数据源连接池的实现--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--第三步读取--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;driver&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;url&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;username&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;password&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果一个属性在不只一个地方进行了配置，那么，MyBatis 将按照下面的顺序来加载：</p>
+<ul>
+<li>首先读取在 properties 元素体内指定的属性。</li>
+<li>然后根据 properties 元素中的 resource 属性读取类路径下属性文件，或根据 url 属性指定的路径读取属性文件，并覆盖之前读取过的同名属性。</li>
+<li>最后读取作为方法参数传递的属性，并覆盖之前读取过的同名属性。</li>
+</ul>
+</blockquote>
+<h3 id="类型别名-typeAliases"><a href="#类型别名-typeAliases" class="headerlink" title="类型别名(typeAliases)"></a>类型别名(typeAliases)</h3><ol>
+<li><p>第一种方式，直接设置缩写名</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">typeAlias</span> <span class="attr">type</span>=<span class="string">&quot;com.MizuGo.pojo.User&quot;</span> <span class="attr">alias</span>=<span class="string">&quot;User&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>第二种方式，指定一个包名</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">&quot;com.MizuGo.pojo&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>默认将类名作为缩写名，大小写均可，推荐小写</p>
+<blockquote>
+<p>类比较少的时候推荐第一种，类多选择第二种</p>
+<p>两种方式都可以自定义别名，第二种方式需要在实体类用注解的方式自定义别名</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Alias(&quot;user&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><table>
+<thead>
+<tr>
+<th>设置名</th>
+<th>描述</th>
+<th>有效值</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>logImpl</td>
+<td>指定 MyBatis 所用日志的具体实现，未指定时将自动查找。</td>
+<td>SLF4J | LOG4J | LOG4J2 | JDK_LOGGING | COMMONS_LOGGING | STDOUT_LOGGING | NO_LOGGING</td>
+<td>未设置</td>
+</tr>
+<tr>
+<td>cacheEnabled</td>
+<td>全局性地开启或关闭所有映射器配置文件中已配置的任何缓存。</td>
+<td>true | false</td>
+<td>true</td>
+</tr>
+<tr>
+<td>lazyLoadingEnabled</td>
+<td>延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。 特定关联关系中可通过设置 <code>fetchType</code> 属性来覆盖该项的开关状态。</td>
+<td>true | false</td>
+<td>false</td>
+</tr>
+</tbody></table>
+<h3 id="映射器-Mappers"><a href="#映射器-Mappers" class="headerlink" title="映射器(Mappers)"></a>映射器(Mappers)</h3><ol>
+<li><p>使用相对于类路径的资源引用</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 使用相对于类路径的资源引用 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;Mapper/UserMapper&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>使用映射器接口实现类的完全限定类名</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 使用映射器接口实现类的完全限定类名 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">class</span>=<span class="string">&quot;com.MizuGo.dao.UserMapper&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>将包内的映射器接口实现全部注册为映射器</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 将包内的映射器接口实现全部注册为映射器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">&quot;com.MizuGo.dao&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>第二种方式和第三种方式注意点：</p>
+<ul>
+<li>接口和Mapper配置文件必须同名</li>
+<li>接口和Mapper配置文件必须在同一个包下</li>
+</ul>
+<h3 id="作用域（Scope）和生命周期"><a href="#作用域（Scope）和生命周期" class="headerlink" title="作用域（Scope）和生命周期"></a>作用域（Scope）和生命周期</h3><p><strong>SqlSessionFactoryBuilder</strong></p>
+<ul>
+<li>一旦创建了 SqlSessionFactory，就不再需要它了</li>
+<li>作用域：方法作用域（局部方法变量）</li>
+</ul>
+<p><strong>SqlSessionFactory</strong></p>
+<ul>
+<li> 一旦被创建就应该在应用的运行期间一直存在，没有任何理由丢弃它或重新创建另一个实例</li>
+<li>作用域：应用作用域（全局变量）</li>
+<li>单例模式或者静态单例模式</li>
+</ul>
+<p><strong>SqlSession</strong></p>
+<ul>
+<li>连接到连接池的一个请求</li>
+<li>SqlSession 的实例不是线程安全的，因此是不能被共享的</li>
+<li>作用域：请求或方法作用域</li>
+<li>用完后需要断开，否则会造成资源浪费</li>
+</ul>
+<p><img src="/../images/Mybatis/image-20211201110043411.png" alt="image-20211201110043411"></p>
+<blockquote>
+<p>PS：</p>
+<ul>
+<li>SqlSessionFactoryBuilder用于创建SqlSessionFactory</li>
+<li>SqlSessionFactory用于创建SqlSession</li>
+<li>SqlSession用于创建Mapper，一一对应</li>
+</ul>
+</blockquote>
+<h3 id="结果集映射-ResultMap"><a href="#结果集映射-ResultMap" class="headerlink" title="结果集映射(ResultMap)"></a>结果集映射(ResultMap)</h3><p>解决列名不匹配问题</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;UserMap&quot;</span> <span class="attr">type</span>=<span class="string">&quot;User&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;id&quot;</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;name&quot;</span> <span class="attr">property</span>=<span class="string">&quot;name&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;pwd&quot;</span> <span class="attr">property</span>=<span class="string">&quot;pwd&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--查询所有用户--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;getUserList&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;UserMap&quot;</span>&gt;</span></span><br><span class="line">    select  * from mybatis.user;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>指定的resultMap需要与id对应</p>
 ]]></content>
       <tags>
         <tag>SSM</tag>
@@ -1491,6 +1618,46 @@
 ]]></content>
       <tags>
         <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Static小记</title>
+    <url>/2021/12/01/Static%E5%B0%8F%E8%AE%B0/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>static方法就是没有this的方法。在static方法内部不能调用非静态方法，反过来是可以的。而且可以在没有创建任何对象的前提下，仅仅通过类本身来调用static方法。</p>
+<p>即说明了主要用途就是：</p>
+<p><font color="#FF0000">  方便在没有创建对象的情况下来进行调用（方法/变量） </font> </p>
+<span id="more"></span> 
+
+<blockquote>
+<p>static关键字修饰的方法或者变量不需要依赖于对象来进行访问，只要类被加载了，就可以通过类名去进行访问</p>
+</blockquote>
+<h2 id="Static方法"><a href="#Static方法" class="headerlink" title="Static方法"></a>Static方法</h2><p>又称静态方法，不依赖于任何对象就可以进行访问</p>
+<p>但是正因为不依附于任何对象，会出现以下情况</p>
+<ul>
+<li>静态方法中不能访问类的非静态成员变量和非静态成员方法</li>
+<li>非静态方法可以访问类的静态成员变量和静态成员方法</li>
+</ul>
+<h2 id="Static变量"><a href="#Static变量" class="headerlink" title="Static变量"></a>Static变量</h2><p>又称静态变量</p>
+<p>静态变量和非静态变量的区别是：</p>
+<ul>
+<li>静态变量被所有的对象所共享，在内存中只有一个副本，它当且仅当在类初次加载时会被初始化</li>
+<li>非静态变量是对象所拥有的，在创建对象的时候被初始化，存在多个副本，各个对象拥有的副本互不影响</li>
+</ul>
+<p>static成员变量的初始化顺序按照定义的顺序进行初始化</p>
+<h2 id="static代码块"><a href="#static代码块" class="headerlink" title="static代码块"></a>static代码块</h2><p>static块可以置于类中的任何地方，形成静态代码块以优化程序性能</p>
+<p>类中可以有多个static块</p>
+<p>在类初次被加载的时候，会按照static块的顺序来执行每个static块，并且只会执行一次</p>
+<p>对于某些类中的方法在每次被调用的时候，都会创建一次对象，就会导致空间浪费，因此如果用static代码块让其只执行一次就可以优化性能</p>
+<p>优化前：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Date birthDate;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(Date birthDate)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.birthDate = birthDate;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isBornBoomer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Date startDate = Date.valueOf(<span class="string">&quot;1946&quot;</span>);</span><br><span class="line">        Date endDate = Date.valueOf(<span class="string">&quot;1964&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> birthDate.compareTo(startDate)&gt;=<span class="number">0</span> &amp;&amp; birthDate.compareTo(endDate) &lt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优化后：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Date birthDate;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Date startDate,endDate;</span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        startDate = Date.valueOf(<span class="string">&quot;1946&quot;</span>);</span><br><span class="line">        endDate = Date.valueOf(<span class="string">&quot;1964&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(Date birthDate)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.birthDate = birthDate;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isBornBoomer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> birthDate.compareTo(startDate)&gt;=<span class="number">0</span> &amp;&amp; birthDate.compareTo(endDate) &lt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><font color="#FF0000">将一些只需要进行一次的初始化操作都放在static代码块中进行</font></p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
 </search>

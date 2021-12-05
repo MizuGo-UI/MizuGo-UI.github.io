@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="概述static方法就是没有this的方法。在static方法内部不能调用非静态方法，反过来是可以的。而且可以在没有创建任何对象的前提下，仅仅通过类本身来调用static方法。 即说明了主要用途就是：   方便在没有创建对象的情况下来进行调用（方法&#x2F;变量）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Static小记">
+<meta property="og:url" content="http://example.com/2021/12/01/Static%E5%B0%8F%E8%AE%B0/index.html">
+<meta property="og:site_name" content="MizuGo学习档案">
+<meta property="og:description" content="概述static方法就是没有this的方法。在static方法内部不能调用非静态方法，反过来是可以的。而且可以在没有创建任何对象的前提下，仅仅通过类本身来调用static方法。 即说明了主要用途就是：   方便在没有创建对象的情况下来进行调用（方法&#x2F;变量）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-01T06:53:08.784Z">
+<meta property="article:modified_time" content="2021-12-01T06:53:25.228Z">
+<meta property="article:author" content="Yu Rui">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/12/01/Static%E5%B0%8F%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/12/01/Static%E5%B0%8F%E8%AE%B0/","path":"2021/12/01/Static小记/","title":"Static小记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Static小记 | MizuGo学习档案</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">MizuGo学习档案</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+ <!--网易云插件-->
+   <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=86 height=86 src="//music.163.com/outchain/player?type=2&id=467952048&auto=1&height=66">
+</iframe>
+
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Static%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">Static方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Static%E5%8F%98%E9%87%8F"><span class="nav-number">3.</span> <span class="nav-text">Static变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">4.</span> <span class="nav-text">static代码块</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yu Rui</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/01/Static%E5%B0%8F%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yu Rui">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MizuGo学习档案">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Static小记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-12-01 14:53:08 / 修改时间：14:53:25" itemprop="dateCreated datePublished" datetime="2021-12-01T14:53:08+08:00">2021-12-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>static方法就是没有this的方法。在static方法内部不能调用非静态方法，反过来是可以的。而且可以在没有创建任何对象的前提下，仅仅通过类本身来调用static方法。</p>
+<p>即说明了主要用途就是：</p>
+<p><font color="#FF0000">  方便在没有创建对象的情况下来进行调用（方法/变量） </font> </p>
+<span id="more"></span> 
+
+<blockquote>
+<p>static关键字修饰的方法或者变量不需要依赖于对象来进行访问，只要类被加载了，就可以通过类名去进行访问</p>
+</blockquote>
+<h2 id="Static方法"><a href="#Static方法" class="headerlink" title="Static方法"></a>Static方法</h2><p>又称静态方法，不依赖于任何对象就可以进行访问</p>
+<p>但是正因为不依附于任何对象，会出现以下情况</p>
+<ul>
+<li>静态方法中不能访问类的非静态成员变量和非静态成员方法</li>
+<li>非静态方法可以访问类的静态成员变量和静态成员方法</li>
+</ul>
+<h2 id="Static变量"><a href="#Static变量" class="headerlink" title="Static变量"></a>Static变量</h2><p>又称静态变量</p>
+<p>静态变量和非静态变量的区别是：</p>
+<ul>
+<li>静态变量被所有的对象所共享，在内存中只有一个副本，它当且仅当在类初次加载时会被初始化</li>
+<li>非静态变量是对象所拥有的，在创建对象的时候被初始化，存在多个副本，各个对象拥有的副本互不影响</li>
+</ul>
+<p>static成员变量的初始化顺序按照定义的顺序进行初始化</p>
+<h2 id="static代码块"><a href="#static代码块" class="headerlink" title="static代码块"></a>static代码块</h2><p>static块可以置于类中的任何地方，形成静态代码块以优化程序性能</p>
+<p>类中可以有多个static块</p>
+<p>在类初次被加载的时候，会按照static块的顺序来执行每个static块，并且只会执行一次</p>
+<p>对于某些类中的方法在每次被调用的时候，都会创建一次对象，就会导致空间浪费，因此如果用static代码块让其只执行一次就可以优化性能</p>
+<p>优化前：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Date birthDate;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(Date birthDate)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.birthDate = birthDate;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isBornBoomer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Date startDate = Date.valueOf(<span class="string">&quot;1946&quot;</span>);</span><br><span class="line">        Date endDate = Date.valueOf(<span class="string">&quot;1964&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> birthDate.compareTo(startDate)&gt;=<span class="number">0</span> &amp;&amp; birthDate.compareTo(endDate) &lt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优化后：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Date birthDate;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Date startDate,endDate;</span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        startDate = Date.valueOf(<span class="string">&quot;1946&quot;</span>);</span><br><span class="line">        endDate = Date.valueOf(<span class="string">&quot;1964&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(Date birthDate)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.birthDate = birthDate;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isBornBoomer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> birthDate.compareTo(startDate)&gt;=<span class="number">0</span> &amp;&amp; birthDate.compareTo(endDate) &lt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><font color="#FF0000">将一些只需要进行一次的初始化操作都放在static代码块中进行</font></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="prev" title="计算机网络">
+                  <i class="fa fa-chevron-left"></i> 计算机网络
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+<div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+    
+ </div>
+
+
+
+
+
+
+</div>
+
+<div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yu Rui</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+
+
+
+</body>
+</html>
