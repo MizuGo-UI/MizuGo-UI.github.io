@@ -273,6 +273,7 @@
 <li>国际化</li>
 </ul>
 <h4 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h4><p><img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20220515204657867.png" alt="image-20220515204657867">        </p>
+<p><img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\Spring-Boot入门\image-20220518001115061.png" alt="image-20220518001115061"></p>
 <p>默认配置可以读到public、resources、static、templates文件夹下的文件，成为静态资源目录</p>
 <blockquote>
 <p>因此，我们可以通过访问<a href="http://localhost:8080/1.js%E7%9B%B4%E6%8E%A5%E6%9F%A5%E7%9C%8B%E5%88%B0js%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF">http://localhost:8080/1.js直接查看到js文件信息</a></p>
