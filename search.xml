@@ -316,15 +316,113 @@
 <p>2.前端引入<code>thymeleaf</code>模板，并采用th:text=”${}”来取得数据</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--test.html--&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;msg&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p>Thymeleaf语法</p>
 <blockquote>
 <p>Thymeleaf语法</p>
 <p>${…}获取变量</p>
 <p>@{…}链接网址</p>
-<p> #{…}消息表达式，与th:text一起使用，加载数据源中的消息，用于国际化</p>
+<p>#{…}消息表达式，与th:text一起使用，加载数据源中的消息，用于国际化</p>
 </blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">    model.addAttribute(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;&lt;h1&gt;hello,springboot&lt;h1&gt;&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;test&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;msg&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:utext</span>=<span class="string">&quot;$&#123;msg&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<p><img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\Spring-Boot入门\image-20220521174603310.png" alt="image-20220521174603310"></p>
+<p><strong>遍历元素</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--两种方式效果相同--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">th:each</span>=<span class="string">&quot;user:$&#123;users&#125;&quot;</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;user&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">th:each</span>=<span class="string">&quot;user:$&#123;users&#125;&quot;</span>&gt;</span>[[ $&#123;user&#125; ]]<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">model.addAttribute(<span class="string">&quot;users&quot;</span>, Arrays.asList(<span class="string">&quot;yr&quot;</span>,<span class="string">&quot;666&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>用<code>model.addAttribute()</code>将数组的值传到前台，前台中用${}取得值，<code>th:each</code>遍历数组的值并存入<code>user</code>,最后用<code>th:text</code>展示出来</p>
+<h4 id="首页实现"><a href="#首页实现" class="headerlink" title="首页实现"></a>首页实现</h4><blockquote>
+<p>使用<code>WebMvcConfigurerAdapter</code>可以来扩展SpringMVC功能</p>
+<p><code>@EnableWebMvc</code>不要接管SpringMVC</p>
+</blockquote>
+<p>引入模板时需要注意路径是否有误，将静态资源用thymeleaf接管</p>
+<h4 id="国际化"><a href="#国际化" class="headerlink" title="国际化"></a>国际化</h4><ol>
+<li>编写国际化配置文件</li>
+<li>使用ResourceBundleMessageSource管理国际化资源文件</li>
+<li>在页面使用fmt:message取出国际化内容</li>
+</ol>
+<p><strong>创建国家化配置文件</strong></p>
+<p><img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\Spring-Boot入门\image-20220529162657142.png" alt="image-20220529162657142"></p>
+<blockquote>
+<p>当Spring Boot自动识别并合并成Resource Bundle后，可直接右键创建新的配置文件</p>
+</blockquote>
+<p><img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\Spring-Boot入门\image-20220529162749118.png" alt="image-20220529162749118"></p>
+<ol>
+<li><p>选中Resource Bundle页面（需要下载Resource Bundle Editor插件) <img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\Spring-Boot入门\image-20220529162930686.png" alt="image-20220529162930686"></p>
+</li>
+<li><p>新增需要国际化的字段<img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\Spring-Boot入门\image-20220529163141833.png" alt="image-20220529163141833"></p>
+</li>
+<li><p>在对应方框中填入对应的配置内容<img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\Spring-Boot入门\image-20220529163226032.png" alt="image-20220529163226032"></p>
+</li>
+<li><p>用thymeleaf替换页面中需要国家化的字段</p>
+</li>
+<li><p>```html</p>
+<!--login.html-->   
+<form class="form-signin" action="dashboard.html">
+   <img class="mb-4" src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/img/bootstrap-solid.svg" alt width="72" height="72">
+   <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
+   <label class="sr-only" th:text="#{login.username}">Username</label>
+   <input type="text" class="form-control" placeholder="Username" th:placeholder="#{login.username}" required autofocus>
+   <label class="sr-only" th:text="#{login.password}">Password</label>
+   <input type="password" class="form-control" placeholder="Password" th:placeholder="#{login.password}" required>
+   <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> [[#{login.remember}]]
+      </label>
+   </div>
+   <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{login.btn}">Sign in</button>
+   <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+   <a class="btn btn-sm">中文</a>
+   <a class="btn btn-sm">English</a>
+</form>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">&gt; 原理：国际化Locale(区域信息对象)；LocaleResolver（获取区域信息对象）</span><br><span class="line">&gt;</span><br><span class="line">&gt; 默认的是根据请求头带来的区域信息获取Locale进行国际化</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">@Bean</span><br><span class="line">@ConditionalOnMissingBean(</span><br><span class="line">    name = &#123;&quot;localeResolver&quot;&#125;</span><br><span class="line">)</span><br><span class="line">public LocaleResolver localeResolver() &#123;</span><br><span class="line">    if (this.webProperties.getLocaleResolver() == org.springframework.boot.autoconfigure.web.WebProperties.LocaleResolver.FIXED) &#123;</span><br><span class="line">        return new FixedLocaleResolver(this.webProperties.getLocale());</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();</span><br><span class="line">        localeResolver.setDefaultLocale(this.webProperties.getLocale());</span><br><span class="line">        return localeResolver;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="实现点击按钮切换语言"><a href="#实现点击按钮切换语言" class="headerlink" title="实现点击按钮切换语言"></a>实现点击按钮切换语言</h5><ol>
+<li><p>点击按钮切换页面</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-sm&quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/login.html(l=&#x27;zh_CN&#x27;)&#125;&quot;</span>&gt;</span>中文<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-sm&quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/login.html(l=&#x27;en_US&#x27;)&#125;&quot;</span>&gt;</span>English<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>login.html(l=&#39;zh_CN&#39;)</code>括号中的信息会作为html的参数显示出来</p>
+</blockquote>
+</li>
+<li><p>实现自己的LocaleResolver配置</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * MyLocaleResolver.java</span></span><br><span class="line"><span class="comment"> * 可以在连接上携带区域信息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyLocaleResolver</span> <span class="keyword">implements</span> <span class="title">LocaleResolver</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Locale <span class="title">resolveLocale</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</span><br><span class="line">        String l = request.getParameter(<span class="string">&quot;l&quot;</span>);<span class="comment">//由于Locale从请求头获取区域信息，因此我们在login.html中将相关区域信息放到了html参数中</span></span><br><span class="line">        Locale locale = Locale.getDefault();<span class="comment">//默认区域信息配置</span></span><br><span class="line">        <span class="keyword">if</span>(!StringUtils.isEmpty(l))&#123;  <span class="comment">//判断维哪个区域的信息</span></span><br><span class="line">            String[] split = l.split(<span class="string">&quot;_&quot;</span>);</span><br><span class="line">           locale = <span class="keyword">new</span> Locale(split[<span class="number">0</span>], split[<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> locale;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>在配置文件中完成配置</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* MyMvcConfig.java</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyMvcConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addViewControllers</span><span class="params">(ViewControllerRegistry registry)</span> </span>&#123;</span><br><span class="line">        registry.addViewController(<span class="string">&quot;/&quot;</span>).setViewName(<span class="string">&quot;login&quot;</span>);</span><br><span class="line">        registry.addViewController(<span class="string">&quot;/login.html&quot;</span>).setViewName(<span class="string">&quot;login&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> LocaleResolver <span class="title">localeResolver</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MyLocaleResolver();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h4><p>开发期间模板引擎页面修改以后，实时生效</p>
+<ol>
+<li><p>禁用模板引擎</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#禁用缓存</span></span><br><span class="line"><span class="meta">spring.thymeleaf.cache</span>=<span class="string">false</span></span><br></pre></td></tr></table></figure></li>
+<li><p>页面修改完成以后ctrl+f9:重新编译</p>
+</li>
+</ol>
+<h5 id="接受数据流程"><a href="#接受数据流程" class="headerlink" title="接受数据流程"></a>接受数据流程</h5><p>采用<code>action</code>将表单信息传到<code>/user/login</code>接口</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">&quot;form-signin&quot;</span> <span class="attr">action</span>=<span class="string">&quot;dashboard.html&quot;</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/user/login&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--input接受表单中上传的信息，name表示上传信息的属性名，placeholder为未输入字符时的提示--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span>  <span class="attr">name</span>=<span class="string">&quot;username&quot;</span>  <span class="attr">placeholder</span>=<span class="string">&quot;Username&quot;</span> <span class="attr">th:placeholder</span>=<span class="string">&quot;#&#123;login.username&#125;&quot;</span> <span class="attr">required</span>=<span class="string">&quot;&quot;</span> <span class="attr">autofocus</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span>   <span class="attr">name</span>=<span class="string">&quot;password&quot;</span>  <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;Password&quot;</span> <span class="attr">th:placeholder</span>=<span class="string">&quot;#&#123;login.password&#125;&quot;</span> <span class="attr">required</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>登录接口实现</p>
+<blockquote>
+<p><code>@RequestParam()</code>可以限定参数必须有值，否则会报错</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*  LoginController.java</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginController</span> </span>&#123;</span><br><span class="line"><span class="meta">@PostMapping(&quot;/user/login&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">Login</span><span class="params">(<span class="meta">@RequestParam(&quot;username&quot;)</span> String username, <span class="meta">@RequestParam(&quot;password&quot;)</span> String password, Map&lt;String,Object&gt; map,HttpSession session)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!StringUtils.isEmpty(username)&amp;&amp;password.equals(<span class="string">&quot;123456&quot;</span>))&#123;</span><br><span class="line">            <span class="comment">//防止表单重复提交，重定向</span></span><br><span class="line">            session.setAttribute(<span class="string">&quot;loginUser&quot;</span>,username);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;redirect:/main.html&quot;</span>;<span class="comment">//成功则返回main页面，由于在配置中做了页面映射，实际会返回dashboard.html页面</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            map.put(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;用户名密码错误&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;login&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>登录错误消息显示</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--判断--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color: red&quot;</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;msg&#125;&quot;</span> <span class="attr">th:if</span>=<span class="string">&quot;$&#123;not #strings.isEmpty(msg)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="拦截器实现"><a href="#拦截器实现" class="headerlink" title="拦截器实现"></a>拦截器实现</h4><p>为了防止未经过登录直接访问到页面内容，使用拦截器进行登录检查</p>
+<ol>
+<li><p>创建拦截器</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginHandlerInterceptor</span> <span class="keyword">implements</span> <span class="title">HandlerInterceptor</span> </span>&#123;</span><br><span class="line">   <span class="comment">//目标方法执行之前</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Object user = request.getSession().getAttribute(<span class="string">&quot;loginUser&quot;</span>);<span class="comment">//获取从LoginContrller传来的session</span></span><br><span class="line">        <span class="keyword">if</span>(user==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="comment">//未登录，返回登录页面</span></span><br><span class="line">            request.setAttribute(<span class="string">&quot;msg&quot;</span>,<span class="string">&quot;无权限，请先登录&quot;</span>);</span><br><span class="line">            request.getRequestDispatcher(<span class="string">&quot;/login.html&quot;</span>).forward(request,response);<span class="comment">//将请求转到其他页面</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//已登录，返回</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>在配置文件中完成配置</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">        registry.addInterceptor(<span class="keyword">new</span> LoginHandlerInterceptor()).addPathPatterns(<span class="string">&quot;/**&quot;</span>)</span><br><span class="line">                .excludePathPatterns(<span class="string">&quot;/login.html&quot;</span>,<span class="string">&quot;/&quot;</span>,<span class="string">&quot;/user/login&quot;</span>);<span class="comment">//“/**”代表全部请求</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
 ]]></content>
       <tags>
-        <tag>Java,String Boot</tag>
+        <tag>Java,Spring Boot</tag>
       </tags>
   </entry>
   <entry>
