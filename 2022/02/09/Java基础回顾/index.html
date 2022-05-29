@@ -27,15 +27,15 @@
 <meta property="og:site_name" content="MizuGo学习档案">
 <meta property="og:description" content="Java可移植性​            JVM实现？">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/02/09/Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20220209134421264.png">
+<meta property="og:image" content="http://example.com/images/Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/image-20220529224011469.png">
 <meta property="og:image" content="http://example.com/2022/02/09/Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20220211111427900.png">
 <meta property="og:image" content="http://example.com/2022/02/09/Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20220211111554742.png">
 <meta property="article:published_time" content="2022-02-09T11:24:31.763Z">
-<meta property="article:modified_time" content="2022-05-17T13:01:54.142Z">
+<meta property="article:modified_time" content="2022-05-29T14:40:15.667Z">
 <meta property="article:author" content="Yu Rui">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/02/09/Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/Users/Lenovo/AppData/Roaming/Typora/typora-user-images/image-20220209134421264.png">
+<meta name="twitter:image" content="http://example.com/images/Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/image-20220529224011469.png">
 
 
 <link rel="canonical" href="http://example.com/2022/02/09/Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/">
@@ -216,7 +216,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-05-17 21:01:54" itemprop="dateModified" datetime="2022-05-17T21:01:54+08:00">2022-05-17</time>
+        <time title="修改时间：2022-05-29 22:40:15" itemprop="dateModified" datetime="2022-05-29T22:40:15+08:00">2022-05-29</time>
       </span>
 
   
@@ -332,7 +332,7 @@
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> d = <span class="number">8.0</span>;</span><br><span class="line"><span class="keyword">int</span> a=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">double</span> sum = a+d;</span><br><span class="line">System.out.println(sum);<span class="comment">//向精度丢失少的一边自动转换</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="数值类型之间合法转换"><a href="#数值类型之间合法转换" class="headerlink" title="数值类型之间合法转换"></a>数值类型之间合法转换</h3><p><img src="/2022/02/09/Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20220209134421264.png" alt="image-20220209134421264"></p>
+<h3 id="数值类型之间合法转换"><a href="#数值类型之间合法转换" class="headerlink" title="数值类型之间合法转换"></a>数值类型之间合法转换</h3><p><img src="/images/Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/image-20220529224011469.png" alt="image-20220529224011469"></p>
 <blockquote>
 <p>从图中我们可以看出存储占用字节少的类型向存储占用字节多的类型转化不会丢失精度（实线），而存储占用字节多的类型向存储占用字节少的类型（包括占用字节一样的类型）转换都可能发生精度丢失（虚线）</p>
 </blockquote>

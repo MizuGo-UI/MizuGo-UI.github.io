@@ -272,8 +272,7 @@
 <li>拦截器</li>
 <li>国际化</li>
 </ul>
-<h4 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h4><p><img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20220515204657867.png" alt="image-20220515204657867">        </p>
-<p><img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\Spring-Boot入门\image-20220518001115061.png" alt="image-20220518001115061"></p>
+<h4 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h4><p><img src="/images/Spring-Boot%E5%85%A5%E9%97%A8/image-20220529223833103.png" alt="image-20220529223833103"></p>
 <p>默认配置可以读到public、resources、static、templates文件夹下的文件，成为静态资源目录</p>
 <blockquote>
 <p>因此，我们可以通过访问<a href="http://localhost:8080/1.js%E7%9B%B4%E6%8E%A5%E6%9F%A5%E7%9C%8B%E5%88%B0js%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF">http://localhost:8080/1.js直接查看到js文件信息</a></p>
@@ -288,7 +287,7 @@
 <li>webjars <code>localhost:8080/webjars</code></li>
 <li>public、static、resources、/** <code>localhost:8080/</code></li>
 </ul>
-<h4 id="首页配置"><a href="#首页配置" class="headerlink" title="首页配置"></a>首页配置</h4><p><img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20220516214533640.png" alt="image-20220516214533640"></p>
+<h4 id="首页配置"><a href="#首页配置" class="headerlink" title="首页配置"></a>首页配置</h4><p><img src="/images/Spring-Boot%E5%85%A5%E9%97%A8/image-20220529223807693.png" alt="image-20220529223807693"></p>
 <p>首页默认名为<code>index.html</code></p>
 <p>可将此文件置于public、resources、static、templates目录下，或者置于resources根目录下，会被自动</p>
 <h4 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h4><p>导入<code>thymeleaf</code>包</p>
@@ -298,7 +297,7 @@
 <p>模板默认路径位于<code>templates</code>目录下，可识别后缀为<code>.html</code>的文件</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_PREFIX = <span class="string">&quot;classpath:/templates/&quot;</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_SUFFIX = <span class="string">&quot;.html&quot;</span>;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p><img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20220517202348391.png" alt="image-20220517202348391"></p>
+<p><img src="/images/Spring-Boot%E5%85%A5%E9%97%A8/image-20220529223750889.png" alt="image-20220529223750889"></p>
 <p>通过返回文件名访问到html页面</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*IndexController.java</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;test&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;test&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -328,7 +327,7 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;msg&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:utext</span>=<span class="string">&quot;$&#123;msg&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>输出结果：</p>
-<p><img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\Spring-Boot入门\image-20220521174603310.png" alt="image-20220521174603310"></p>
+<p><img src="/images/Spring-Boot%E5%85%A5%E9%97%A8/image-20220529223713196.png" alt="image-20220529223713196"></p>
 <p><strong>遍历元素</strong></p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--两种方式效果相同--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">th:each</span>=<span class="string">&quot;user:$&#123;users&#125;&quot;</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;user&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">th:each</span>=<span class="string">&quot;user:$&#123;users&#125;&quot;</span>&gt;</span>[[ $&#123;user&#125; ]]<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -346,42 +345,29 @@
 <li>在页面使用fmt:message取出国际化内容</li>
 </ol>
 <p><strong>创建国家化配置文件</strong></p>
-<p><img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\Spring-Boot入门\image-20220529162657142.png" alt="image-20220529162657142"></p>
+<p><img src="/images/Spring-Boot%E5%85%A5%E9%97%A8/image-20220529222943560.png" alt="image-20220529222943560"></p>
 <blockquote>
 <p>当Spring Boot自动识别并合并成Resource Bundle后，可直接右键创建新的配置文件</p>
 </blockquote>
-<p><img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\Spring-Boot入门\image-20220529162749118.png" alt="image-20220529162749118"></p>
+<p><img src="/images/Spring-Boot%E5%85%A5%E9%97%A8/image-20220529223318621.png" alt="image-20220529223318621"></p>
 <ol>
-<li><p>选中Resource Bundle页面（需要下载Resource Bundle Editor插件) <img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\Spring-Boot入门\image-20220529162930686.png" alt="image-20220529162930686"></p>
+<li><p>选中Resource Bundle页面（需要下载Resource Bundle Editor插件) <img src="/images/Spring-Boot%E5%85%A5%E9%97%A8/image-20220529223451112.png" alt="image-20220529223451112"></p>
 </li>
-<li><p>新增需要国际化的字段<img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\Spring-Boot入门\image-20220529163141833.png" alt="image-20220529163141833"></p>
+<li><p>新增需要国际化的字段               !<img src="/images/Spring-Boot%E5%85%A5%E9%97%A8/image-20220529223516356.png" alt="image-20220529223516356"></p>
 </li>
-<li><p>在对应方框中填入对应的配置内容<img src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\Spring-Boot入门\image-20220529163226032.png" alt="image-20220529163226032"></p>
+<li><p>在对应方框中填入对应的配置内容                       <img src="/images/Spring-Boot%E5%85%A5%E9%97%A8/image-20220529223537065.png" alt="image-20220529223537065">  </p>
 </li>
 <li><p>用thymeleaf替换页面中需要国家化的字段</p>
-</li>
-<li><p>```html</p>
-<!--login.html-->   
-<form class="form-signin" action="dashboard.html">
-   <img class="mb-4" src="/2022/04/17/Spring-Boot%E5%85%A5%E9%97%A8/img/bootstrap-solid.svg" alt width="72" height="72">
-   <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
-   <label class="sr-only" th:text="#{login.username}">Username</label>
-   <input type="text" class="form-control" placeholder="Username" th:placeholder="#{login.username}" required autofocus>
-   <label class="sr-only" th:text="#{login.password}">Password</label>
-   <input type="password" class="form-control" placeholder="Password" th:placeholder="#{login.password}" required>
-   <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> [[#{login.remember}]]
-      </label>
-   </div>
-   <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{login.btn}">Sign in</button>
-   <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
-   <a class="btn btn-sm">中文</a>
-   <a class="btn btn-sm">English</a>
-</form>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">&gt; 原理：国际化Locale(区域信息对象)；LocaleResolver（获取区域信息对象）</span><br><span class="line">&gt;</span><br><span class="line">&gt; 默认的是根据请求头带来的区域信息获取Locale进行国际化</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">@Bean</span><br><span class="line">@ConditionalOnMissingBean(</span><br><span class="line">    name = &#123;&quot;localeResolver&quot;&#125;</span><br><span class="line">)</span><br><span class="line">public LocaleResolver localeResolver() &#123;</span><br><span class="line">    if (this.webProperties.getLocaleResolver() == org.springframework.boot.autoconfigure.web.WebProperties.LocaleResolver.FIXED) &#123;</span><br><span class="line">        return new FixedLocaleResolver(this.webProperties.getLocale());</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();</span><br><span class="line">        localeResolver.setDefaultLocale(this.webProperties.getLocale());</span><br><span class="line">        return localeResolver;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--login.html--&gt;</span>   </span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">&quot;form-signin&quot;</span> <span class="attr">action</span>=<span class="string">&quot;dashboard.html&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;mb-4&quot;</span> <span class="attr">src</span>=<span class="string">&quot;asserts/img/bootstrap-solid.svg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span> <span class="attr">width</span>=<span class="string">&quot;72&quot;</span> <span class="attr">height</span>=<span class="string">&quot;72&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;h3 mb-3 font-weight-normal&quot;</span> <span class="attr">th:text</span>=<span class="string">&quot;#&#123;login.tip&#125;&quot;</span>&gt;</span>Please sign in<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;sr-only&quot;</span> <span class="attr">th:text</span>=<span class="string">&quot;#&#123;login.username&#125;&quot;</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;Username&quot;</span> <span class="attr">th:placeholder</span>=<span class="string">&quot;#&#123;login.username&#125;&quot;</span> <span class="attr">required</span>=<span class="string">&quot;&quot;</span> <span class="attr">autofocus</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;sr-only&quot;</span> <span class="attr">th:text</span>=<span class="string">&quot;#&#123;login.password&#125;&quot;</span>&gt;</span>Password<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;Password&quot;</span> <span class="attr">th:placeholder</span>=<span class="string">&quot;#&#123;login.password&#125;&quot;</span> <span class="attr">required</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;checkbox mb-3&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span> <span class="attr">value</span>=<span class="string">&quot;remember-me&quot;</span>&gt;</span> [[#&#123;login.remember&#125;]]</span><br><span class="line">      <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-lg btn-primary btn-block&quot;</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">th:text</span>=<span class="string">&quot;#&#123;login.btn&#125;&quot;</span>&gt;</span>Sign in<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;mt-5 mb-3 text-muted&quot;</span>&gt;</span>© 2017-2018<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-sm&quot;</span>&gt;</span>中文<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-sm&quot;</span>&gt;</span>English<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
-<h5 id="实现点击按钮切换语言"><a href="#实现点击按钮切换语言" class="headerlink" title="实现点击按钮切换语言"></a>实现点击按钮切换语言</h5><ol>
+<blockquote>
+<p>原理：国际化Locale(区域信息对象)；LocaleResolver（获取区域信息对象）</p>
+<p>默认的是根据请求头带来的区域信息获取Locale进行国际化</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@ConditionalOnMissingBean(</span></span><br><span class="line"><span class="meta">    name = &#123;&quot;localeResolver&quot;&#125;</span></span><br><span class="line"><span class="meta">)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> LocaleResolver <span class="title">localeResolver</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.webProperties.getLocaleResolver() == org.springframework.boot.autoconfigure.web.WebProperties.LocaleResolver.FIXED) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> FixedLocaleResolver(<span class="keyword">this</span>.webProperties.getLocale());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        AcceptHeaderLocaleResolver localeResolver = <span class="keyword">new</span> AcceptHeaderLocaleResolver();</span><br><span class="line">        localeResolver.setDefaultLocale(<span class="keyword">this</span>.webProperties.getLocale());</span><br><span class="line">        <span class="keyword">return</span> localeResolver;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>实现点击按钮切换语言</strong></p>
+<ol>
 <li><p>点击按钮切换页面</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-sm&quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/login.html(l=&#x27;zh_CN&#x27;)&#125;&quot;</span>&gt;</span>中文<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-sm&quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/login.html(l=&#x27;en_US&#x27;)&#125;&quot;</span>&gt;</span>English<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -401,7 +387,8 @@
 <li><p>页面修改完成以后ctrl+f9:重新编译</p>
 </li>
 </ol>
-<h5 id="接受数据流程"><a href="#接受数据流程" class="headerlink" title="接受数据流程"></a>接受数据流程</h5><p>采用<code>action</code>将表单信息传到<code>/user/login</code>接口</p>
+<p><strong>接受数据流程</strong></p>
+<p>采用<code>action</code>将表单信息传到<code>/user/login</code>接口</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">&quot;form-signin&quot;</span> <span class="attr">action</span>=<span class="string">&quot;dashboard.html&quot;</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/user/login&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--input接受表单中上传的信息，name表示上传信息的属性名，placeholder为未输入字符时的提示--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span>  <span class="attr">name</span>=<span class="string">&quot;username&quot;</span>  <span class="attr">placeholder</span>=<span class="string">&quot;Username&quot;</span> <span class="attr">th:placeholder</span>=<span class="string">&quot;#&#123;login.username&#125;&quot;</span> <span class="attr">required</span>=<span class="string">&quot;&quot;</span> <span class="attr">autofocus</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span>   <span class="attr">name</span>=<span class="string">&quot;password&quot;</span>  <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;Password&quot;</span> <span class="attr">th:placeholder</span>=<span class="string">&quot;#&#123;login.password&#125;&quot;</span> <span class="attr">required</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>登录接口实现</p>
@@ -1852,7 +1839,7 @@
 </blockquote>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">double</span> d = <span class="number">8.0</span>;</span><br><span class="line"><span class="keyword">int</span> a=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">double</span> sum = a+d;</span><br><span class="line">System.out.println(sum);<span class="comment">//向精度丢失少的一边自动转换</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="数值类型之间合法转换"><a href="#数值类型之间合法转换" class="headerlink" title="数值类型之间合法转换"></a>数值类型之间合法转换</h3><p><img src="/2022/02/09/Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20220209134421264.png" alt="image-20220209134421264"></p>
+<h3 id="数值类型之间合法转换"><a href="#数值类型之间合法转换" class="headerlink" title="数值类型之间合法转换"></a>数值类型之间合法转换</h3><p><img src="/images/Java%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/image-20220529224011469.png" alt="image-20220529224011469"></p>
 <blockquote>
 <p>从图中我们可以看出存储占用字节少的类型向存储占用字节多的类型转化不会丢失精度（实线），而存储占用字节多的类型向存储占用字节少的类型（包括占用字节一样的类型）转换都可能发生精度丢失（虚线）</p>
 </blockquote>
