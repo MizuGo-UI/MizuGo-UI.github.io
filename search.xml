@@ -219,8 +219,6 @@
 
 <blockquote>
 <p><code>@RequestMapping(&quot;/index&quot;)</code>等同于<code>@RequestMapping(value = &quot;/index&quot;)</code></p>
-<p>k</p>
-<p>GetMap</p>
 </blockquote>
 </li>
 <li><p>映射多个地址</p>
@@ -239,7 +237,7 @@
 <p>yaml配置：</p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">	<span class="attr">port:</span> <span class="number">8081</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#key-value</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">yurui</span></span><br><span class="line"><span class="comment">#对象:</span></span><br><span class="line"><span class="attr">student:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">yurui</span></span><br><span class="line">  <span class="attr">age:</span> <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#行内写法</span></span><br><span class="line"><span class="attr">student:</span> &#123;<span class="attr">name:</span> <span class="string">yurui</span>,<span class="attr">age:</span> <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#数组</span></span><br><span class="line"><span class="attr">pets:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">cat</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">dog</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">pig</span></span><br><span class="line">    </span><br><span class="line"><span class="attr">pets:</span> [<span class="string">cat</span>,<span class="string">dog</span>,<span class="string">pig</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#key-value</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">yurui</span></span><br><span class="line"><span class="comment">#对象:</span></span><br><span class="line"><span class="attr">student:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">yurui</span></span><br><span class="line">  <span class="attr">age:</span> <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#行内写法</span></span><br><span class="line"><span class="attr">student:</span> &#123;<span class="attr">name:</span> <span class="string">yurui</span>,<span class="attr">age:</span> <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#数组</span></span><br><span class="line"><span class="attr">pets:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">cat</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">dog</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">pig</span></span><br><span class="line">  </span><br><span class="line"><span class="comment">#行内写法 </span></span><br><span class="line"><span class="attr">pets:</span> [<span class="string">cat</span>,<span class="string">dog</span>,<span class="string">pig</span>]</span><br></pre></td></tr></table></figure>
 
 <h3 id="给属性赋值的几种方式"><a href="#给属性赋值的几种方式" class="headerlink" title="给属性赋值的几种方式"></a>给属性赋值的几种方式</h3><p>1.直接在需要赋值的属性注入</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*Dog.java</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Value(&quot;旺财&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@Value(&quot;3&quot;)</span></span><br><span class="line">    <span class="keyword">private</span>  Integer age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -289,7 +287,7 @@
 </ul>
 <h4 id="首页配置"><a href="#首页配置" class="headerlink" title="首页配置"></a>首页配置</h4><p><img src="/images/Spring-Boot%E5%85%A5%E9%97%A8/image-20220529223807693.png" alt="image-20220529223807693"></p>
 <p>首页默认名为<code>index.html</code></p>
-<p>可将此文件置于public、resources、static、templates目录下，或者置于resources根目录下，会被自动</p>
+<p>可将此文件置于public、resources、static、templates目录下，或者置于resources根目录下，会被自动配置</p>
 <h4 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h4><p>导入<code>thymeleaf</code>包</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--pom.xml--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--thymeleaf包导入--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.thymeleaf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>thymeleaf-spring5<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.thymeleaf.extras<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>thymeleaf-extras-java8time<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -483,9 +481,29 @@
 <td>DELETE</td>
 </tr>
 </tbody></table>
-<h4 id="thymeleaf公共页面元素抽取"><a href="#thymeleaf公共页面元素抽取" class="headerlink" title="thymeleaf公共页面元素抽取"></a>thymeleaf公共页面元素抽取</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--抽取公共片段--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:fragment</span>=<span class="string">&quot;copy&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--引入公共片段--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:insert</span>=<span class="string">&quot;~&#123;footer::copy&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">~&#123;templatename::selector&#125; 模板名::选择器</span><br><span class="line">~&#123;templatename::fragmentname&#125; 模板名::片段名</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--默认效果--&gt;</span></span><br><span class="line">insert的功能片段在div标签</span><br></pre></td></tr></table></figure>
+<h5 id="thymeleaf公共页面元素抽取"><a href="#thymeleaf公共页面元素抽取" class="headerlink" title="thymeleaf公共页面元素抽取"></a>thymeleaf公共页面元素抽取</h5><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--抽取公共片段--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:fragment</span>=<span class="string">&quot;copy&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--引入公共片段--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:insert</span>=<span class="string">&quot;~&#123;footer::copy&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">~&#123;templatename::selector&#125; 模板名::选择器</span><br><span class="line">~&#123;templatename::fragmentname&#125; 模板名::片段名</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--默认效果--&gt;</span></span><br><span class="line">insert的功能片段在div标签</span><br><span class="line">若使用th:insert等属性进行引入，可以不写~&#123;&#125;</span><br><span class="line">行内写法可以加上：[[~&#123;&#125;]];[(~&#123;&#125;)]</span><br></pre></td></tr></table></figure>
 
-]]></content>
+<h5 id="三种引入功能片段的th属性"><a href="#三种引入功能片段的th属性" class="headerlink" title="三种引入功能片段的th属性"></a>三种引入功能片段的th属性</h5><p><strong>th:insert</strong></p>
+<p>将公共片段整个插入到声明引入的元素中</p>
+<p><strong>th:replace</strong></p>
+<p>将声明引入的元素替换为公共片段</p>
+<p><strong>th:include</strong></p>
+<p>将被引入的片段的内容包含进这个标签中</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">footer</span> <span class="attr">th:fragment</span>=<span class="string">&quot;copy&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:insert</span>=<span class="string">&quot;footer::copy&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:replace</span>=<span class="string">&quot;footer::copy&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:include</span>=<span class="string">&quot;footer::copy&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="CURD-员工添加"><a href="#CURD-员工添加" class="headerlink" title="CURD-员工添加"></a>CURD-员工添加</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/emp&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span> &gt;</span>LastName<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;lastName&quot;</span>  <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;zhangsan&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span>&gt;</span>Email address<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span> <span class="attr">type</span>=<span class="string">&quot;email&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;name@example.com&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span>&gt;</span>gender<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-check form-check-inline&quot;</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">&quot;form-check-input&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;gender&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span> <span class="attr">checked</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;form-check-label&quot;</span> &gt;</span></span><br><span class="line">            男</span><br><span class="line">         <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--水平排列--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-check form-check-inline&quot;</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">&quot;form-check-input&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;gender&quot;</span> <span class="attr">value</span>=<span class="string">&quot;0&quot;</span> &gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;form-check-label&quot;</span> &gt;</span></span><br><span class="line">            女</span><br><span class="line">         <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span>&gt;</span>department<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--提交的是部门的id--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">name</span>=<span class="string">&quot;department.id&quot;</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--获取controller传过来的depts，赋给对象dept--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">option</span>  <span class="attr">th:value</span>=<span class="string">&quot;$&#123;dept.id&#125;&quot;</span> <span class="attr">th:each</span>=<span class="string">&quot;dept:$&#123;depts&#125;&quot;</span>  <span class="attr">th:text</span>=<span class="string">&quot;$&#123;dept.departmentName&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span> &gt;</span>Birth<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;birth&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span>  <span class="attr">placeholder</span>=<span class="string">&quot;日期&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-sm btn-primary&quot;</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="CRUD-员工修改"><a href="#CRUD-员工修改" class="headerlink" title="CRUD 员工修改"></a>CRUD 员工修改</h4><p><code>edit.html</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container-fluid&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:replace</span>=<span class="string">&quot;commons/bar::#sidebar(activeUri=&#x27;emps&#x27;)&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">main</span> <span class="attr">role</span>=<span class="string">&quot;main&quot;</span> <span class="attr">class</span>=<span class="string">&quot;col-md-9 ml-sm-auto col-lg-10 pt-3 px-4&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">         <span class="tag">&lt;<span class="name">form</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/upemp&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--发送put请求修改员工数据--&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">            1.SpringMVC中配置HiddenHttpMethodFilter：（SpringBoot自动配置好的）</span></span><br><span class="line"><span class="comment">            2.页面创建一个post表单</span></span><br><span class="line"><span class="comment">            3.创建一个input项，name=_method&quot;:值就是我们指定的请求方式</span></span><br><span class="line"><span class="comment">            --&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--设置一个隐藏的提交方式，将员工id提交，否则点击修改会新增一个新的员工id--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;id&quot;</span>  <span class="attr">th:value</span>=<span class="string">&quot;$&#123;emp.id&#125;&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">label</span> &gt;</span>LastName<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;lastName&quot;</span>   <span class="attr">th:value</span>=<span class="string">&quot;$&#123;emp.lastName&#125;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;zhangsan&quot;</span> &gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">label</span>&gt;</span>Age<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;emp.age&#125;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;20&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">label</span>&gt;</span>Email address<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;emp.email&#125;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;email&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;name@example.com&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">label</span>&gt;</span>gender<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-check form-check-inline&quot;</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">input</span> <span class="attr">th:checked</span>=<span class="string">&quot;$&#123;emp.gender==1&#125;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-check-input&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;gender&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span> &gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;form-check-label&quot;</span> &gt;</span></span><br><span class="line">                     男</span><br><span class="line">                  <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">               <span class="comment">&lt;!--水平排列--&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-check form-check-inline&quot;</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">input</span> <span class="attr">th:checked</span>=<span class="string">&quot;$&#123;emp.gender==0&#125;&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-check-input&quot;</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;gender&quot;</span> <span class="attr">value</span>=<span class="string">&quot;0&quot;</span> &gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;form-check-label&quot;</span> &gt;</span></span><br><span class="line">                     女</span><br><span class="line">                  <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">label</span>&gt;</span>department<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">               <span class="comment">&lt;!--提交的是部门的id--&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">name</span>=<span class="string">&quot;department.id&quot;</span>&gt;</span></span><br><span class="line">                  <span class="comment">&lt;!--获取controller传过来的depts，赋给对象dept--&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">option</span>   <span class="attr">th:selected</span>=<span class="string">&quot;$&#123;dept.id==emp.getDepartment().getId()&#125;&quot;</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;dept.id&#125;&quot;</span> <span class="attr">th:each</span>=<span class="string">&quot;dept:$&#123;depts&#125;&quot;</span>  <span class="attr">th:text</span>=<span class="string">&quot;$&#123;dept.departmentName&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">​            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-sm btn-primary&quot;</span> &gt;</span>修改<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">​         <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Controller</code></p>
+<h4 id="CRUD-员工删除"><a href="#CRUD-员工删除" class="headerlink" title="CRUD 员工删除"></a>CRUD 员工删除</h4><p> <code>list.html</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-sm btn-danger&quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/delemp/&#125;+$&#123;emp.id&#125;&quot;</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Controller</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span> (value = <span class="string">&quot;/delemp/&#123;id&#125;&quot;</span>,method =RequestMethod.GET)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">deleteEmp</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span></span>&#123;</span><br><span class="line">    employeeDao.delete(id);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/emps&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="CRUD-List页面"><a href="#CRUD-List页面" class="headerlink" title="CRUD List页面"></a>CRUD List页面</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container-fluid&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;row&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">th:replace</span>=<span class="string">&quot;commons/bar::#sidebar(activeUri=&#x27;emps&#x27;)&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">main</span> <span class="attr">role</span>=<span class="string">&quot;main&quot;</span> <span class="attr">class</span>=<span class="string">&quot;col-md-9 ml-sm-auto col-lg-10 pt-3 px-4&quot;</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">h2</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-sm btn-success&quot;</span> <span class="attr">href</span>=<span class="string">&quot;emp&quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/emp&#125;&quot;</span>&gt;</span>员工添加<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;table-responsive&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">&quot;table table-striped table-sm&quot;</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">th</span>&gt;</span>id<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">th</span>&gt;</span>lastName<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">th</span>&gt;</span>age<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">th</span>&gt;</span>email<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">th</span>&gt;</span>gender<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">th</span>&gt;</span>department<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                     <span class="comment">&lt;!--&lt;th&gt;birth&lt;/th&gt;--&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">th</span>&gt;</span>操作<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">&quot;emp:$&#123;emps&#125;&quot;</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;emp.id&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;emp.lastName&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;emp.age&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;emp.email&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;emp.gender&#125;==0?&#x27;女&#x27;:&#x27;男&#x27;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;emp.department.departmentName&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                  <span class="comment">&lt;!--   &lt;td th:text=&quot;$&#123;#dates.format(emp.birth,&#x27;yyyy-mm-dd&#x27;)&#125;&quot;&gt;&lt;/td&gt;--&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-sm btn-primary&quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/emp/&#125;+$&#123;emp.id&#125;&quot;</span>&gt;</span>编辑<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-sm btn-danger&quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/delemp/&#125;+$&#123;emp.id&#125;&quot;</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                     <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">               <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--   &lt;form th:action=&quot;@&#123;/emp/&#125;+$&#123;emp.id&#125;&quot; method=&quot;post&quot;&gt;</span></span><br><span class="line"><span class="comment">         &lt;input type=&quot;hidden&quot; name=&quot;_method&quot; value=&quot;delete&quot;/&gt;</span></span><br><span class="line"><span class="comment">      &lt;/form&gt;--&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>Java,Spring Boot</tag>
       </tags>
@@ -2463,7 +2481,7 @@
     <title>HTTP入门</title>
     <url>/2022/06/23/HTTP%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="Web网络基础"><a href="#Web网络基础" class="headerlink" title="Web网络基础"></a>Web网络基础</h2><h3 id="TCP-IP协议族"><a href="#TCP-IP协议族" class="headerlink" title="TCP/IP协议族"></a>TCP/IP协议族</h3><p>与互联网相关联的协议集合统称</p>
-<h3 id="TCP-IP的分层管理"><a href="#TCP-IP的分层管理" class="headerlink" title="TCP/IP的分层管理"></a>TCP/IP的分层管理</h3><p><img src="/2022/06/23/HTTP%E5%85%A5%E9%97%A8/Workspaces\hexo\source\images\HTTP入门\image-20220719093704825.png" alt="image-20220719093704825"></p>
+<h3 id="TCP-IP的分层管理"><a href="#TCP-IP的分层管理" class="headerlink" title="TCP/IP的分层管理"></a>TCP/IP的分层管理</h3><p><img src="/../images/HTTP%E5%85%A5%E9%97%A8/image-20230301002507453.png" alt="image-20230301002507453"></p>
 <p>应用层：决定了向用户提供应用服务时通信的活动</p>
 <p>传输层：提供处于网络连接中两台计算机之间的数据传输</p>
 <p>网络层：处理在网络上流动的数据包</p>
@@ -2471,6 +2489,8 @@
 <p>数据包是网络传输的最小数据单位</p>
 </blockquote>
 <p>数据链路层：处理连接网络的硬件部分；硬件上的范畴均在链路层的作用范围之内</p>
+<span id="more"></span>
+
 <blockquote>
 <p>PS：OSI是一个理论上的网络通信模型，而TCP/IP则是实际运行的网络协议</p>
 <p><img src="/../images/HTTP%E5%85%A5%E9%97%A8/image-20220719172606998.png" alt="image-20220719172606998"></p>
@@ -2673,9 +2693,408 @@
 <blockquote>
 <p>PS：状态码并不一定是准确的，可能出现状态码与实际情况不一致的情况</p>
 </blockquote>
+<h2 id="与HTTP协作的Web服务器"><a href="#与HTTP协作的Web服务器" class="headerlink" title="与HTTP协作的Web服务器"></a>与HTTP协作的Web服务器</h2><h3 id="单台虚拟主机实现多个域名"><a href="#单台虚拟主机实现多个域名" class="headerlink" title="单台虚拟主机实现多个域名"></a>单台虚拟主机实现多个域名</h3><p>一台HTTP服务器可以搭建多个Web站点</p>
+<p>即使物理层面只有一台服务器，使用虚拟主机的功能，可以假想已具有多台服务器</p>
+<blockquote>
+<p>域名通过DNS服务器映射到IP地址</p>
+<p>当请求发送到服务器时，已是以IP地址形式访问</p>
+</blockquote>
+<h3 id="通信数据转发程序"><a href="#通信数据转发程序" class="headerlink" title="通信数据转发程序"></a>通信数据转发程序</h3><p>HTTP通信时，用于通信数据转发的应用程序：代理、网关、隧道等；</p>
+<p>可以将请求转发给通信线路上的下一站服务器，并且能接从那台服务器发送的响应再转发给客户端</p>
+<ul>
+<li><p>代理</p>
+<ul>
+<li>具有转发功能的应用程序，接受由客户端发送的请求并转发给服务器，同时也接收服务器返回的响应并转发给客户端</li>
+</ul>
+</li>
+<li><p>网关</p>
+<ul>
+<li><p>转发其他服务器通信数据的服务器，接收从客户端发送来的请求，同拥有资源的源服务器一样对请求进行处理</p>
+<blockquote>
+<p>源服务器：持有资源实体的服务器</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>隧道</p>
+<ul>
+<li>在相隔甚远的客户端和服务器两者之间进行中转，并保持双方通信连接的应用程序</li>
+</ul>
+</li>
+</ul>
+<h3 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h3><p>代理服务器：接受客户端发送的请求后转发给其他服务器</p>
+<ul>
+<li><p>代理不改变请求URI，会直接发送给持有资源的目标服务器</p>
+</li>
+<li><p>通过代理服务器转发请求或响应时，会写入Via首部信息（标记出经过的主机信息）</p>
+</li>
+</ul>
+<p>代理分为两类：</p>
+<ol>
+<li>缓存代理<ol>
+<li>代理转发响应时，缓存代理会预先将资源的副本（缓存）保存在代理服务器上</li>
+<li>当代理再次接收到相同资源的请求，不再从源服务器获取资源，而是将之前缓存的资源作为响应返回</li>
+</ol>
+</li>
+<li>透明代理<ol>
+<li>转发请求或响应时，不对报文做任何加工的代理类型被称为透明代理。对报文加工的叫非透明代理</li>
+</ol>
+</li>
+</ol>
+<h3 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h3><p>网关工作机制相似。网关可以使通信线路上的服务器提供非HTTP协议服务</p>
+<p>利用网关可以提高通信安全性（客户端与网关之间的通信线路进行加密）</p>
+<h3 id="隧道"><a href="#隧道" class="headerlink" title="隧道"></a>隧道</h3><p>可按要求建立一条与其他服务器的通信线路，使用SSL等加密手段进行通信</p>
+<p>确保客户端能与服务器进行安全的通信</p>
+<p>隧道本身不解析HTTP请求，请求将会保持原样中转给之后的服务器</p>
+<p>隧道会在通信双方断开连接时结束</p>
+<h3 id="保存资源的缓存"><a href="#保存资源的缓存" class="headerlink" title="保存资源的缓存"></a>保存资源的缓存</h3><p>缓存指代理服务器或客户端本地磁盘内保存的资源副本</p>
+<p>当代理转发从服务器返回的响应时，代理服务器将会保持一份资源的副本</p>
+<blockquote>
+<p>利用缓存可避免多次从源服务器转发资源。从缓存服务器上就近获取资源，源服务器也不必多次处理相同的请求</p>
+</blockquote>
+<h3 id="缓存的有效期"><a href="#缓存的有效期" class="headerlink" title="缓存的有效期"></a>缓存的有效期</h3><p>缓存服务器内保存的缓存具有时效，并不能保证每次返回对同资源的请求</p>
+<p>存在缓存时也会因为客户端的要求、缓存的有效期等因素，向源服务器确认资源的有效性。若缓存失败，缓存服务器会再次从源服务器获取“新”资源</p>
+<h3 id="客户端的缓存"><a href="#客户端的缓存" class="headerlink" title="客户端的缓存"></a>客户端的缓存</h3><p>即是存放在客户端上的缓存</p>
+<p>与缓存服务器中的缓存一致，同样会在缓存过期后请求“新”的资源</p>
+<h2 id="HTTP首部"><a href="#HTTP首部" class="headerlink" title="HTTP首部"></a>HTTP首部</h2><p><img src="/../images/HTTP%E5%85%A5%E9%97%A8/1856419-9dcbbc148cb4a901.png" alt="1856419-9dcbbc148cb4a901"></p>
+<p>​                            图  HTTP报文结构</p>
+<h3 id="HTTP首部字段"><a href="#HTTP首部字段" class="headerlink" title="HTTP首部字段"></a>HTTP首部字段</h3><p>无论是请求还响应都会使用首部字段</p>
+<blockquote>
+<p>使用首部字段是为了给浏览器和服务器提供报文主体大小、所使用的语言、认证信息等内容</p>
+</blockquote>
+<p>HTTP首部字段由首部字段名和首部字段值构成</p>
+<blockquote>
+<p>例：Content-Type：text/html</p>
+<p>字段值可以有多个值</p>
+<p>例：Keep-Alive：timeout=15,max=100</p>
+</blockquote>
+<h3 id="HTTP首部字段类型"><a href="#HTTP首部字段类型" class="headerlink" title="HTTP首部字段类型"></a>HTTP首部字段类型</h3><ul>
+<li>通用首部字段<ul>
+<li>请求报文和响应报文两方都会使用的首部</li>
+</ul>
+</li>
+<li>请求首部字段<ul>
+<li>请求报文首部。补充了请求的附加内容、客户端信息、响应内容相关优先级等信息</li>
+</ul>
+</li>
+<li>响应首部字段<ul>
+<li>响应报文首部。补充了响应的附加内容，也会要去客户端附加额外的内容信息</li>
+</ul>
+</li>
+<li>实体首部字段<ul>
+<li>针对请求报文和响应报文的实体部分使用的首部。补充了资源内容更新时间等与实体有关的信息</li>
+</ul>
+</li>
+</ul>
+<h4 id="End-to-end首部和Hop-by-hop首部"><a href="#End-to-end首部和Hop-by-hop首部" class="headerlink" title="End-to-end首部和Hop-by-hop首部"></a>End-to-end首部和Hop-by-hop首部</h4><p>HTTP首部字段将定义成缓存代理和非缓存代理</p>
+<ul>
+<li>端到端首部（End-to-end Header）<ul>
+<li>首部会转发给请求/响应对应的最终接受目标，且必须保存在由缓存生产的响应中，另外规定它必须被转发</li>
+</ul>
+</li>
+<li>逐跳首部（Hop-by-hop Header）<ul>
+<li>首部只对单词转发有效，会因通过缓存或代理而不再转发</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP通用首部字段"><a href="#HTTP通用首部字段" class="headerlink" title="HTTP通用首部字段"></a>HTTP通用首部字段</h3><p>请求报文和响应报文双方都会使用的首部</p>
+<h4 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h4><p>能够控制缓存的行为</p>
+<ul>
+<li><p>public指令</p>
+<ul>
+<li>表明其他用户也可利用缓存</li>
+</ul>
+</li>
+<li><p>private指令</p>
+<ul>
+<li>响应只以特定的用户作为对象</li>
+</ul>
+</li>
+<li><p>no-cache指令</p>
+<ul>
+<li>防止从缓存中返回过期的资源；</li>
+<li>客户端：表示客户端不会接受缓存过的响应，缓存服务器必须把客户端请求转发给源服务器，请求新的资源</li>
+<li>服务器：缓存服务器不能对资源进行缓存。源服务器以后将不再对缓存服务器请求中提出的资源有效性进行确认，且禁止其对响应资源进行缓存操作</li>
+</ul>
+</li>
+<li><p>控制可执行缓存的对象的指令</p>
+<ul>
+<li><p>no-store:暗示请求（和对应的响应）或响应中包含机密信息，规定缓存不能在本地存储请求或响应的任一部</p>
+</li>
+<li><blockquote>
+<p>no-cache:不接受过期的资源，并不是不接受缓存</p>
+<p>no-store:禁止缓存    </p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>指定缓存期限和认证的指令</p>
+<ul>
+<li>s-maxage：与max-age功能相同，不同点在于s-maxage指令适用于供多位用户使用的公共缓存服务器（代理）；使用s-maxage指令后，会忽略对Expires首部字段及max-age指令的处理</li>
+<li>max-age:<ul>
+<li>客户端：判定缓存资源的缓存时间数值比指定时间的数值更小，则客户端接受缓存的资源，当指定max-age为0时，缓存服务器一般需要将请求转发给源服务器</li>
+<li>服务器：缓存服务器将不对资源的有效性确认，max-age数值代表资源保存为缓存的最长时间</li>
+<li>存在max-age指令时会忽略掉Expires首部字段</li>
+</ul>
+</li>
+<li>min-fresh:（客户端）要求缓存服务器返回至少还未过指定时间的缓存资源</li>
+<li>min-stale：可指定过期时间，在指定的过期时间内，照常接收该缓存资源</li>
+<li>only-if-cached：客户端仅在缓存服务器本地缓存目标资源的情况下才会要求其返回</li>
+<li>must-revalidate：代理会向源服务器再次验证即将返回的响应缓存目前是否有效<ul>
+<li>会忽略请求的max-stale指令</li>
+</ul>
+</li>
+<li>proxy-revalidate：要求所有的缓存服务器在接收到客户端带有该指令的请求返回响应之前，必须再次验证缓存的有效性</li>
+<li>no-transform：无论是请求还是响应中，缓存都不能改变实体主体的媒体类型（防止缓存或代理压缩图片等操作）</li>
+</ul>
+</li>
+<li><p>Cache-Control扩展</p>
+<ul>
+<li>cache-extension token：可以扩展Cache-Control首部字段内的指令</li>
+</ul>
+</li>
+</ul>
+<h4 id="Connection"><a href="#Connection" class="headerlink" title="Connection"></a>Connection</h4><ul>
+<li>控制不再转发给代理的首部字段<ul>
+<li>connection：不再转发的首部字段名</li>
+<li>代理服务器将不会再转发connection对应的字段信息</li>
+</ul>
+</li>
+<li>管理持久连接<ul>
+<li>HTTP/1.1版本的默认连接都是持久连接（<code>Connection：Keep-Alive</code>）</li>
+<li>若想断开连接，则指定<code>Connection：close</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h4><p>表明创建HTTP报文的日期和时间</p>
+<h4 id="Transfer-Encoding"><a href="#Transfer-Encoding" class="headerlink" title="Transfer-Encoding"></a>Transfer-Encoding</h4><ul>
+<li><p>规定了传输报文主体时采用的编码方式</p>
+</li>
+<li><p>HTTP/1.1的传输编码方式仅对分块传输编码有效</p>
+</li>
+<li><p><code>Transfer-Encoding:chunked</code></p>
+</li>
+</ul>
+<h4 id="Warning"><a href="#Warning" class="headerlink" title="Warning"></a>Warning</h4><p>告知用户一些与缓存相关的问题的警告</p>
+<table>
+<thead>
+<tr>
+<th>警告码</th>
+<th>警告内容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>110</td>
+<td>Response is stale(响应已过期)</td>
+<td>代理返回已过期的资源</td>
+</tr>
+<tr>
+<td>111</td>
+<td>Revalidation failed(再验证失败)</td>
+<td>代理再验证资源有效性时失败(服务器无法到达等原因)</td>
+</tr>
+<tr>
+<td>112</td>
+<td>Disconnection operation(断开连接操作)</td>
+<td>代理与互联网连接被故意切断</td>
+</tr>
+<tr>
+<td>113</td>
+<td>Heuristic expiration(试探性过期)</td>
+<td>响应的试用期超过24小时(有效缓存的设定时间大于24小时的情况下)</td>
+</tr>
+<tr>
+<td>199</td>
+<td>Miscellaneous warning(杂项警告)</td>
+<td>任意的警告内容</td>
+</tr>
+<tr>
+<td>214</td>
+<td>Transformation applied(使用了转换)</td>
+<td>代理对内容编码或媒体类型等执行了某些处理时</td>
+</tr>
+<tr>
+<td>299</td>
+<td>Miscellaneous persistent warning</td>
+<td>任意的警告内容</td>
+</tr>
+</tbody></table>
+<h3 id="请求首部字段"><a href="#请求首部字段" class="headerlink" title="请求首部字段"></a>请求首部字段</h3><p>请求首部字段是从客户端往服务器端发送请求报文中所使用的字段，用于补充请求的附加信息、客户端信息、对响应内容相关的优先级等内容</p>
+<h4 id="Accept"><a href="#Accept" class="headerlink" title="Accept"></a>Accept</h4><ul>
+<li>Accept首部字段可通知服务器，用户代理能够处理的媒体类型及媒体类型的相对优先级</li>
+<li>优先级用<code>q=</code>来额外表示权重值</li>
+<li>当服务器提供多种内容时，将会首先返回权重值最高的媒体类型</li>
+</ul>
+<h4 id="Accept-Charset"><a href="#Accept-Charset" class="headerlink" title="Accept-Charset"></a>Accept-Charset</h4><ul>
+<li>Accept-Charset首部字段可用来通知服务器用户代理支持的字符集及字符集的相对优先顺序</li>
+<li>可一次性指定多种字符集，同样可以采用权重q来表示相对优先级</li>
+<li>应用于内容协商机制的服务器驱动协商</li>
+</ul>
+<h4 id="Accept-Encoding"><a href="#Accept-Encoding" class="headerlink" title="Accept-Encoding"></a>Accept-Encoding</h4><ul>
+<li>Accept-Encoding首部字段用来告知服务器用户代理支持的内容编码及内容编码的优先级顺序</li>
+<li>可一次性指定多种内容编码，同样可以采用权重q来表示相对优先级</li>
+<li><code>*</code>作为通配符，指定任意的编码格式</li>
+</ul>
+<h4 id="Accept-Language"><a href="#Accept-Language" class="headerlink" title="Accept-Language"></a>Accept-Language</h4><p>Accept-Language用来告知服务器用户代理能够处理的自然语言集以及自然语言集的相对优先级</p>
+<p>可一次性指定多种自然语言集，同样可以采用权重q来表示相对优先级</p>
+<h4 id="Authorization"><a href="#Authorization" class="headerlink" title="Authorization"></a>Authorization</h4><p>用来告知服务器，用户代理的认证信息（证书值）</p>
+<blockquote>
+<p>即说明客户端访问的页面需要进行认证，服务器会返回401错误，让客户端将认证信息发送给服务器</p>
+</blockquote>
+<h4 id="Expect"><a href="#Expect" class="headerlink" title="Expect"></a>Expect</h4><p><code>Expect：100-continue</code></p>
+<ul>
+<li>客户端使用首部字段Expect来告知服务器，期望出现的某种特定行为</li>
+<li>服务器无法理解客户端的期望作出回应而发生错误时，会返回状态码417Expectation Failed</li>
+</ul>
+<h4 id="From"><a href="#From" class="headerlink" title="From"></a>From</h4><p>用来告知服务器使用用户代理的用户的电子邮件地址</p>
+<blockquote>
+<p>通常 使用目的就是为了显示搜索引擎等用户代理的负责人的电子邮件联系方式</p>
+</blockquote>
+<h4 id="Host"><a href="#Host" class="headerlink" title="Host"></a>Host</h4><p>首部字段Host会告知服务器，请求的资源所处的互联网主机名和端口号。Host首部字段在HTTP/1.1规范内是唯一一个必须被包含在请求内的首部字段</p>
+<blockquote>
+<p>请求被发送至服务器时，请求中的主名会用IP地址直接替换解决；但如果相同的IP地址下部署运行着多个域名，Host的必要性就体现出来了</p>
+</blockquote>
+<p>若服务器未设定主机名，那直接发送一个空值即可</p>
+<h5 id="If-Match"><a href="#If-Match" class="headerlink" title="If-Match"></a>If-Match</h5><p>形如If-XXX形式的请求首部字段，都可称为条件请求。服务器接收到附带条件的请求后，只有判断指定条件为真后，才会执行请求</p>
+<blockquote>
+<p><code>If-Match：“123456”</code>当与资源<code>ETag</code>值匹配一致时，服务器才会接受请求</p>
+<p>当用<code>*</code>指定<code>If-Match</code>的字段值后，服务器会忽略ETag的值，资源存在就处理请求</p>
+</blockquote>
+<h2 id="局域网、广域网、互联网"><a href="#局域网、广域网、互联网" class="headerlink" title="局域网、广域网、互联网"></a>局域网、广域网、互联网</h2><h3 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h3><ul>
+<li>局域网的缩写是LAN，local area network，顾名思义，是个本地的网络，只能实现小范围短距离的网络通信。</li>
+<li>（如下图）我们的家庭网络是典型的局域网。电脑、手机、电视、智能音箱、智能插座都连在无线<a href="https://so.csdn.net/so/search?q=%E8%B7%AF%E7%94%B1%E5%99%A8&spm=1001.2101.3001.7020">路由器</a>上，可以互相通信。</li>
+</ul>
+<p><img src="/../images/HTTP%E5%85%A5%E9%97%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTQxMzUxMQ==,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"></p>
+<h3 id="因特网"><a href="#因特网" class="headerlink" title="因特网"></a>因特网</h3><ul>
+<li>因特网本质上就是把世界各地的局域网连通，咱们刷知乎的时候，知乎那边有个局域网，我们家有个局域网，这两个局域网就是通过因特网连起来的。想要接入因特网，需要向运营商购买1条宽带，电信联通都可以，然后通过这条宽带接入运营商，运营商再接入因特网。<br><img src="/../images/HTTP%E5%85%A5%E9%97%A8/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTQxMzUxMQ==,size_16,color_FFFFFF,t_70-16740309196336.png" alt="在这里插入图片描述"></li>
+</ul>
+<h3 id="广域网（Wan）"><a href="#广域网（Wan）" class="headerlink" title="广域网（Wan）"></a>广域网（Wan）</h3><p>广域网是相对局域网来讲的，局域网的传输距离比较近，只能是一个小范围的。<br>特殊需求</p>
+<p>如果需要长距离的传输，比如某大型企业，总部在北京，分公司在长沙，局域网是无法架设的。这时需要通信有三个解决方案。<br>第一，通过因特网，只需要办一根宽带，就实现了通信，非常方便，现在的宽带价格也比较便宜。但是会存在数据泄露的风险，前面讲到了，因特网是一个全球人民都连进来的网，虽说大部分都是好人，但总会有些坏人，特别是商业竞争的情况下，会有黑客坏人连在因特网里盗取各种数据卖钱。所以大型企业、金融单位、各级政府单位，是不放心使用因特网来传输数据的。<br>第二，通过广域网专线。所以为了数据安全，不能连接因特网，需要用一条自己的专用线路来传输数据，这条线路上只有自己人，不会有其他人接入，且距离很远，这个网络就叫 “广域网”广域网的缩写是WAN，Wide Area Network，支持很长距离的传输。这条专线当然不是企业自己搭电线杆架设，而是租用电信联通等运营商架设好的线路，使用费用会比因特网贵很多，带宽也比较小，但是为了安全，就要承担一些必要的成本。<br>第三，通过VPN，VPN是虚拟专用网，是在普通的便宜的因特网上，通过数据加密，完整性验证，身份验证等多种技术手段构建的安全传输网络，实现类似专线的安全功能。</p>
 ]]></content>
       <tags>
         <tag>网络</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/01/18/Nginx/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><em>Nginx</em> (engine x) 是一个高性能的<a href="https://baike.baidu.com/item/HTTP?fromModule=lemma_inlink">HTTP</a>和<a href="https://baike.baidu.com/item/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/7793488?fromModule=lemma_inlink">反向代理</a>web服务器 ，同时也提供了IMAP/POP3/SMTP服务。</p>
+<h3 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h3><p><img src="/2023/01/18/Nginx/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230118172943713.png" alt="image-20230118172943713"></p>
+<p>代理又分为<code>正向代理</code>和<code>反向代理</code></p>
+<h4 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h4><p>反向代理，指的是浏览器/客户端并不知道自己要访问具体哪台目标服务器，只知道去访问代理服务器 ，代理服务器再通过反向代理 +负载均衡实现请求分发到应用服务器的一种代理服务。</p>
+<p>反向代理服务的特点是代理服务器 代理的对象是应用服务器，也就是对于浏览器/客户端 来说应用服务器是隐藏的。</p>
+<p><img src="/2023/01/18/Nginx/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230118173500702.png" alt="image-20230118173500702"></p>
+<h4 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h4><p>nginx不仅可以做反向代理，还能用作正向代理来进行上网等功能。如果把局域网外的Internet想象成一个巨大的资源库，则局域网中的客户端要访问Internet，则需要通过代理服务器来访问，这种代理服务就称为正向代理（也就是大家常说的，通过正向代理进行上网功能）,代理的对象是客户端。</p>
+<p><img src="/2023/01/18/Nginx/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230118173331527.png" alt="image-20230118173331527"></p>
+<h3 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="负载均衡算法"></a>负载均衡算法</h3><p><strong>（1）基于轮询的算法</strong></p>
+<p>原理是每一个请求按时间顺序逐一被分发到不同的应用服务器，如果接收请求的应用服务器挂了，并且请求超过最大失败次数max_fails（1次），则在失效时间fail_timeout（10秒）内不会再转发请求到该节点</p>
+<p><strong>（2）基于权重的算法（一般采用该算法）</strong></p>
+<p>原理是每一个请求按权重被分发到不同的应用服务器，同样，如果接收请求的应用服务器挂了，并且请求超过最大失败次数max_fails（默认1次或可设置N次），则在失效时间fail_timeout（默认10秒，可设置N秒）内，不会再转发请求到该节点</p>
+<p><strong>（3）基于<code>ip_hash</code>的算法</strong></p>
+<p>原理是每一个请求按用户访问IP的哈希结果分配，如果请求来自同一个用户IP则固定这台IP访问一台应用服务器，该算法可以有效解决动态网页中存在的session共享问题。但是当服务器宕机后，还是会导致所存储的session丢失，因此一般还是采用redis的方案解决session问题。</p>
+<p><strong>（4）最小连接数</strong></p>
+<p>最小连接数法是根据服务器当前的连接情况进行<a href="https://so.csdn.net/so/search?q=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1&spm=1001.2101.3001.7020">负载均衡</a>的，当请求到来时，会选取当前连接数最少的一台服务器来处理请求。由此也可以延伸出，根据服务器 CPU 占用最少，根据单位时间内处理请求的效率高低等进行服务器选择。</p>
+<h3 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h3><p>利用Nginx的反向代理功能实现动静分离。请求需要后台处理的（动态资源），不需要后台处理的（静态资源），让动态网站里的动态网页根据一定规则把静态资源和动态资源区分开来，可以根据静态资源的特点将其做缓存操作，提高资源响应速度</p>
+<h3 id="Nginx目录"><a href="#Nginx目录" class="headerlink" title="Nginx目录"></a>Nginx目录</h3><p><img src="/../images/Nginx/image-20230206173247774.png" alt="image-20230206173247774"></p>
+<p>nginx进程在sbin目录下</p>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><blockquote>
+<p>./nginx #启动nginx进程</p>
+<p>nginx -s reopen #重启Nginx</p>
+<p>nginx -s reload #重新加载Nginx配置文件，然后以优雅的方式重启Nginx</p>
+<p>nginx -s stop #强制停止Nginx服务</p>
+<p>nginx -s quit #安全停止Nginx服务（即处理完所有请求后再停止服务）</p>
+<p>nginx -t -c /path/to/nginx.conf 测试<a href="https://so.csdn.net/so/search?q=nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6&spm=1001.2101.3001.7020">nginx配置文件</a>是否正确</p>
+<p>nginx -v #显示版本信息并退出</p>
+<p>killall nginx #杀死所有nginx进程</p>
+</blockquote>
+<h3 id="Nginx配置"><a href="#Nginx配置" class="headerlink" title="Nginx配置"></a>Nginx配置</h3><p>nginx.conf</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">全局配置</span></span><br><span class="line"></span><br><span class="line"><span class="string">events</span> &#123;</span><br><span class="line">    <span class="string">worker_connections</span>  <span class="number">1024</span><span class="string">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="string">http</span> &#123;</span><br><span class="line">	<span class="string">http配置</span></span><br><span class="line">	</span><br><span class="line">	<span class="string">upstream</span> <span class="string">proxyname</span>&#123;</span><br><span class="line">		<span class="string">server</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8080</span> <span class="string">weight=1</span></span><br><span class="line">		<span class="string">server</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8081</span> <span class="string">weight=1</span></span><br><span class="line">		<span class="comment">#负载均衡配置</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="string">server</span> &#123;</span><br><span class="line">        <span class="string">listen</span>       <span class="number">80</span><span class="string">;</span></span><br><span class="line">        <span class="string">server_name</span>  <span class="string">localhost;</span></span><br><span class="line">        <span class="comment">#代理</span></span><br><span class="line">        </span><br><span class="line">        <span class="string">location</span>&#123;</span><br><span class="line">        	<span class="string">root</span> <span class="string">html;</span></span><br><span class="line">        	<span class="string">index</span> <span class="string">index.html</span> <span class="string">index.htm;</span></span><br><span class="line">        	<span class="string">proxy_pass</span> <span class="string">http://proxyname;</span></span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="string">server</span> &#123;</span><br><span class="line">        <span class="string">listen</span>      <span class="number">443</span><span class="string">;</span></span><br><span class="line">        <span class="string">server_name</span>  <span class="string">localhost;</span></span><br><span class="line">        <span class="comment">#代理</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>RPA开发</title>
+    <url>/2022/09/13/RPA%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="K-RPA开发环境"><a href="#K-RPA开发环境" class="headerlink" title="K-RPA开发环境"></a>K-RPA开发环境</h2><h3 id="K-RPA产品组成"><a href="#K-RPA产品组成" class="headerlink" title="K-RPA产品组成"></a>K-RPA产品组成</h3><p>由Server、Agent、Control三个程序组成，采用三层架构，系统核心引擎采用高效C++语言开发</p>
+<p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220913134623381.png" alt="image-20220913134623381"></p>
+<h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><h4 id="目录命名规范"><a href="#目录命名规范" class="headerlink" title="目录命名规范"></a>目录命名规范</h4><p><strong>一级目录</strong></p>
+<p>业务种类_供应商企业名称</p>
+<p>如：清算_恒生</p>
+<p><strong>二级目录</strong></p>
+<p>业务种类_应用系统名称</p>
+<p>如：清算_UF2.0系统</p>
+<p><strong>三级目录</strong></p>
+<p>业务种类_应用系统名称_通用控件</p>
+<p>或  业务种类_应用系统名称_业务模块名称</p>
+<h4 id="组件命名规范"><a href="#组件命名规范" class="headerlink" title="组件命名规范"></a>组件命名规范</h4><p><strong>系统通用功能组件</strong></p>
+<p>系统名称或系统简称_通用_控件名称</p>
+<p>如：UF2.0_通用_下拉列表</p>
+<p><strong>系统功能组件命名</strong></p>
+<p>系统名称或系统简称_系统功能模块名称_系统功能名称</p>
+<p>如：UF2.0_清算准备_新股资金预冻结</p>
+<h4 id="变量命名规范"><a href="#变量命名规范" class="headerlink" title="变量命名规范"></a>变量命名规范</h4><p>变量分为入参、出餐、变量三种</p>
+<p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220913150552745.png" alt="image-20220913150552745"></p>
+<p>变量命名规范-数据类型命名参考表</p>
+<p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220913150758710.png" alt="image-20220913150758710"></p>
+<h3 id="生产环境组件开发步骤"><a href="#生产环境组件开发步骤" class="headerlink" title="生产环境组件开发步骤"></a>生产环境组件开发步骤</h3><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220913152906124.png" alt="image-20220913152906124"></p>
+<h2 id="K-RPA脚本向导编程-语法"><a href="#K-RPA脚本向导编程-语法" class="headerlink" title="K-RPA脚本向导编程-语法"></a>K-RPA脚本向导编程-语法</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><strong>命令</strong></p>
+<p>组件目录下面末级节点都叫命令</p>
+<p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220914140311285.png" alt="image-20220914140311285"></p>
+<p><strong>命令流</strong></p>
+<p>多行命令组合起来的内容叫命令流</p>
+<p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220914140330314.png" alt="image-20220914140330314"></p>
+<p><strong>表达式</strong></p>
+<p>属性中可编辑的文本框，填入的内容都叫表达式</p>
+<p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220914140551305.png" alt="image-20220914140551305"></p>
+<p><strong>命令注释</strong></p>
+<p>注释命令流，注释后的命令会标记为绿色</p>
+<p><strong>活动范围</strong></p>
+<ul>
+<li>用于对脚本代码进行格式化整理</li>
+<li>对于复杂的场景，通常把完成某个步骤的脚本放到“活动范围”内，构成代码块</li>
+<li>通过多级“活动范围”对脚本进行格式化，方便开发者对脚本的查看与修改</li>
+</ul>
+<p><strong>保留字和标识符</strong></p>
+<p>指系统本身已经使用了的字，不能再用它们充当变量名、方法名</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用"></a>变量的使用</h3><ol>
+<li>向导中使用变量，必须先定义，并指定数据类型后才能使用</li>
+<li>变量的作用范围是当前脚本</li>
+</ol>
+<h2 id="选取器"><a href="#选取器" class="headerlink" title="选取器"></a>选取器</h2><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220919154922718.png" alt="image-20220919154922718"></p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220919155040134.png" alt="image-20220919155040134"></p>
+<h2 id="常用命令及执行逻辑"><a href="#常用命令及执行逻辑" class="headerlink" title="常用命令及执行逻辑"></a>常用命令及执行逻辑</h2><h3 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h3><p>开发组件相关的控制命令，用于做编程逻辑控制</p>
+<h3 id="应用程序集成"><a href="#应用程序集成" class="headerlink" title="应用程序集成"></a>应用程序集成</h3><p>RPA平台提供调用的方法，并把调用方法尽可能简化</p>
+<h3 id="用户界面自动化"><a href="#用户界面自动化" class="headerlink" title="用户界面自动化"></a>用户界面自动化</h3><p>模拟人操作应用程序，包含了用WindowsAPI接口控制、应用程序接口控制、OCR加鼠标键盘控制</p>
+<h3 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h3><p>RPA机器人调用操作系统的一些基础功能，包括：脚本、剪切板、文件、鼠标、键盘数等。</p>
+<h3 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h3><p>编程开发数据处理相关的命令。例如：字符串转换、比对、裁剪等处理；数据表、列表、数组等数据类型的处理；日期、数值运算处理</p>
+<h2 id="网页端操作"><a href="#网页端操作" class="headerlink" title="网页端操作"></a>网页端操作</h2><h3 id="设置B-S网页端页面上的对象属性"><a href="#设置B-S网页端页面上的对象属性" class="headerlink" title="设置B/S网页端页面上的对象属性"></a>设置B/S网页端页面上的对象属性</h3><p>K-RPA可以编辑网页对象的属性值，标准的属性和自定义的属性均可</p>
+<blockquote>
+<p>K-RPA机器人可以通过获取网页上的对象，实现信息抓取，如网页上的文本、图片、表格数据、链接等等</p>
+</blockquote>
+<h3 id="单击元素"><a href="#单击元素" class="headerlink" title="单击元素"></a>单击元素</h3><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220922163831138.png" alt="image-20220922163831138"></p>
+<blockquote>
+<p>模拟点击和发送窗口消息不影响鼠标其他操作，为后台操作；如都不勾选则会硬件点击，影响鼠标操作，且</p>
+</blockquote>
+<h2 id="RPA网站产品数据抓取"><a href="#RPA网站产品数据抓取" class="headerlink" title="RPA网站产品数据抓取"></a>RPA网站产品数据抓取</h2><h3 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h3><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220923155511128.png" alt="image-20220923155511128"></p>
+<p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220923155550901.png" alt="image-20220923155550901"></p>
+<h4 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h4><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220923155744466.png" alt="image-20220923155744466"></p>
+<blockquote>
+<p>PS：风险点导致的问题需要提前考虑，尝试登录3或者4次后要停止再次尝试登录</p>
+</blockquote>
+<h4 id="提取数据"><a href="#提取数据" class="headerlink" title="提取数据"></a>提取数据</h4><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220923165218052.png" alt="image-20220923165218052"></p>
+<h4 id="发送邮件"><a href="#发送邮件" class="headerlink" title="发送邮件"></a>发送邮件</h4><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220923165345100.png" alt="image-20220923165345100"></p>
+<p>RPA管控平台</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/02/27/Vue/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><h3 id="Vue特点"><a href="#Vue特点" class="headerlink" title="Vue特点"></a>Vue特点</h3><ol>
+<li>组件化，提高</li>
+<li>声明式，无需直接操作DOM，提高效率</li>
+<li>使用虚拟DOM+优秀的Diff算法，尽量复用DOM节点</li>
+</ol>
+]]></content>
   </entry>
 </search>
