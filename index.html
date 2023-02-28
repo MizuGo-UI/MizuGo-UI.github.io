@@ -131,7 +131,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -175,77 +175,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/02/27/Vue/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yu Rui">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MizuGo学习档案">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/02/27/Vue/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-02-27 09:32:29" itemprop="dateCreated datePublished" datetime="2023-02-27T09:32:29+08:00">2023-02-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><h3 id="Vue特点"><a href="#Vue特点" class="headerlink" title="Vue特点"></a>Vue特点</h3><ol>
-<li>组件化，提高</li>
-<li>声明式，无需直接操作DOM，提高效率</li>
-<li>使用虚拟DOM+优秀的Diff算法，尽量复用DOM节点</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-<div>
-    
- </div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/18/Nginx/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -259,7 +188,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2023/01/18/Nginx/" class="post-title-link" itemprop="url">未命名</a>
+          <a href="/2023/01/18/Nginx/" class="post-title-link" itemprop="url">Nginx</a>
         </h2>
 
         <div class="post-meta-container">
@@ -277,7 +206,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2023-02-08 14:07:15" itemprop="dateModified" datetime="2023-02-08T14:07:15+08:00">2023-02-08</time>
+        <time title="修改时间：2023-03-01 00:30:28" itemprop="dateModified" datetime="2023-03-01T00:30:28+08:00">2023-03-01</time>
       </span>
 
   
@@ -291,180 +220,16 @@
     
     <div class="post-body" itemprop="articleBody">
           <h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><em>Nginx</em> (engine x) 是一个高性能的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HTTP?fromModule=lemma_inlink">HTTP</a>和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/7793488?fromModule=lemma_inlink">反向代理</a>web服务器 ，同时也提供了IMAP/POP3/SMTP服务。</p>
-<h3 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h3><p><img src="/2023/01/18/Nginx/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230118172943713.png" alt="image-20230118172943713"></p>
+<h3 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h3><p><img src="/../images/Nginx/image-20230301002945031.png" alt="image-20230301002945031"></p>
 <p>代理又分为<code>正向代理</code>和<code>反向代理</code></p>
-<h4 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h4><p>反向代理，指的是浏览器/客户端并不知道自己要访问具体哪台目标服务器，只知道去访问代理服务器 ，代理服务器再通过反向代理 +负载均衡实现请求分发到应用服务器的一种代理服务。</p>
-<p>反向代理服务的特点是代理服务器 代理的对象是应用服务器，也就是对于浏览器/客户端 来说应用服务器是隐藏的。</p>
-<p><img src="/2023/01/18/Nginx/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230118173500702.png" alt="image-20230118173500702"></p>
-<h4 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h4><p>nginx不仅可以做反向代理，还能用作正向代理来进行上网等功能。如果把局域网外的Internet想象成一个巨大的资源库，则局域网中的客户端要访问Internet，则需要通过代理服务器来访问，这种代理服务就称为正向代理（也就是大家常说的，通过正向代理进行上网功能）,代理的对象是客户端。</p>
-<p><img src="/2023/01/18/Nginx/Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20230118173331527.png" alt="image-20230118173331527"></p>
-<h3 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="负载均衡算法"></a>负载均衡算法</h3><p><strong>（1）基于轮询的算法</strong></p>
-<p>原理是每一个请求按时间顺序逐一被分发到不同的应用服务器，如果接收请求的应用服务器挂了，并且请求超过最大失败次数max_fails（1次），则在失效时间fail_timeout（10秒）内不会再转发请求到该节点</p>
-<p><strong>（2）基于权重的算法（一般采用该算法）</strong></p>
-<p>原理是每一个请求按权重被分发到不同的应用服务器，同样，如果接收请求的应用服务器挂了，并且请求超过最大失败次数max_fails（默认1次或可设置N次），则在失效时间fail_timeout（默认10秒，可设置N秒）内，不会再转发请求到该节点</p>
-<p><strong>（3）基于<code>ip_hash</code>的算法</strong></p>
-<p>原理是每一个请求按用户访问IP的哈希结果分配，如果请求来自同一个用户IP则固定这台IP访问一台应用服务器，该算法可以有效解决动态网页中存在的session共享问题。但是当服务器宕机后，还是会导致所存储的session丢失，因此一般还是采用redis的方案解决session问题。</p>
-<p><strong>（4）最小连接数</strong></p>
-<p>最小连接数法是根据服务器当前的连接情况进行<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1&spm=1001.2101.3001.7020">负载均衡</a>的，当请求到来时，会选取当前连接数最少的一台服务器来处理请求。由此也可以延伸出，根据服务器 CPU 占用最少，根据单位时间内处理请求的效率高低等进行服务器选择。</p>
-<h3 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h3><p>利用Nginx的反向代理功能实现动静分离。请求需要后台处理的（动态资源），不需要后台处理的（静态资源），让动态网站里的动态网页根据一定规则把静态资源和动态资源区分开来，可以根据静态资源的特点将其做缓存操作，提高资源响应速度</p>
-<h3 id="Nginx目录"><a href="#Nginx目录" class="headerlink" title="Nginx目录"></a>Nginx目录</h3><p><img src="/../images/Nginx/image-20230206173247774.png" alt="image-20230206173247774"></p>
-<p>nginx进程在sbin目录下</p>
-<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><blockquote>
-<p>./nginx #启动nginx进程</p>
-<p>nginx -s reopen #重启Nginx</p>
-<p>nginx -s reload #重新加载Nginx配置文件，然后以优雅的方式重启Nginx</p>
-<p>nginx -s stop #强制停止Nginx服务</p>
-<p>nginx -s quit #安全停止Nginx服务（即处理完所有请求后再停止服务）</p>
-<p>nginx -t -c /path/to/nginx.conf 测试<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6&spm=1001.2101.3001.7020">nginx配置文件</a>是否正确</p>
-<p>nginx -v #显示版本信息并退出</p>
-<p>killall nginx #杀死所有nginx进程</p>
-</blockquote>
-<h3 id="Nginx配置"><a href="#Nginx配置" class="headerlink" title="Nginx配置"></a>Nginx配置</h3><p>nginx.conf</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">全局配置</span></span><br><span class="line"></span><br><span class="line"><span class="string">events</span> &#123;</span><br><span class="line">    <span class="string">worker_connections</span>  <span class="number">1024</span><span class="string">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="string">http</span> &#123;</span><br><span class="line">	<span class="string">http配置</span></span><br><span class="line">	</span><br><span class="line">	<span class="string">upstream</span> <span class="string">proxyname</span>&#123;</span><br><span class="line">		<span class="string">server</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8080</span> <span class="string">weight=1</span></span><br><span class="line">		<span class="string">server</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8081</span> <span class="string">weight=1</span></span><br><span class="line">		<span class="comment">#负载均衡配置</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="string">server</span> &#123;</span><br><span class="line">        <span class="string">listen</span>       <span class="number">80</span><span class="string">;</span></span><br><span class="line">        <span class="string">server_name</span>  <span class="string">localhost;</span></span><br><span class="line">        <span class="comment">#代理</span></span><br><span class="line">        </span><br><span class="line">        <span class="string">location</span>&#123;</span><br><span class="line">        	<span class="string">root</span> <span class="string">html;</span></span><br><span class="line">        	<span class="string">index</span> <span class="string">index.html</span> <span class="string">index.htm;</span></span><br><span class="line">        	<span class="string">proxy_pass</span> <span class="string">http://proxyname;</span></span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="string">server</span> &#123;</span><br><span class="line">        <span class="string">listen</span>      <span class="number">443</span><span class="string">;</span></span><br><span class="line">        <span class="string">server_name</span>  <span class="string">localhost;</span></span><br><span class="line">        <span class="comment">#代理</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-<div>
-    
- </div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/13/RPA%E5%BC%80%E5%8F%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Yu Rui">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MizuGo学习档案">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/13/RPA%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">RPA开发</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-09-13 10:06:19" itemprop="dateCreated datePublished" datetime="2022-09-13T10:06:19+08:00">2022-09-13</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2023-02-27 09:37:49" itemprop="dateModified" datetime="2023-02-27T09:37:49+08:00">2023-02-27</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="K-RPA开发环境"><a href="#K-RPA开发环境" class="headerlink" title="K-RPA开发环境"></a>K-RPA开发环境</h2><h3 id="K-RPA产品组成"><a href="#K-RPA产品组成" class="headerlink" title="K-RPA产品组成"></a>K-RPA产品组成</h3><p>由Server、Agent、Control三个程序组成，采用三层架构，系统核心引擎采用高效C++语言开发</p>
-<p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220913134623381.png" alt="image-20220913134623381"></p>
-<h3 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h3><h4 id="目录命名规范"><a href="#目录命名规范" class="headerlink" title="目录命名规范"></a>目录命名规范</h4><p><strong>一级目录</strong></p>
-<p>业务种类_供应商企业名称</p>
-<p>如：清算_恒生</p>
-<p><strong>二级目录</strong></p>
-<p>业务种类_应用系统名称</p>
-<p>如：清算_UF2.0系统</p>
-<p><strong>三级目录</strong></p>
-<p>业务种类_应用系统名称_通用控件</p>
-<p>或  业务种类_应用系统名称_业务模块名称</p>
-<h4 id="组件命名规范"><a href="#组件命名规范" class="headerlink" title="组件命名规范"></a>组件命名规范</h4><p><strong>系统通用功能组件</strong></p>
-<p>系统名称或系统简称_通用_控件名称</p>
-<p>如：UF2.0_通用_下拉列表</p>
-<p><strong>系统功能组件命名</strong></p>
-<p>系统名称或系统简称_系统功能模块名称_系统功能名称</p>
-<p>如：UF2.0_清算准备_新股资金预冻结</p>
-<h4 id="变量命名规范"><a href="#变量命名规范" class="headerlink" title="变量命名规范"></a>变量命名规范</h4><p>变量分为入参、出餐、变量三种</p>
-<p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220913150552745.png" alt="image-20220913150552745"></p>
-<p>变量命名规范-数据类型命名参考表</p>
-<p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220913150758710.png" alt="image-20220913150758710"></p>
-<h3 id="生产环境组件开发步骤"><a href="#生产环境组件开发步骤" class="headerlink" title="生产环境组件开发步骤"></a>生产环境组件开发步骤</h3><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220913152906124.png" alt="image-20220913152906124"></p>
-<h2 id="K-RPA脚本向导编程-语法"><a href="#K-RPA脚本向导编程-语法" class="headerlink" title="K-RPA脚本向导编程-语法"></a>K-RPA脚本向导编程-语法</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><strong>命令</strong></p>
-<p>组件目录下面末级节点都叫命令</p>
-<p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220914140311285.png" alt="image-20220914140311285"></p>
-<p><strong>命令流</strong></p>
-<p>多行命令组合起来的内容叫命令流</p>
-<p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220914140330314.png" alt="image-20220914140330314"></p>
-<p><strong>表达式</strong></p>
-<p>属性中可编辑的文本框，填入的内容都叫表达式</p>
-<p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220914140551305.png" alt="image-20220914140551305"></p>
-<p><strong>命令注释</strong></p>
-<p>注释命令流，注释后的命令会标记为绿色</p>
-<p><strong>活动范围</strong></p>
-<ul>
-<li>用于对脚本代码进行格式化整理</li>
-<li>对于复杂的场景，通常把完成某个步骤的脚本放到“活动范围”内，构成代码块</li>
-<li>通过多级“活动范围”对脚本进行格式化，方便开发者对脚本的查看与修改</li>
-</ul>
-<p><strong>保留字和标识符</strong></p>
-<p>指系统本身已经使用了的字，不能再用它们充当变量名、方法名</p>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用"></a>变量的使用</h3><ol>
-<li>向导中使用变量，必须先定义，并指定数据类型后才能使用</li>
-<li>变量的作用范围是当前脚本</li>
-</ol>
-<h2 id="选取器"><a href="#选取器" class="headerlink" title="选取器"></a>选取器</h2><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220919154922718.png" alt="image-20220919154922718"></p>
-<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220919155040134.png" alt="image-20220919155040134"></p>
-<h2 id="常用命令及执行逻辑"><a href="#常用命令及执行逻辑" class="headerlink" title="常用命令及执行逻辑"></a>常用命令及执行逻辑</h2><h3 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h3><p>开发组件相关的控制命令，用于做编程逻辑控制</p>
-<h3 id="应用程序集成"><a href="#应用程序集成" class="headerlink" title="应用程序集成"></a>应用程序集成</h3><p>RPA平台提供调用的方法，并把调用方法尽可能简化</p>
-<h3 id="用户界面自动化"><a href="#用户界面自动化" class="headerlink" title="用户界面自动化"></a>用户界面自动化</h3><p>模拟人操作应用程序，包含了用WindowsAPI接口控制、应用程序接口控制、OCR加鼠标键盘控制</p>
-<h3 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h3><p>RPA机器人调用操作系统的一些基础功能，包括：脚本、剪切板、文件、鼠标、键盘数等。</p>
-<h3 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h3><p>编程开发数据处理相关的命令。例如：字符串转换、比对、裁剪等处理；数据表、列表、数组等数据类型的处理；日期、数值运算处理</p>
-<h2 id="网页端操作"><a href="#网页端操作" class="headerlink" title="网页端操作"></a>网页端操作</h2><h3 id="设置B-S网页端页面上的对象属性"><a href="#设置B-S网页端页面上的对象属性" class="headerlink" title="设置B/S网页端页面上的对象属性"></a>设置B/S网页端页面上的对象属性</h3><p>K-RPA可以编辑网页对象的属性值，标准的属性和自定义的属性均可</p>
-<blockquote>
-<p>K-RPA机器人可以通过获取网页上的对象，实现信息抓取，如网页上的文本、图片、表格数据、链接等等</p>
-</blockquote>
-<h3 id="单击元素"><a href="#单击元素" class="headerlink" title="单击元素"></a>单击元素</h3><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220922163831138.png" alt="image-20220922163831138"></p>
-<blockquote>
-<p>模拟点击和发送窗口消息不影响鼠标其他操作，为后台操作；如都不勾选则会硬件点击，影响鼠标操作，且</p>
-</blockquote>
-<h2 id="RPA网站产品数据抓取"><a href="#RPA网站产品数据抓取" class="headerlink" title="RPA网站产品数据抓取"></a>RPA网站产品数据抓取</h2><h3 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h3><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220923155511128.png" alt="image-20220923155511128"></p>
-<p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220923155550901.png" alt="image-20220923155550901"></p>
-<h4 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h4><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220923155744466.png" alt="image-20220923155744466"></p>
-<blockquote>
-<p>PS：风险点导致的问题需要提前考虑，尝试登录3或者4次后要停止再次尝试登录</p>
-</blockquote>
-<h4 id="提取数据"><a href="#提取数据" class="headerlink" title="提取数据"></a>提取数据</h4><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220923165218052.png" alt="image-20220923165218052"></p>
-<h4 id="发送邮件"><a href="#发送邮件" class="headerlink" title="发送邮件"></a>发送邮件</h4><p><img src="/../images/RPA%E5%BC%80%E5%8F%91/image-20220923165345100.png" alt="image-20220923165345100"></p>
-<p>RPA管控平台</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/18/Nginx/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1052,6 +817,171 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/11/18/Linux%E5%85%A5%E9%97%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+<div>
+    
+ </div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/14/Mybatis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yu Rui">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MizuGo学习档案">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/11/14/Mybatis/" class="post-title-link" itemprop="url">Mybatis</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-14 21:59:28" itemprop="dateCreated datePublished" datetime="2021-11-14T21:59:28+08:00">2021-11-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-01-06 16:12:28" itemprop="dateModified" datetime="2022-01-06T16:12:28+08:00">2022-01-06</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>导入方式</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/11/14/Mybatis/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+<div>
+    
+ </div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/26/JavaWeb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yu Rui">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MizuGo学习档案">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/10/26/JavaWeb/" class="post-title-link" itemprop="url">JavaWeb</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-26 18:45:54" itemprop="dateCreated datePublished" datetime="2021-10-26T18:45:54+08:00">2021-10-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-27 15:54:18" itemprop="dateModified" datetime="2021-11-27T15:54:18+08:00">2021-11-27</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>web开发：</p>
+<ul>
+<li>web，网页</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/26/JavaWeb/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
