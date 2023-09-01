@@ -549,7 +549,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2023-04-24 18:06:41" itemprop="dateModified" datetime="2023-04-24T18:06:41+08:00">2023-04-24</time>
+        <time title="修改时间：2023-09-01 11:08:25" itemprop="dateModified" datetime="2023-09-01T11:08:25+08:00">2023-09-01</time>
       </span>
 
   
@@ -567,61 +567,14 @@
 <li>大数据高容量</li>
 <li>数据类型多样</li>
 </ol>
-<h3 id="NoSQL四大分类"><a href="#NoSQL四大分类" class="headerlink" title="NoSQL四大分类"></a>NoSQL四大分类</h3><blockquote>
-<p>NoSQL有如下优点：易<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%89%A9%E5%B1%95/2732987?fromModule=lemma_inlink">扩展</a>，NoSQL数据库种类繁多，但是一个共同的特点都是去掉关系数据库的关系型特性。数据之间无关系，这样就非常容易扩展。无形之间也在架构的层面上带来了可扩展的能力。大数据量，高性能，NoSQL数据库都具有非常高的读写性能，尤其在大数据量下，同样表现优秀。这得益于它的无关系性，数据库的结构简单。</p>
-</blockquote>
-<p><strong>分类</strong></p>
-<table>
-<thead>
-<tr>
-<th><strong>分类</strong></th>
-<th><strong>Examples举例</strong></th>
-<th>典型应用场景</th>
-<th>数据模型</th>
-<th>优点</th>
-<th>缺点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>键值（key-value）</strong></td>
-<td>Tokyo Cabinet/Tyrant， Redis， Voldemort， Oracle BDB</td>
-<td>内容缓存，主要用于处理大量数据的高访问负载，也用于一些日志系统等等。</td>
-<td>Key 指向 Value 的键值对，通常用hash table来实现</td>
-<td>查找速度快</td>
-<td>数据无结构化，通常只被当作字符串或者二进制数据</td>
-</tr>
-<tr>
-<td><strong>列存储数据库</strong></td>
-<td>Cassandra， HBase， Riak</td>
-<td>分布式的文件系统</td>
-<td>以列簇式存储，将同一列数据存在一起</td>
-<td>查找速度快，可扩展性强，更容易进行分布式扩展</td>
-<td>功能相对局限</td>
-</tr>
-<tr>
-<td><strong>文档型数据库</strong></td>
-<td>CouchDB， MongoDb</td>
-<td>Web应用（与Key-Value类似，Value是结构化的，不同的是数据库能够了解Value的内容）</td>
-<td>Key-Value对应的键值对，Value为结构化数据</td>
-<td>数据结构要求不严格，表结构可变，不需要像关系型数据库一样需要预先定义表结构</td>
-<td>查询性能不高，而且缺乏统一的查询语法。</td>
-</tr>
-<tr>
-<td><strong>图形(Graph)数据库</strong></td>
-<td>Neo4J， InfoGrid， Infinite Graph</td>
-<td>社交网络，推荐系统等。专注于构建关系图谱</td>
-<td>图结构</td>
-<td>利用图结构相关算法。比如最短路径寻址，N度关系查找等</td>
-<td>很多时候需要对整个图做计算才能得出需要的信息，而且这种结构不太好做分布式的集群方案。</td>
-</tr>
-</tbody></table>
-<h3 id="Redis定义"><a href="#Redis定义" class="headerlink" title="Redis定义"></a>Redis定义</h3><ol>
-<li><p>redis是一个key-value<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F?fromModule=lemma_inlink">存储系统</a>。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%93%BE%E8%A1%A8?fromModule=lemma_inlink">链表</a>)、set(集合)、zset(sorted set –有序集合)和hash（哈希类型）。这些<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B?fromModule=lemma_inlink">数据类型</a>都支持push/pop、add/remove及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。在此基础上，redis支持各种不同方式的排序。与memcached一样，为了保证效率，数据都是缓存在内存中。区别的是redis会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了master-slave(主从)同步。</p>
-</li>
-<li><p>Redis支持主从同步。数据可以从主服务器向任意数量的从服务器上同步，从服务器可以是关联其他从服务器的主服务器。这使得Redis可执行单层树复制。存盘可以有意无意的对数据进行写操作。由于完全实现了<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8F%91%E5%B8%83%2F%E8%AE%A2%E9%98%85?fromModule=lemma_inlink">发布/订阅</a>机制，使得从数据库在任何地方同步树时，可订阅一个频道并接收主服务器完整的消息发布记录。同步对读取操作的可扩展性和数据冗余很有帮助。</p>
-</li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/07/04/Redis/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
