@@ -837,10 +837,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-07-04 20:51:53 / 修改时间：21:57:39" itemprop="dateCreated datePublished" datetime="2023-07-04T20:51:53+08:00">2023-07-04</time>
+      <time title="创建时间：2023-07-04 20:51:53" itemprop="dateCreated datePublished" datetime="2023-07-04T20:51:53+08:00">2023-07-04</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2023-09-01 11:05:52" itemprop="dateModified" datetime="2023-09-01T11:05:52+08:00">2023-09-01</time>
+      </span>
 
   
 </div>
@@ -853,106 +859,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <h2 id="Mybatis-Plus"><a href="#Mybatis-Plus" class="headerlink" title="Mybatis-Plus"></a>Mybatis-Plus</h2><h3 id="导入依赖"><a href="#导入依赖" class="headerlink" title="导入依赖"></a>导入依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- springboot整合MybatisPlus，这个依赖只有在SpringBoot项目中才需要导入，其他项目无需导入这个依赖 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatisplus-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- MyBatisPlus依赖，要使用MyBatisPlus就必须导入MyBatisPlus的依赖，因为MyBatisPlus中默认有MyBatis的依赖，所以无需再导入MyBatis的依赖了 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.3.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- MyBatis代码生成器依赖，要使用代码生成器，就需要导入代码生成器依赖 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-generator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.5.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Mybatis-plus是在Mybatis基础上进行的升级，在导入依赖的时候仅导入Mybatis-plus即可，避免因版本不一致导致冲突</p>
-<blockquote>
-<p><strong>mybatis-plus 和 mybatis-plus-boot-starter 的主要异同点就在于</strong>：</p>
-<p><strong>mybatis-plus-boot-starter将xml中basemap中定义的id全部已经实现了，</strong></p>
-<p><strong>而mybatis-plus这个包还需要自己实现basemap中的定义。</strong></p>
-</blockquote>
-<h3 id="CRUD扩展"><a href="#CRUD扩展" class="headerlink" title="CRUD扩展"></a>CRUD扩展</h3><h4 id="insert插入"><a href="#insert插入" class="headerlink" title="insert插入"></a>insert插入</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> res = userDao.insert(<span class="keyword">new</span> User(<span class="number">7</span>,<span class="number">22</span>,<span class="string">&quot;dd&quot;</span>,<span class="string">&quot;6@1.com&quot;</span>));</span><br><span class="line">    <span class="keyword">if</span>(res&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;新增成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>主键生成策略</strong></p>
-<blockquote>
-<p>默认ASSIGN_ID全局唯一id</p>
-</blockquote>
-<p>雪花算法（SnowFlake）</p>
-<p><img src="/../images/Mybatis-Plus/image-20230320100831527.png" alt="image-20230320100831527"></p>
-<p>雪花算法的原理就是生成一个的 64 位比特位的 long 类型的唯一 id。</p>
-<ul>
-<li>最高 1 位固定值 0，因为生成的 id 是正整数，如果是 1 就是负数了。</li>
-<li>接下来 41 位存储毫秒级时间戳，2^41/(1000<em>60</em>60<em>24</em>365)=69，大概可以使用 69 年。</li>
-<li>再接下 10 位存储机器码，包括 5 位 datacenterId 和 5 位 workerId。最多可以部署 2^10=1024 台机器。</li>
-<li>最后 12 位存储序列号。同一毫秒时间戳时，通过这个递增的序列号来区分。即对于同一台机器而言，同一毫秒时间戳下，可以生成 2^12=4096 个不重复 id。</li>
-</ul>
-<blockquote>
-<p>主键自增</p>
-</blockquote>
-<ol>
-<li>实体类字段上<code>@TableId（type = IdType.AUTO)</code></li>
-<li>数据库字段必须为自增</li>
-</ol>
-<p><strong>源码分析</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">IdType</span> </span>&#123;</span><br><span class="line">    AUTO(<span class="number">0</span>),<span class="comment">//数据库id自增</span></span><br><span class="line">    NONE(<span class="number">1</span>),<span class="comment">//未设置主键</span></span><br><span class="line">    INPUT(<span class="number">2</span>),<span class="comment">//手动输入</span></span><br><span class="line">    ASSIGN_ID(<span class="number">3</span>),<span class="comment">//默认的全局唯一id</span></span><br><span class="line">    ASSIGN_UUID(<span class="number">4</span>);<span class="comment">//全局唯一id  uuid</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> key;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">IdType</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.key = key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getKey</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="update更新"><a href="#update更新" class="headerlink" title="update更新"></a>update更新</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">()</span></span>&#123;</span><br><span class="line">    User user  = <span class="keyword">new</span> User();</span><br><span class="line">    user.setId(<span class="number">4</span>);</span><br><span class="line">    user.setName(<span class="string">&quot;test22&quot;</span>);</span><br><span class="line">    user.setAge(<span class="number">55</span>);</span><br><span class="line">    <span class="keyword">int</span> res = userDao.updateById(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>日志分析</p>
-<p><img src="/../images/Mybatis-Plus/image-20230320105002291.png" alt="image-20230320105002291"></p>
-<p><strong>自动填充</strong></p>
-<p>创建时间、修改时间都是自动化完成的，尽量避免手动更新</p>
-<blockquote>
-<p>数据库层级</p>
-</blockquote>
-<p>在数据库中勾选<code>更新</code>，并设置默认值即可</p>
-<p><img src="/../images/Mybatis-Plus/image-20230320171443249.png" alt="image-20230320171443249"></p>
-<blockquote>
-<p>代码层级</p>
-</blockquote>
-<p>1.清空数据库相关信息</p>
-<p><img src="/../images/Mybatis-Plus/image-20230320171617518.png" alt="image-20230320171617518"></p>
-<p>2.新增注解<code>@TableField</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="meta">@TableId(type = IdType.AUTO)</span></span><br><span class="line">    Integer id ;</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    String name;</span><br><span class="line">    String email;</span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT)</span></span><br><span class="line">    Date createTime;</span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT_UPDATE)</span></span><br><span class="line">    Date updateTime;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3.实现拦截器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.handler;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.reflection.MetaObject;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="keyword">import</span> sun.rmi.runtime.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MymetaObjectHandler</span> <span class="keyword">implements</span> <span class="title">MetaObjectHandler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertFill</span><span class="params">(MetaObject metaObject)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;start insert fill......&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.setFieldValByName(<span class="string">&quot;createTime&quot;</span>,<span class="keyword">new</span> Date(),metaObject);</span><br><span class="line">        <span class="keyword">this</span>.setFieldValByName(<span class="string">&quot;updateTime&quot;</span>,<span class="keyword">new</span> Date(),metaObject);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateFill</span><span class="params">(MetaObject metaObject)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;start update fill&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.setFieldValByName(<span class="string">&quot;updateTime&quot;</span>,<span class="keyword">new</span> Date(),metaObject);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h4><blockquote>
-<p>乐观锁：对数据的操作持乐观态度，即对数据进行操作时不会上锁，只会在更新数据检查数据是否有变动，往往采用版本号机制（Vsersion）或者CAS（Compare And Swap），在对数据库进行更新时，会先查询出当前version信息，提交事务时会再次检验version是否与查询时的版本一致，若一致则提交，否则不进行处理</p>
-<p>悲观锁：对数据的操作持悲观态度，每次对数据进行操作的时候都会上锁，在操作完成前其他线程将无法访问数据库，容易造成资源堵塞</p>
-<p>具体乐观锁及悲观锁介绍可参见：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34337272/article/details/81072874">https://blog.csdn.net/qq_34337272/article/details/81072874</a></p>
-</blockquote>
-<p>1.数据库新增version（默认值为1）</p>
-<p><img src="/../images/Mybatis-Plus/image-20230328174304516.png" alt="image-20230328174304516"></p>
-<p>2.pojo新增对应字段version</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Version</span></span><br><span class="line">Integer version;</span><br></pre></td></tr></table></figure>
-
-<p>3.配置config</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Mybatis-plus拦截器配置</span></span><br><span class="line"><span class="comment"> * MybatisPlusConfig.java</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">package</span> com.example.demo.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;</span><br><span class="line"><span class="keyword">import</span> org.mybatis.spring.annotation.MapperScan;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;com.example.demo.dao&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MybatisPlusConfig</span></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MybatisPlusInterceptor <span class="title">mybatisPlusInterceptor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        MybatisPlusInterceptor mybatisPlusInterceptor = <span class="keyword">new</span> MybatisPlusInterceptor();</span><br><span class="line">        mybatisPlusInterceptor.addInnerInterceptor(<span class="keyword">new</span> OptimisticLockerInnerInterceptor());</span><br><span class="line">        <span class="keyword">return</span> mybatisPlusInterceptor;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    voidtestSelectPage()&#123;</span><br><span class="line">        <span class="comment">//1 创建IPage分页对象,设置分页参数,1为当前页码，3为每页显示的记录数</span></span><br><span class="line">        IPage&lt;User&gt;page=newPage&lt;&gt;(<span class="number">1</span>,<span class="number">3</span>);</span><br><span class="line">        <span class="comment">//2 执行分页查询</span></span><br><span class="line">        userDao.selectPage(page,<span class="keyword">null</span>);</span><br><span class="line">        <span class="comment">//3 获取分页结果</span></span><br><span class="line">        System.out.println(<span class="string">&quot;当前页码值：&quot;</span>+page.getCurrent());</span><br><span class="line">        System.out.println(<span class="string">&quot;每页显示数：&quot;</span>+page.getSize());</span><br><span class="line">        System.out.println(<span class="string">&quot;一共多少页：&quot;</span>+page.getPages());</span><br><span class="line">        System.out.println(<span class="string">&quot;一共多少条数据：&quot;</span>+page.getTotal());</span><br><span class="line">        System.out.println(<span class="string">&quot;数据：&quot;</span>+page.getRecords());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="逻辑删除"><a href="#逻辑删除" class="headerlink" title="逻辑删除"></a>逻辑删除</h4><blockquote>
-<p>物理删除：从数据库中直接删除</p>
-<p>逻辑删除：数据库中不删除，通过一个变量来控制是否失效</p>
-</blockquote>
-<p>1.数据库新增deleted（删除标识符）</p>
-<p><img src="/../images/Mybatis-Plus/image-20230328174456613.png" alt="image-20230328174456613"></p>
-<p>2.配置项目yaml文件</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mybatis-plus:</span></span><br><span class="line">  <span class="attr">global-config:</span></span><br><span class="line">    <span class="attr">db-config:</span></span><br><span class="line">      <span class="attr">logic-delete-field:</span> <span class="string">flag</span> <span class="comment"># 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤3)</span></span><br><span class="line">      <span class="attr">logic-delete-value:</span> <span class="number">1</span> <span class="comment"># 逻辑已删除值(默认为 1)</span></span><br><span class="line">      <span class="attr">logic-not-delete-value:</span> <span class="number">0</span> <span class="comment"># 逻辑未删除值(默认为 0)</span></span><br></pre></td></tr></table></figure>
-
-<p>3.pojo新增字段deleted</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@TableLogic</span></span><br><span class="line">  Integer deleted;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>实际实现是在执行删除操作时替换为更新操作，并将deleted值更新为1（代表已删除）</p>
-<p>删除后无法查询到相关数据（会默认新增条件，对于deleted值进行判断，deleted=0才可查询到（如图2）</p>
-</blockquote>
-<p>图1：</p>
-<p><img src="/../images/Mybatis-Plus/image-20230329154326839.png" alt="image-20230329154326839"></p>
-<p>图2：</p>
-<p><img src="/../images/Mybatis-Plus/image-20230329154358553.png" alt="image-20230329154358553"></p>
-<h4 id="Wrapper"><a href="#Wrapper" class="headerlink" title="Wrapper"></a>Wrapper</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">select</span><span class="params">()</span></span>&#123;</span><br><span class="line">    QueryWrapper&lt;User&gt; queryWrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br><span class="line">    queryWrapper</span><br><span class="line">            .isNotNull(<span class="string">&quot;email&quot;</span>).ge(<span class="string">&quot;age&quot;</span>,<span class="number">55</span>);</span><br><span class="line">    userDao.selectOne(queryWrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h3><blockquote>
-<p><a target="_blank" rel="noopener" href="https://baomidou.com/">https://baomidou.com/</a></p>
-</blockquote>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/07/04/Mybatis-Plus/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
