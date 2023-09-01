@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","width":330,"display":"hide","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Nginx概述Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器 ，同时也提供了IMAP&#x2F;POP3&#x2F;SMTP服务。 代理 代理又分为正向代理和反向代理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx">
+<meta property="og:url" content="http://example.com/2023/07/04/Nginx/index.html">
+<meta property="og:site_name" content="MizuGo学习档案">
+<meta property="og:description" content="Nginx概述Nginx (engine x) 是一个高性能的HTTP和反向代理web服务器 ，同时也提供了IMAP&#x2F;POP3&#x2F;SMTP服务。 代理 代理又分为正向代理和反向代理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/Nginx/image-20230301002945031.png">
+<meta property="og:image" content="http://example.com/images/Nginx/image-20230301003002673.png">
+<meta property="og:image" content="http://example.com/images/Nginx/image-20230301003017782.png">
+<meta property="og:image" content="http://example.com/images/Nginx/image-20230206173247774.png">
+<meta property="article:published_time" content="2023-07-04T12:51:53.225Z">
+<meta property="article:modified_time" content="2023-03-27T09:09:12.852Z">
+<meta property="article:author" content="Yu Rui">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/Nginx/image-20230301002945031.png">
+
+
+<link rel="canonical" href="http://example.com/2023/07/04/Nginx/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/07/04/Nginx/","path":"2023/07/04/Nginx/","title":"Nginx"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Nginx | MizuGo学习档案</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">MizuGo学习档案</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+<!--网易云插件-->
+<div id="music163player">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=8203026188&auto=0&height=430"></iframe>
+</div>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx"><span class="nav-number">1.</span> <span class="nav-text">Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="nav-number">1.2.1.</span> <span class="nav-text">反向代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86"><span class="nav-number">1.2.2.</span> <span class="nav-text">正向代理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95"><span class="nav-number">1.3.</span> <span class="nav-text">负载均衡算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E9%9D%99%E5%88%86%E7%A6%BB"><span class="nav-number">1.4.</span> <span class="nav-text">动静分离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx%E7%9B%AE%E5%BD%95"><span class="nav-number">1.5.</span> <span class="nav-text">Nginx目录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.5.1.</span> <span class="nav-text">常用命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx%E9%85%8D%E7%BD%AE"><span class="nav-number">1.6.</span> <span class="nav-text">Nginx配置</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yu Rui</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/04/Nginx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yu Rui">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MizuGo学习档案">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Nginx
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-07-04 20:51:53" itemprop="dateCreated datePublished" datetime="2023-07-04T20:51:53+08:00">2023-07-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2023-03-27 17:09:12" itemprop="dateModified" datetime="2023-03-27T17:09:12+08:00">2023-03-27</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><em>Nginx</em> (engine x) 是一个高性能的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HTTP?fromModule=lemma_inlink">HTTP</a>和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/7793488?fromModule=lemma_inlink">反向代理</a>web服务器 ，同时也提供了IMAP/POP3/SMTP服务。</p>
+<h3 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h3><p><img src="/../images/Nginx/image-20230301002945031.png" alt="image-20230301002945031"></p>
+<p>代理又分为<code>正向代理</code>和<code>反向代理</code></p>
+<span id="more"></span>
+
+<h4 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h4><p>反向代理，指的是浏览器/客户端并不知道自己要访问具体哪台目标服务器，只知道去访问代理服务器 ，代理服务器再通过反向代理 +负载均衡实现请求分发到应用服务器的一种代理服务。</p>
+<p>反向代理服务的特点是代理服务器 代理的对象是应用服务器，也就是对于浏览器/客户端 来说应用服务器是隐藏的。</p>
+<p><img src="/../images/Nginx/image-20230301003002673.png" alt="image-20230301003002673"></p>
+<h4 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h4><p>nginx不仅可以做反向代理，还能用作正向代理来进行上网等功能。如果把局域网外的Internet想象成一个巨大的资源库，则局域网中的客户端要访问Internet，则需要通过代理服务器来访问，这种代理服务就称为正向代理（也就是大家常说的，通过正向代理进行上网功能）,代理的对象是客户端。</p>
+<p><img src="/../images/Nginx/image-20230301003017782.png" alt="image-20230301003017782"></p>
+<h3 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="负载均衡算法"></a>负载均衡算法</h3><p><strong>（1）基于轮询的算法</strong></p>
+<p>原理是每一个请求按时间顺序逐一被分发到不同的应用服务器，如果接收请求的应用服务器挂了，并且请求超过最大失败次数max_fails（1次），则在失效时间fail_timeout（10秒）内不会再转发请求到该节点</p>
+<p><strong>（2）基于权重的算法（一般采用该算法）</strong></p>
+<p>原理是每一个请求按权重被分发到不同的应用服务器，同样，如果接收请求的应用服务器挂了，并且请求超过最大失败次数max_fails（默认1次或可设置N次），则在失效时间fail_timeout（默认10秒，可设置N秒）内，不会再转发请求到该节点</p>
+<p><strong>（3）基于<code>ip_hash</code>的算法</strong></p>
+<p>原理是每一个请求按用户访问IP的哈希结果分配，如果请求来自同一个用户IP则固定这台IP访问一台应用服务器，该算法可以有效解决动态网页中存在的session共享问题。但是当服务器宕机后，还是会导致所存储的session丢失，因此一般还是采用redis的方案解决session问题。</p>
+<p><strong>（4）最小连接数</strong></p>
+<p>最小连接数法是根据服务器当前的连接情况进行<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1&spm=1001.2101.3001.7020">负载均衡</a>的，当请求到来时，会选取当前连接数最少的一台服务器来处理请求。由此也可以延伸出，根据服务器 CPU 占用最少，根据单位时间内处理请求的效率高低等进行服务器选择。</p>
+<h3 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h3><p>利用Nginx的反向代理功能实现动静分离。请求需要后台处理的（动态资源），不需要后台处理的（静态资源），让动态网站里的动态网页根据一定规则把静态资源和动态资源区分开来，可以根据静态资源的特点将其做缓存操作，提高资源响应速度</p>
+<h3 id="Nginx目录"><a href="#Nginx目录" class="headerlink" title="Nginx目录"></a>Nginx目录</h3><p><img src="/../images/Nginx/image-20230206173247774.png" alt="image-20230206173247774"></p>
+<p>nginx进程在sbin目录下</p>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><blockquote>
+<p>./nginx #启动nginx进程</p>
+<p>nginx -s reopen #重启Nginx</p>
+<p>nginx -s reload #重新加载Nginx配置文件，然后以优雅的方式重启Nginx</p>
+<p>nginx -s stop #强制停止Nginx服务</p>
+<p>nginx -s quit #安全停止Nginx服务（即处理完所有请求后再停止服务）</p>
+<p>nginx -t -c /path/to/nginx.conf 测试<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6&spm=1001.2101.3001.7020">nginx配置文件</a>是否正确</p>
+<p>nginx -v #显示版本信息并退出</p>
+<p>killall nginx #杀死所有nginx进程</p>
+</blockquote>
+<h3 id="Nginx配置"><a href="#Nginx配置" class="headerlink" title="Nginx配置"></a>Nginx配置</h3><p>nginx.conf</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">全局配置</span></span><br><span class="line"></span><br><span class="line"><span class="string">events</span> &#123;</span><br><span class="line">    <span class="string">worker_connections</span>  <span class="number">1024</span><span class="string">;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="string">http</span> &#123;</span><br><span class="line">	<span class="string">http配置</span></span><br><span class="line">	</span><br><span class="line">	<span class="string">upstream</span> <span class="string">proxyname</span>&#123;</span><br><span class="line">		<span class="string">server</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8080</span> <span class="string">weight=1</span></span><br><span class="line">		<span class="string">server</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8081</span> <span class="string">weight=1</span></span><br><span class="line">		<span class="comment">#负载均衡配置</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="string">server</span> &#123;</span><br><span class="line">        <span class="string">listen</span>       <span class="number">80</span><span class="string">;</span></span><br><span class="line">        <span class="string">server_name</span>  <span class="string">localhost;</span></span><br><span class="line">        <span class="comment">#代理</span></span><br><span class="line">        </span><br><span class="line">        <span class="string">location</span>&#123;</span><br><span class="line">        	<span class="string">root</span> <span class="string">html;</span></span><br><span class="line">        	<span class="string">index</span> <span class="string">index.html</span> <span class="string">index.htm;</span></span><br><span class="line">        	<span class="string">proxy_pass</span> <span class="string">http://proxyname;</span></span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="string">server</span> &#123;</span><br><span class="line">        <span class="string">listen</span>      <span class="number">443</span><span class="string">;</span></span><br><span class="line">        <span class="string">server_name</span>  <span class="string">localhost;</span></span><br><span class="line">        <span class="comment">#代理</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>具体配置详情可参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011262253/article/details/120941175">https://blog.csdn.net/u011262253/article/details/120941175</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/07/04/Mybatis/" rel="prev" title="Mybatis">
+                  <i class="fa fa-chevron-left"></i> Mybatis
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/07/04/Redis/" rel="next" title="Redis">
+                  Redis <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+<div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+    
+ </div>
+
+
+
+
+
+
+</div>
+
+<div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yu Rui</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","width":330,"display":"hide","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="HTTP核心概念 Http将两台计算机视为不同的角色：客户端和服务器。客户端向服务器请求数据，服务器回应请求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络">
+<meta property="og:url" content="http://example.com/2023/07/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
+<meta property="og:site_name" content="MizuGo学习档案">
+<meta property="og:description" content="HTTP核心概念 Http将两台计算机视为不同的角色：客户端和服务器。客户端向服务器请求数据，服务器回应请求">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-04T12:51:53.253Z">
+<meta property="article:modified_time" content="2021-11-30T06:34:16.360Z">
+<meta property="article:author" content="Yu Rui">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/07/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/07/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/","path":"2023/07/04/计算机网络/","title":"计算机网络"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计算机网络 | MizuGo学习档案</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">MizuGo学习档案</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+<!--网易云插件-->
+<div id="music163player">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=8203026188&auto=0&height=430"></iframe>
+</div>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-number">1.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">核心概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A5%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E7%9C%8BHTTP"><span class="nav-number">1.2.</span> <span class="nav-text">以实际应用看HTTP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP%E4%B8%8EUDP"><span class="nav-number">2.</span> <span class="nav-text">TCP与UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.2.</span> <span class="nav-text">应用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3"><span class="nav-number">3.</span> <span class="nav-text">端口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="nav-number">3.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%A8%E7%9F%A5%E7%AB%AF%E5%8F%A3"><span class="nav-number">3.2.</span> <span class="nav-text">周知端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%AB%AF%E5%8F%A3"><span class="nav-number">3.3.</span> <span class="nav-text">动态端口</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yu Rui</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/07/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yu Rui">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MizuGo学习档案">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算机网络
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-07-04 20:51:53" itemprop="dateCreated datePublished" datetime="2023-07-04T20:51:53+08:00">2023-07-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-30 14:34:16" itemprop="dateModified" datetime="2021-11-30T14:34:16+08:00">2021-11-30</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><ul>
+<li><p>Http将两台计算机视为不同的角色：客户端和服务器。客户端向服务器请求数据，服务器回应请求</p>
+<span id="more"></span></li>
+<li><p>Http为无状态协议，通过TCP建立到服务器的连接，当一次请求完成之后，会立即断开TCP连接，因此http是短连接。无状态是指：Http向服务器发起请求的时候，不是一直通过同一个连接发送请求，而是每一次请求都建立一个新的连接，不会记录任何客户端操作（见补充说明）</p>
+</li>
+<li><p>不管是客户端的请求信息还是服务器的回应信息，都带有一块头部信息（Header），头部信息是自定义的，用于传递额外信息（浏览器信息、请求的内容类型、相应的语言）</p>
+</li>
+</ul>
+<blockquote>
+<p>PS：</p>
+<ol>
+<li>HTTP/1.0:客户端的每次请求都要求建立一次单独的连接，在请求结束后会立即断开连接</li>
+<li>HTTP/1.1:客户端的一次连接中可以处理多个请求，多个请求可以重叠进行，不需要等待一个请求结束再发送下一个请求</li>
+<li><strong>HTTP是一种短连接，要保持客户端的在线状态，就需要每隔一段时间向服务器发送一次“保持连接”的请求，服务器在收到请求后也会对客户端回复，表明知道客户端“在线”。当服务器长时间未收到客户端的“保持连接”请求，则会认为客户端“下线”，客户端长时间无法收到服务器的回复，则认为网络已经断开</strong></li>
+</ol>
+</blockquote>
+<h3 id="以实际应用看HTTP"><a href="#以实际应用看HTTP" class="headerlink" title="以实际应用看HTTP"></a>以实际应用看HTTP</h3><ul>
+<li>TCP的主要作用就是用来建立连接，而传送数据还是交给了HTTP来完成</li>
+<li>HTTP协议同样是一个请求、确认、连接的过程</li>
+</ul>
+<p>HTTP将传输数据的两边称为客户端（Client）和服务器（Server）</p>
+<blockquote>
+<p><strong>第一：发送一个http请求给S，这个请求包括请求头和请求内容</strong></p>
+<p>request header：</p>
+<ol>
+<li><p>请求的方法：POST/GET</p>
+</li>
+<li><p>请求的URL，HTTP协议版本</p>
+</li>
+<li><p>请求的数据、编码方式</p>
+</li>
+<li><p>是否有Cookies，是否缓存</p>
+<p>post和get请求方式的区别是，get把请求内容放在URL后面，但是URL长度有限制。而post是以表单的形势，适合要输入密码之类的，因为不在URL中显示，所以比较安全。</p>
+</li>
+</ol>
+<p>request body：</p>
+<p>即请求的内容.</p>
+<p><strong>第二：S收到了http请求，然后根据请求头，返回http响应</strong></p>
+<p>response header：</p>
+<ol>
+<li>cookies或session</li>
+<li>状态码</li>
+<li>内容大小</li>
+</ol>
+<p>response body：</p>
+<p>   即响应的内容，包括，JS什么的。</p>
+<p><strong>第三，C收到了以后，就由浏览器完成一系列的渲染，包括执行JS脚本等</strong></p>
+</blockquote>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/baizhanshi/p/8482612.html">https://www.cnblogs.com/baizhanshi/p/8482612.html</a></p>
+<h2 id="TCP与UDP"><a href="#TCP与UDP" class="headerlink" title="TCP与UDP"></a>TCP与UDP</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>TCP是一种可靠协议，必须要成功建立连接后才能够传输数据，有超时重传机制</li>
+<li>UDP是一种面向无连接，不可靠的协议，不需要建立连接即可传输数据，可以直接发送信息报文，尽最大努力将数据传输，但是不保证传输结果</li>
+<li>TCP传输数据慢，建立连接、超时重传、拥塞机制都会消耗时间，比较占用系统资源，且由于三次握手机制，导致TCP容易被攻击</li>
+<li>UDP传输数据快，且由于是无状态传输，没有TCP的机制，被利用的漏洞更少，反而更加安全，但是用UDP传输数据无法保证数据可达，容易发生丢包</li>
+<li>TCP和UDP是两种独立的协议，因此各自的端口号也相互独立</li>
+</ul>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p><strong>TCP应用场景</strong><br>当对网络通信质量有要求时，比如：整个数据要准确无误的传递给对方，这往往对于一些要求可靠的应用，比如HTTP,HTTPS,FTP等传输文件的协议，POP,SMTP等邮件的传输协议。常见使用TCP协议的应用：</p>
+<ol>
+<li>浏览器使用的：HTTP</li>
+<li>FlashFXP:FTP</li>
+<li>Outlook:POP，SMTP</li>
+<li>QQ文件传输</li>
+</ol>
+<p><strong>UDP 应用场景</strong><br>对当前网络通讯质量要求不高的时候，要求网络通讯速度尽量的快，这时就使用UDP<br>日常生活中常见使用UDP协议：</p>
+<ol>
+<li>QQ语音</li>
+<li>QQ视频</li>
+<li>TFTP</li>
+</ol>
+<p><strong>TCP的三次握手即建立了一次连接，四次挥手则为断开一次连接</strong></p>
+<h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><p>所谓的端口，就好像是门牌号一样，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%AE%A2%E6%88%B7%E7%AB%AF/101081">客户端</a>可以通过ip地址找到对应的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF/3369401">服务器端</a>，但是服务器端是有很多端口的，每个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/5985445">应用程序</a>对应一个端口号，通过类似门牌号的端口号，客户端才能真正的访问到该服务器。为了对端口进行区分，将每个端口进行了编号，这就是端口号</p>
+<blockquote>
+<p><strong>端口分为物理端口和逻辑端口，这里主要论述逻辑端口</strong></p>
+</blockquote>
+<h3 id="周知端口"><a href="#周知端口" class="headerlink" title="周知端口"></a>周知端口</h3><p>众所周知的端口，范围从0-1023。</p>
+<p>如：访问<a target="_blank" rel="noopener" href="http://www.baidu.com,是不必指定端口号的,因为www的默认端口号为80/">www.baidu.com，是不必指定端口号的，因为www的默认端口号为80</a></p>
+<p>如果使用非默认端口号去访问，则需要在地址后面加上对应的端口号</p>
+<p><strong>常见端口号：</strong></p>
+<p>21端口：FTP 文件传输服务<br>22端口：SSH 远程连接服务<br>23端口：TELNET 终端仿真服务<br>25端口：SMTP 简单邮件传输服务<br>53端口：DNS 域名解析服务<br>80端口：HTTP 超文本传输服务<br>443端口：HTTPS 加密的超文本传输服务</p>
+<p>3306端口：MYSQL数据库端口<br>5432端口：PostgreSQL数据库端口<br>6379端口：Redis数据库端口<br>8080端口：TCP服务端默认端口<br>8888端口：Nginx服务器的端口<br>9200端口：Elasticsearch服务器端口<br>27017端口：mongoDB数据库默认端口<br>22122端口：fastdfs服务器默认端口</p>
+<blockquote>
+<p>查看端口状态：</p>
+<p>netstat -an</p>
+</blockquote>
+<h3 id="动态端口"><a href="#动态端口" class="headerlink" title="动态端口"></a>动态端口</h3><p>动态端口的范围是从1024-65535。一般不固定分配某种服务，而是动态分配，当一个系统进程或者应用程序进程需要网络通信时，它向主机申请一个端口，主机从可用的端口号中分配一个供它临时使用，当进程关闭时，同时也释放所占用的端口号。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/07/04/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/" rel="prev" title="反射与注解">
+                  <i class="fa fa-chevron-left"></i> 反射与注解
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+<div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+    
+ </div>
+
+
+
+
+
+
+</div>
+
+<div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yu Rui</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+
+
+
+</body>
+</html>
