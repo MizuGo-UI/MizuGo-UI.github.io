@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","width":330,"display":"hide","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="网络堡垒机 堡垒机既可以是硬件设备，也可以是软件，硬件设备通常是指预装了堡垒机软件的专用服务器，具有更高的稳定性和性能，而软件形式的堡垒机则可以在虚拟化环境中部署。  功能 单点登录功能 支持对X11、Linux、Unix、数据库、网络设备、安全设备等一系列授权账号进行密码的自动化周期更改，简化密码管理，让使用者无需记忆众多系统密码，即可实现自动登录目标设备，便捷安全；  账号管理 设备支持统一账">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MizuGo学习档案">
+<meta property="og:url" content="http://example.com/2023/09/05/%E7%BD%91%E7%BB%9C/index.html">
+<meta property="og:site_name" content="MizuGo学习档案">
+<meta property="og:description" content="网络堡垒机 堡垒机既可以是硬件设备，也可以是软件，硬件设备通常是指预装了堡垒机软件的专用服务器，具有更高的稳定性和性能，而软件形式的堡垒机则可以在虚拟化环境中部署。  功能 单点登录功能 支持对X11、Linux、Unix、数据库、网络设备、安全设备等一系列授权账号进行密码的自动化周期更改，简化密码管理，让使用者无需记忆众多系统密码，即可实现自动登录目标设备，便捷安全；  账号管理 设备支持统一账">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/09/05/%E7%BD%91%E7%BB%9C/Users/余瑞/AppData/Roaming/Typora/typora-user-images/image-20230906100441548.png">
+<meta property="og:image" content="http://example.com/2023/09/05/%E7%BD%91%E7%BB%9C/Users/余瑞/AppData/Roaming/Typora/typora-user-images/image-20230906154344223.png">
+<meta property="og:image" content="http://example.com/2023/09/05/%E7%BD%91%E7%BB%9C/Users/余瑞/AppData/Roaming/Typora/typora-user-images/image-20230906154407078.png">
+<meta property="og:image" content="http://example.com/2023/09/05/%E7%BD%91%E7%BB%9C/Users/余瑞/AppData/Roaming/Typora/typora-user-images/image-20230907111542083.png">
+<meta property="article:published_time" content="2023-09-05T06:42:22.877Z">
+<meta property="article:modified_time" content="2023-09-08T06:46:50.722Z">
+<meta property="article:author" content="Yu Rui">
+<meta property="article:tag" content="Java,Web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/09/05/%E7%BD%91%E7%BB%9C/Users/余瑞/AppData/Roaming/Typora/typora-user-images/image-20230906100441548.png">
+
+
+<link rel="canonical" href="http://example.com/2023/09/05/%E7%BD%91%E7%BB%9C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/09/05/%E7%BD%91%E7%BB%9C/","path":"2023/09/05/网络/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | MizuGo学习档案</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">MizuGo学习档案</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+<!--网易云插件-->
+<div id="music163player">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=8203026188&auto=0&height=430"></iframe>
+</div>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%A1%E5%9E%92%E6%9C%BA"><span class="nav-number">1.1.</span> <span class="nav-text">堡垒机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.1.</span> <span class="nav-text">功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH"><span class="nav-number">1.2.</span> <span class="nav-text">SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6"><span class="nav-number">1.2.1.</span> <span class="nav-text">SSH工作机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Client%E7%AB%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E6%8E%A5%E5%8F%97%E5%88%B0%E7%9A%84%E5%85%AC%E9%92%A5%E5%B0%B1%E6%98%AF%E7%9B%AE%E6%A0%87Server%E7%AB%AF%E7%9A%84%EF%BC%9F"><span class="nav-number">1.2.2.</span> <span class="nav-text">Client端如何保证接受到的公钥就是目标Server端的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E9%92%A5%E4%B8%8E%E7%A7%81%E9%92%A5"><span class="nav-number">1.3.</span> <span class="nav-text">公钥与私钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%9B%A0%E7%B4%A0"><span class="nav-number">1.4.</span> <span class="nav-text">第二因素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE"><span class="nav-number">1.5.</span> <span class="nav-text">网络拓扑图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%9F%E5%9E%8B%E6%8B%93%E6%89%91%E7%BB%93%E6%9E%84"><span class="nav-number">1.5.1.</span> <span class="nav-text">星型拓扑结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%9E%8B%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E7%BB%93%E6%9E%84"><span class="nav-number">1.5.2.</span> <span class="nav-text">环型网络拓扑结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BA%BF%E6%8B%93%E6%89%91%E7%BB%93%E6%9E%84"><span class="nav-number">1.5.3.</span> <span class="nav-text">总线拓扑结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E5%85%B3%E3%80%81%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-number">1.6.</span> <span class="nav-text">网关、交换机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.6.1.</span> <span class="nav-text">定义</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Yu Rui</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/05/%E7%BD%91%E7%BB%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Yu Rui">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MizuGo学习档案">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-05 14:42:22" itemprop="dateCreated datePublished" datetime="2023-09-05T14:42:22+08:00">2023-09-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2023-09-08 14:46:50" itemprop="dateModified" datetime="2023-09-08T14:46:50+08:00">2023-09-08</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><h2 id="堡垒机"><a href="#堡垒机" class="headerlink" title="堡垒机"></a>堡垒机</h2><blockquote>
+<p>堡垒机既可以是硬件设备，也可以是软件，硬件设备通常是指预装了堡垒机软件的专用服务器，具有更高的稳定性和性能，而软件形式的堡垒机则可以在虚拟化环境中部署。</p>
+</blockquote>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><ol>
+<li><p>单点登录功能</p>
+<p>支持对X11、Linux、Unix、数据库、网络设备、安全设备等一系列授权账号进行密码的自动化周期更改，简化密码管理，让使用者无需记忆众多系统密码，即可实现自动登录目标设备，便捷安全；</p>
+</li>
+<li><p>账号管理</p>
+<p>设备支持统一账户管理策略，能够实现对所有服务器、网路设备、安全设备等账号进行集中管理，完成对账号整个生命周期的监控，并且可以对设备进行特殊设置，如：审计巡检员、运维操作员、设备管理员等自定义，以满足审计需求；</p>
+</li>
+<li><p>身份认证</p>
+<p>设备提供统一的认证接口，对用户进行认证，支持身份认证模式包括动态口令、静态密码、硬件key、生物特征等多种认证方式，设备具有灵活的定制接口，可以与其他第三方认证服务器直接结合；安全的认证模式，有效提高了认证的安全性和可靠性；</p>
+</li>
+<li><p>资源授权</p>
+<p>设备提供基于用户、目标设备、时间、协议类型IP、行为等要素实现细粒度的操作授权，最大限度保护用户资源的安全；</p>
+</li>
+<li><p>访问控制</p>
+<p>设备支持对不同用户进行不同策略的制定，细粒度的访问控制能够最大限度的保护用户资源的安全，严防非法、越权访问事件的发生；</p>
+</li>
+<li><p>操作审计</p>
+<p>设备能够对字符串、图形、文件传输、数据库等安全操作进行行为审计；通过设备录像方式监控运维人员对操作系统、安全设备、网络设备、数据库等进行的各种操作，对违规行为进行事中控制；对终端指令信息能够进行精确搜索，进行录像精确定位；</p>
+</li>
+</ol>
+<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><blockquote>
+<p>SSH即Secure Shell，是一种安全协议</p>
+</blockquote>
+<p>SSH主要使用两种加密技术：对称加密和公钥加密。</p>
+<ol>
+<li>对称加密：SSH使用对称加密算法（如AES、DES等）来加密数据传输。这种加密算法使用同一密钥进行加密和解密。在SSH连接过程中，客户端和服务器会协商一个相同的密钥，用于后续的数据传输加密。</li>
+<li>公钥加密：公钥加密算法（如RSA、El-Gamal等）用于加密密钥交换过程，以确保客户端和服务器在建立连接前交换密钥的安全性。在这种算法中，每个人都有一对公钥和私钥。公钥用于加密数据，而私钥用于解密数据。在SSH连接过程中，客户端使用服务器的公钥加密一个随机数，然后发送给服务器。服务器使用私钥解密该随机数，以验证客户端的身份。</li>
+</ol>
+<p>通过结合使用这两种加密技术，SSH可以提供安全的远程登录和数据传输服务。</p>
+<h3 id="SSH工作机制"><a href="#SSH工作机制" class="headerlink" title="SSH工作机制"></a>SSH工作机制</h3><p> 服务器启动的时候自己产生一个密钥(768bit公钥)，本地的ssh客户端发送连接请求到ssh服务器，服务器检查连接点客户端发送的数据和IP地址，确认合法后发送密钥(768bits)给客户端，此时客户端将本地私钥(256bit)和服务器的公钥(768bit)结合成密钥对key(1024bit),发回给服务器端，建立连接通过key-pair数据传输。   </p>
+<p><img src="/2023/09/05/%E7%BD%91%E7%BB%9C/Users\余瑞\AppData\Roaming\Typora\typora-user-images\image-20230906100441548.png" alt="image-20230906100441548"></p>
+<ul>
+<li>1.远程Server收到Client端用户TopGun的登录请求，Server把自己的公钥发给用户。</li>
+<li>2.Client使用这个公钥，将密码进行加密。</li>
+<li>3.Client将加密的密码发送给Server端。</li>
+<li>4.远程Server用自己的私钥，解密登录密码，然后验证其合法性。</li>
+<li>5.若验证结果，给Client相应的响应</li>
+</ul>
+<h3 id="Client端如何保证接受到的公钥就是目标Server端的？"><a href="#Client端如何保证接受到的公钥就是目标Server端的？" class="headerlink" title="Client端如何保证接受到的公钥就是目标Server端的？"></a>Client端如何保证接受到的公钥就是目标Server端的？</h3><p><img src="/2023/09/05/%E7%BD%91%E7%BB%9C/Users\余瑞\AppData\Roaming\Typora\typora-user-images\image-20230906154344223.png" alt="image-20230906154344223"></p>
+<p><img src="/2023/09/05/%E7%BD%91%E7%BB%9C/Users\余瑞\AppData\Roaming\Typora\typora-user-images\image-20230906154407078.png" alt="image-20230906154407078"></p>
+<ul>
+<li>1.Client将自己的公钥存放在Server上，追加在文件authorized_keys中。</li>
+<li>2.Server端接收到Client的连接请求后，会在authorized_keys中匹配到Client的公钥pubKey，并生成随机数R，用Client的公钥对该随机数进行加密得到pubKey(R)，然后将加密后信息发送给Client。</li>
+<li>3.Client端通过私钥进行解密得到随机数R，然后对随机数R和本次会话的SessionKey利用MD5生成摘要Digest1，发送给Server端。</li>
+<li>4.Server端会也会对R和SessionKey利用同样摘要算法生成Digest2。</li>
+<li>5.Server端会最后比较Digest1和Digest2是否相同，完成认证过程。</li>
+</ul>
+<h2 id="公钥与私钥"><a href="#公钥与私钥" class="headerlink" title="公钥与私钥"></a>公钥与私钥</h2><p><strong>1、私钥算法</strong><br><strong>私钥加密算法</strong>，又称 <strong>对称加密算法</strong>，因为这种算法解密密钥和加密密钥是相同的。也正因为同一密钥既用于加密又用于解密，所以这个密钥是不能公开的。常见的有《<a href="https://link.zhihu.com/?target=http://songlee24.github.io/2014/12/06/des-encrypt/">DES加密算法</a>》、《<a href="https://link.zhihu.com/?target=http://songlee24.github.io/2014/12/13/aes-encrypt/">AES加密算法</a>》。<br><strong>2、公钥算法</strong><br><strong>公钥加密算法</strong>，也就是 <strong>非对称加密算法</strong>，这种算法加密和解密的密码不一样，一个是公钥，另一个是私钥：</p>
+<ul>
+<li>公钥和私钥成对出现</li>
+<li>公开的密钥叫公钥，只有自己知道的叫私钥</li>
+<li>用公钥加密的数据只有对应的私钥可以解密</li>
+<li>用私钥加密的数据只有对应的公钥可以解密</li>
+<li>如果可以用公钥解密，则必然是对应的私钥加的密</li>
+<li>如果可以用私钥解密，则必然是对应的公钥加的密</li>
+</ul>
+<p>公钥和私钥是相对的，两者本身并没有规定哪一个必须是公钥或私钥。<br>二、实现数据的安全传输<br>要实现数据的安全传输，当然就要对数据进行加密了。<br>如果使用对称加密算法，加解密使用同一个密钥，除了自己保存外，对方也要知道这个密钥，才能对数据进行解密。如果你把密钥也一起传过去，就存在密码泄漏的可能。所以我们使用<strong>非对称算法</strong>，过程如下：</p>
+<ol>
+<li>首先 接收方 生成一对密钥，即私钥和公钥；</li>
+<li>然后，接收方 将公钥发送给 发送方；</li>
+<li>发送方用收到的公钥对数据加密，再发送给接收方；</li>
+<li>接收方收到数据后，使用自己的私钥解密。</li>
+</ol>
+<p>由于在非对称算法中，公钥加密的数据必须用对应的私钥才能解密，而私钥又只有接收方自己知道，这样就保证了数据传输的安全性。</p>
+<p><img src="/2023/09/05/%E7%BD%91%E7%BB%9C/Users\余瑞\AppData\Roaming\Typora\typora-user-images\image-20230907111542083.png" alt="image-20230907111542083"></p>
+<h2 id="第二因素"><a href="#第二因素" class="headerlink" title="第二因素"></a>第二因素</h2><p>哪种第二因素才算是加密</p>
+<h2 id="网络拓扑图"><a href="#网络拓扑图" class="headerlink" title="网络拓扑图"></a>网络拓扑图</h2><h3 id="星型拓扑结构"><a href="#星型拓扑结构" class="headerlink" title="星型拓扑结构"></a>星型拓扑结构</h3><p>星型结构是最古老的一种连接方式，大家每天都使用的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%94%B5%E8%AF%9D?fromModule=lemma_inlink">电话</a>属于这种结构。星型结构是指各工作站以星型方式连接成网。网络有中央节点，其他节点（<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B7%A5%E4%BD%9C%E7%AB%99?fromModule=lemma_inlink">工作站</a>、服务器）都与中央节点直接相连，这种结构以中央节点为中心，因此又称为<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%BD%91%E7%BB%9C?fromModule=lemma_inlink">集中式网络</a>。</p>
+<p>这种结构便于集中控制，因为端用户之间的通信必须经过中心站。由于这一特点，也带来了易于维护和安全等优点。端用户设备因为故障而停机时也不会影响其它端用户间的通信。同时它的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E5%BB%B6%E8%BF%9F?fromModule=lemma_inlink">网络延迟</a>时间较小，传输误差较低。但这种结构非常不利的一点是，中心系统必须具有极高的可靠性，因为中心系统一旦损坏，整个系统便趋于瘫痪。对此中心系统通常采用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E4%BB%BD?fromModule=lemma_inlink">双机热备份</a>，以提高<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7?fromModule=lemma_inlink">系统的可靠性</a>。 [1] </p>
+<h3 id="环型网络拓扑结构"><a href="#环型网络拓扑结构" class="headerlink" title="环型网络拓扑结构"></a>环型网络拓扑结构</h3><p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%8E%AF%E5%9E%8B%E7%BB%93%E6%9E%84?fromModule=lemma_inlink">环型结构</a>在LAN中使用较多。这种结构中的传输媒体从一个端用户到另一个端用户，直到将所有的端用户连成环型。数据在环路中沿着一个方向在各个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%8A%82%E7%82%B9?fromModule=lemma_inlink">节点</a>间传输，信息从一个节点传到另一个节点。这种结构显而易见消除了端用户通信时对中心系统的依赖性。</p>
+<p>环行结构的特点是：每个端用户都与两个相临的端用户相连，因而存在着点到点链路，但总是以单向方式操作，于是便有上游端用户和下游端用户之称；信息流在网中是沿着固定方向流动的，两个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%8A%82%E7%82%B9?fromModule=lemma_inlink">节点</a>仅有一条道路，故简化了<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B7%AF%E5%BE%84?fromModule=lemma_inlink">路径</a>选择的控制；环路上各节点都是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%87%AA%E4%B8%BE?fromModule=lemma_inlink">自举</a>控制，故控制<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6?fromModule=lemma_inlink">软件</a>简单；由于信息源在环路中是串行地穿过各个节点，当环中节点过多时，势必影响<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87?fromModule=lemma_inlink">信息传输速率</a>，使网络的响应时间延长；环路是封闭的，不便于扩充；可靠性低，一个节点<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%85%E9%9A%9C?fromModule=lemma_inlink">故障</a>，将会造成全网瘫痪；维护难，对分支节点<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%95%85%E9%9A%9C%E5%AE%9A%E4%BD%8D?fromModule=lemma_inlink">故障定位</a>较难。 </p>
+<h3 id="总线拓扑结构"><a href="#总线拓扑结构" class="headerlink" title="总线拓扑结构"></a>总线拓扑结构</h3><p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84?fromModule=lemma_inlink">总线结构</a>是使用同一媒体或电缆连接所有端用户的一种方式，也就是说，连接端用户的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%89%A9%E7%90%86%E5%AA%92%E4%BD%93?fromModule=lemma_inlink">物理媒体</a>由所有设备共享，各工作站地位平等，无中心<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%8A%82%E7%82%B9?fromModule=lemma_inlink">节点</a>控制，公用总线上的信息多以基带形式串行传递，其传递方向总是从发送信息的节点开始向两端扩散，如同广播电台发射的信息一样，因此又称广播式计算机网络。各<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%8A%82%E7%82%B9?fromModule=lemma_inlink">节点</a>在接受信息时都进行地址检查，看是否与自己的工作站地址相符，相符则接收网上的信息。</p>
+<p>使用这种结构必须解决的一个问题是确保端用户使用媒体发送数据时不能出现冲突。在点到点链路配置时，这是相当简单的。如果这条链路是半双工操作，只需使用很简单的机制便可保证两个端用户轮流工作。在一点到多点方式中，对线路的访问依靠控制端的探询来确定。然而，在LAN环境下，由于所有数据站都是平等的，不能采取上述机制。对此，研究了一种在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%80%BB%E7%BA%BF?fromModule=lemma_inlink">总线</a>共享型网络使用的媒体访问方法：带有碰撞检测的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BD%BD%E6%B3%A2%E4%BE%A6%E5%90%AC?fromModule=lemma_inlink">载波侦听</a>多路访问，英文缩写成<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/CSMA%2FCD?fromModule=lemma_inlink">CSMA/CD</a>。</p>
+<p>这种结构具有费用低、数据端用户入网灵活、站点或某个端用户失效不影响其它站点或端用户通信的优点。缺点是一次仅能一个端用户发送数据，其它端用户必须等待到获得发送权；媒体访问获取机制较复杂；维护难，分支节点故障查找难。尽管有上述一些缺点，但由于布线要求简单，扩充容易，端用户失效、增删不影响全网工作，所以是LAN技术中使用最普遍的一种。 </p>
+<h2 id="网关、交换机"><a href="#网关、交换机" class="headerlink" title="网关、交换机"></a>网关、交换机</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>网关（Gateway）:又称网间连接器、协议转换器。网关在传输层上以实现网络互联互通，是最复杂的网络互联设备，仅用于两个高层协议不同的网络互联。<ul>
+<li>作用：它的作用就是对两个网络段中的使用不同传输协议的数据进行互相的翻译转换。在局域网里来说集线器就是网关，在二层网络里，交换机就是网关，在三层网络里路由就是网关。</li>
+</ul>
+</li>
+<li>中继器（Repeater）：用于网络信号放大、调整的网络互联设备，能有效延长网络的连接长度。例如，PPI的正常传送距离不大于50m，经过中继器放大后，可传输超过1km；</li>
+<li>路由器（Router，转发者）：所谓路由就是指通过相互连接的网络把信息从源地点移动到目标地点的活动。一般来说，在路由过程中，信息至少会经过一个或多个中间节点。路由器是互联网的主要节点设备。</li>
+<li>交换机（Switch）:交换机是为了解决通信阻塞而设计的，它是一种基于MAC地址识别，能完成封装转发数据包功能的网络设备。交换机可以“学习”MAC地址，并把其存放在内部地址表中，通过在数据帧的始发者和目标接收者之间建立临时的交换路径，使数据帧直接由源地址到达目的地地址。</li>
+<li>网桥（Bridge）:也叫桥接器，是连接两个局域网的一种存储/转发设备，它能将一个大的LAN分割为多个网段，或者将两个以上的LAN互联为一个逻辑LAN，使LAN上的所有用户都可以访问服务器。网桥将网络的多个网段在数据链路层连接起来。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/07/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="prev" title="计算机网络">
+                  <i class="fa fa-chevron-left"></i> 计算机网络
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/09/15/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+<div>
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+    
+ </div>
+
+
+
+
+
+
+</div>
+
+<div class="bg_content">
+    <canvas id="canvas"></canvas>
+</div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yu Rui</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+
+
+
+</body>
+</html>
