@@ -3101,7 +3101,7 @@
   <entry>
     <title>反射与注解</title>
     <url>/2023/07/04/%E5%8F%8D%E5%B0%84%E4%B8%8E%E6%B3%A8%E8%A7%A3/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><blockquote>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><blockquote>
 <p>PS：注解分为三种类型</p>
 <ul>
 <li>内置注解：系统自带的注解</li>
@@ -3233,11 +3233,19 @@
 <p><img src="/../images/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/image-20230907111542083.png" alt="image-20230907111542083"></p>
 <h2 id="网络拓扑图"><a href="#网络拓扑图" class="headerlink" title="网络拓扑图"></a>网络拓扑图</h2><h3 id="星型拓扑结构"><a href="#星型拓扑结构" class="headerlink" title="星型拓扑结构"></a>星型拓扑结构</h3><p>星型结构是最古老的一种连接方式，大家每天都使用的<a href="https://baike.baidu.com/item/%E7%94%B5%E8%AF%9D?fromModule=lemma_inlink">电话</a>属于这种结构。星型结构是指各工作站以星型方式连接成网。网络有中央节点，其他节点（<a href="https://baike.baidu.com/item/%E5%B7%A5%E4%BD%9C%E7%AB%99?fromModule=lemma_inlink">工作站</a>、服务器）都与中央节点直接相连，这种结构以中央节点为中心，因此又称为<a href="https://baike.baidu.com/item/%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%BD%91%E7%BB%9C?fromModule=lemma_inlink">集中式网络</a>。</p>
 <p>这种结构便于集中控制，因为端用户之间的通信必须经过中心站。由于这一特点，也带来了易于维护和安全等优点。端用户设备因为故障而停机时也不会影响其它端用户间的通信。同时它的<a href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E5%BB%B6%E8%BF%9F?fromModule=lemma_inlink">网络延迟</a>时间较小，传输误差较低。但这种结构非常不利的一点是，中心系统必须具有极高的可靠性，因为中心系统一旦损坏，整个系统便趋于瘫痪。对此中心系统通常采用<a href="https://baike.baidu.com/item/%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87%E4%BB%BD?fromModule=lemma_inlink">双机热备份</a>，以提高<a href="https://baike.baidu.com/item/%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7?fromModule=lemma_inlink">系统的可靠性</a>。 [1] </p>
+<img src="./../images/网络设备/image-20240104132300343.png" alt="image-20240104132300343" style="zoom: 67%;">
+
 <h3 id="环型网络拓扑结构"><a href="#环型网络拓扑结构" class="headerlink" title="环型网络拓扑结构"></a>环型网络拓扑结构</h3><p><a href="https://baike.baidu.com/item/%E7%8E%AF%E5%9E%8B%E7%BB%93%E6%9E%84?fromModule=lemma_inlink">环型结构</a>在LAN中使用较多。这种结构中的传输媒体从一个端用户到另一个端用户，直到将所有的端用户连成环型。数据在环路中沿着一个方向在各个<a href="https://baike.baidu.com/item/%E8%8A%82%E7%82%B9?fromModule=lemma_inlink">节点</a>间传输，信息从一个节点传到另一个节点。这种结构显而易见消除了端用户通信时对中心系统的依赖性。</p>
 <p>环行结构的特点是：每个端用户都与两个相临的端用户相连，因而存在着点到点链路，但总是以单向方式操作，于是便有上游端用户和下游端用户之称；信息流在网中是沿着固定方向流动的，两个<a href="https://baike.baidu.com/item/%E8%8A%82%E7%82%B9?fromModule=lemma_inlink">节点</a>仅有一条道路，故简化了<a href="https://baike.baidu.com/item/%E8%B7%AF%E5%BE%84?fromModule=lemma_inlink">路径</a>选择的控制；环路上各节点都是<a href="https://baike.baidu.com/item/%E8%87%AA%E4%B8%BE?fromModule=lemma_inlink">自举</a>控制，故控制<a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6?fromModule=lemma_inlink">软件</a>简单；由于信息源在环路中是串行地穿过各个节点，当环中节点过多时，势必影响<a href="https://baike.baidu.com/item/%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87?fromModule=lemma_inlink">信息传输速率</a>，使网络的响应时间延长；环路是封闭的，不便于扩充；可靠性低，一个节点<a href="https://baike.baidu.com/item/%E6%95%85%E9%9A%9C?fromModule=lemma_inlink">故障</a>，将会造成全网瘫痪；维护难，对分支节点<a href="https://baike.baidu.com/item/%E6%95%85%E9%9A%9C%E5%AE%9A%E4%BD%8D?fromModule=lemma_inlink">故障定位</a>较难。 </p>
+<img src="./../images/网络设备/image-20240104132422039.png" alt="image-20240104132422039" style="zoom:67%;">
+
 <h3 id="总线拓扑结构"><a href="#总线拓扑结构" class="headerlink" title="总线拓扑结构"></a>总线拓扑结构</h3><p><a href="https://baike.baidu.com/item/%E6%80%BB%E7%BA%BF%E7%BB%93%E6%9E%84?fromModule=lemma_inlink">总线结构</a>是使用同一媒体或电缆连接所有端用户的一种方式，也就是说，连接端用户的<a href="https://baike.baidu.com/item/%E7%89%A9%E7%90%86%E5%AA%92%E4%BD%93?fromModule=lemma_inlink">物理媒体</a>由所有设备共享，各工作站地位平等，无中心<a href="https://baike.baidu.com/item/%E8%8A%82%E7%82%B9?fromModule=lemma_inlink">节点</a>控制，公用总线上的信息多以基带形式串行传递，其传递方向总是从发送信息的节点开始向两端扩散，如同广播电台发射的信息一样，因此又称广播式计算机网络。各<a href="https://baike.baidu.com/item/%E8%8A%82%E7%82%B9?fromModule=lemma_inlink">节点</a>在接受信息时都进行地址检查，看是否与自己的工作站地址相符，相符则接收网上的信息。</p>
 <p>使用这种结构必须解决的一个问题是确保端用户使用媒体发送数据时不能出现冲突。在点到点链路配置时，这是相当简单的。如果这条链路是半双工操作，只需使用很简单的机制便可保证两个端用户轮流工作。在一点到多点方式中，对线路的访问依靠控制端的探询来确定。然而，在LAN环境下，由于所有数据站都是平等的，不能采取上述机制。对此，研究了一种在<a href="https://baike.baidu.com/item/%E6%80%BB%E7%BA%BF?fromModule=lemma_inlink">总线</a>共享型网络使用的媒体访问方法：带有碰撞检测的<a href="https://baike.baidu.com/item/%E8%BD%BD%E6%B3%A2%E4%BE%A6%E5%90%AC?fromModule=lemma_inlink">载波侦听</a>多路访问，英文缩写成<a href="https://baike.baidu.com/item/CSMA%2FCD?fromModule=lemma_inlink">CSMA/CD</a>。</p>
 <p>这种结构具有费用低、数据端用户入网灵活、站点或某个端用户失效不影响其它站点或端用户通信的优点。缺点是一次仅能一个端用户发送数据，其它端用户必须等待到获得发送权；媒体访问获取机制较复杂；维护难，分支节点故障查找难。尽管有上述一些缺点，但由于布线要求简单，扩充容易，端用户失效、增删不影响全网工作，所以是LAN技术中使用最普遍的一种。 </p>
+<img src="./../images/网络设备/image-20240104132405468.png" alt="image-20240104132405468" style="zoom:67%;">
+
+
+
 <h2 id="网关、交换机"><a href="#网关、交换机" class="headerlink" title="网关、交换机"></a>网关、交换机</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
 <li>网关（Gateway）:又称网间连接器、协议转换器。网关在传输层上以实现网络互联互通，是最复杂的网络互联设备，仅用于两个高层协议不同的网络互联。<ul>
 <li>作用：它的作用就是对两个网络段中的使用不同传输协议的数据进行互相的翻译转换。在局域网里来说集线器就是网关，在二层网络里，交换机就是网关，在三层网络里路由就是网关。</li>
@@ -3248,6 +3256,37 @@
 <li>交换机（Switch）:交换机是为了解决通信阻塞而设计的，它是一种基于MAC地址识别，能完成封装转发数据包功能的网络设备。交换机可以“学习”MAC地址，并把其存放在内部地址表中，通过在数据帧的始发者和目标接收者之间建立临时的交换路径，使数据帧直接由源地址到达目的地地址。</li>
 <li>网桥（Bridge）:也叫桥接器，是连接两个局域网的一种存储/转发设备，它能将一个大的LAN分割为多个网段，或者将两个以上的LAN互联为一个逻辑LAN，使LAN上的所有用户都可以访问服务器。网桥将网络的多个网段在数据链路层连接起来。</li>
 </ul>
+<h2 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>为处于网络中不同位置的设备之间实现数据互通。</p>
+<blockquote>
+<p>当一台路由器收到一个IP报文时，会在自己的路由表中执行路由查询，寻找匹配该报文目的IP地址的路由条目，如果找到匹配的路由条目，路由器便按照该条目所指示的出接口及下一跳IP地址转发该报文。</p>
+</blockquote>
+<h3 id="路由表"><a href="#路由表" class="headerlink" title="路由表"></a>路由表</h3><p>每一台支持路由功能的设备都需要维护路由表，可以理解为设备将报文转发到特定目的地所依据的一张“地图”。</p>
+<img src="./../images/网络设备/image-20240104160820083.png" alt="image-20240104160820083" style="zoom: 80%;">
+
+<p><strong>目的网络地址/网络掩码</strong></p>
+<blockquote>
+<p> 路由表相当于路由器的地图，目的网络地址及网络掩码用于标识一条路由</p>
+</blockquote>
+<p><strong>路由协议</strong></p>
+<blockquote>
+<p>表示该路由的协议类型，或者该路由通过什么途径学习到的</p>
+<p>Statci：标识通过手工方式配置的静态路由</p>
+</blockquote>
+<h2 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h2><p><code>VPN</code>：（Vitual Private Network）虚拟私有网络</p>
+<p> 利用隧道协议（Tunneling Protocol）来达到发送端认证、消息保密与准确性等功能。</p>
+<h2 id="云计算"><a href="#云计算" class="headerlink" title="云计算"></a>云计算</h2><h3 id="按服务类型划分"><a href="#按服务类型划分" class="headerlink" title="按服务类型划分"></a>按服务类型划分</h3><p>基础设施即服务（Iaas）</p>
+<blockquote>
+<p>Infrastructure as a Service，提供底层计算、存储、网络资源，不负责后续操作系统、数据库、软件等安装，自由度最高。</p>
+</blockquote>
+<p>平台即服务（PaaS）</p>
+<blockquote>
+<p>Platform as a Service，提供底层底层计算、存储、网络资源并安装操作系统、数据库等，完成平台搭建工作，具体运行业务等不负责。</p>
+</blockquote>
+<p>软件即服务（SaaS）</p>
+<blockquote>
+<p>Software as a Service，提供包括资源、操作系统、软件等全套服务，包括云上所需要运行的业务等，自由度最低。</p>
+</blockquote>
+<p><img src="/./../images/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/image-20240103110242798.png" alt="image-20240103110242798"></p>
 ]]></content>
       <tags>
         <tag>网络</tag>
@@ -3458,6 +3497,64 @@
 ]]></content>
       <tags>
         <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>商用密码</title>
+    <url>/2024/01/05/%E5%95%86%E7%94%A8%E5%AF%86%E7%A0%81/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="商用密码"><a href="#商用密码" class="headerlink" title="商用密码"></a>商用密码</h1><h2 id="密评等级"><a href="#密评等级" class="headerlink" title="密评等级"></a>密评等级</h2><p>密评等级与等保等级保持一致</p>
+<blockquote>
+<p>未完成网络安全等级保护定级的系统，以拟定等级开展密评；无拟定等级的系统，密码应用等级至少为第三级</p>
+<p>被测系统有高安全保护需求或高安全标准等特殊情况，信息系统的密码应用等级可以高于等保定级</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="测评力度"><a href="#测评力度" class="headerlink" title="测评力度"></a>测评力度</h2><p>主要通过指标中“应”、“宜“、”可“进行区分</p>
+<ol>
+<li>若信息系统未编制密码应用方案或在方案中未对“宜”的指标要求做明确说明，则“宜”的指标要求纳入标准符合性测评范围。</li>
+<li>若信息系统编制了密码应用方案，且方案通过评估，方案中明确了不适用的“宜”的指标要求项，且有对应的风险控制措施说明的情况下。密评人员在测评时，应根据信息系统的密码应用方案和方案评估报告/评审意见，核实方案中的不适用指标要求项所采用的风险控制措施的适用条件，在实际的信息系统中是否被满足，且信息系统的实施情况与方案中所描述的风险控制措施是否一致，若满足适用条件，该测评指标为“不适用”；若不满足适用条件，则应纳入标准符合性测评范围，进行测评和结果判定。</li>
+</ol>
+<p>PS：双因素认证，第二因素口令如何进行的加密</p>
+<h3 id="动态令牌基本原理"><a href="#动态令牌基本原理" class="headerlink" title="动态令牌基本原理"></a>动态令牌基本原理</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p><code>OTP</code> 是 One-Time Password的简写，表示一次性密码。</p>
+<p><code>HOTP</code> 是HMAC-based One-Time Password的简写，表示基于HMAC算法加密的一次性密码。</p>
+<blockquote>
+<p>事件同步，通过某一特定的事件次序及相同的种子值作为输入，通过HASH算法运算出一致的密码。</p>
+</blockquote>
+<p><code>TOTP</code> 是Time-based One-Time Password的简写，表示基于时间戳算法的一次性密码。 </p>
+<blockquote>
+<p>时间同步，基于客户端的动态口令和动态口令验证服务器的时间比对，一般每60秒产生一个新口令，要求客户端和服务器能够十分精确的保持正确的时钟，客户端和服务端基于时间计算的动态口令才能一致。</p>
+</blockquote>
+<h4 id="OTP基本原理"><a href="#OTP基本原理" class="headerlink" title="OTP基本原理"></a>OTP基本原理</h4><p>公式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OTP(K,C)  =  Truncate(HMAC-SHA-1(K,C))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>K表示秘钥串；</p>
+<p>C是一个数字，表示随机数；</p>
+<p>HMAC-SHA-1表示使用SHA-1做HMAC(基于hash算法的MAC，MAC为消息认证码）；</p>
+<p>Truncate是一个函数，就是怎么截取加密后的串，并取加密后串的哪些字段组成一个数字。</p>
+<p>对HMAC-SHA-1方式加密来说，Truncate实现如下。</p>
+<p>HMAC-SHA-1加密后的长度得到一个20字节的密串；<br>取这个20字节的密串的最后一个字节，取这字节的低4位，作为截取加密串的下标偏移量；<br>按照下标偏移量开始，获取4个字节，按照大端方式组成一个整数；<br>截取这个整数的后6位或者8位转成字符串返回。</p>
+<p>PS:</p>
+<p>大端方式：数据的高字节部分保存在低地址</p>
+<p>小端方式：数据的低字节部分保存在高地址</p>
+</blockquote>
+<p>HOTP与TOTP原理与OTP一致</p>
+<ul>
+<li><p>HOTP将C替换为随机数，即为一个参数，获取动态密码</p>
+</li>
+<li><p>TOTP将C替换为由时间戳产生的数字，C是由时间戳计算得出</p>
+<ul>
+<li><pre><code>C = (T - T0) / X
+#T表示当前Unix时间戳，T0一般取值为0，X表示时间步数，即是时间间隔，默认为30秒
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p>参考链接<a href="https://blog.csdn.net/JENREY/article/details/135315479">动态令牌的原理(OTP &amp; HOTP &amp;TOTP)-CSDN博客</a></p>
+]]></content>
+      <tags>
+        <tag>密码学</tag>
       </tags>
   </entry>
 </search>
