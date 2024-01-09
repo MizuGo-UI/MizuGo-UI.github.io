@@ -3502,7 +3502,7 @@
   <entry>
     <title>商用密码</title>
     <url>/2024/01/05/%E5%95%86%E7%94%A8%E5%AF%86%E7%A0%81/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="商用密码"><a href="#商用密码" class="headerlink" title="商用密码"></a>商用密码</h1><h2 id="术语定义"><a href="#术语定义" class="headerlink" title="术语定义"></a>术语定义</h2><p>机密性</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="术语定义"><a href="#术语定义" class="headerlink" title="术语定义"></a>术语定义</h2><p>机密性</p>
 <blockquote>
 <p>保证信息不被泄露给非授权实体的性质</p>
 </blockquote>
@@ -3510,6 +3510,8 @@
 <blockquote>
 <p>数据没有遭受以非授权方式所作的改变的性质</p>
 </blockquote>
+<span id="more"></span>
+
 <p>不可否认性</p>
 <blockquote>
 <p>证明一个已经发生的操作行为无法否认的性质</p>
@@ -3557,7 +3559,7 @@
 <p>未完成网络安全等级保护定级的系统，以拟定等级开展密评；无拟定等级的系统，密码应用等级至少为第三级</p>
 <p>被测系统有高安全保护需求或高安全标准等特殊情况，信息系统的密码应用等级可以高于等保定级</p>
 </blockquote>
-<span id="more"></span>
+<!--more-->
 
 <h2 id="测评力度"><a href="#测评力度" class="headerlink" title="测评力度"></a>测评力度</h2><p>主要通过指标中“应”、“宜“、”可“进行区分</p>
 <p>“应”表示应该、只准许；</p>
