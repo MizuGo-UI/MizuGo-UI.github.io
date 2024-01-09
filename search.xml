@@ -3502,7 +3502,57 @@
   <entry>
     <title>商用密码</title>
     <url>/2024/01/05/%E5%95%86%E7%94%A8%E5%AF%86%E7%A0%81/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="商用密码"><a href="#商用密码" class="headerlink" title="商用密码"></a>商用密码</h1><h2 id="密评等级"><a href="#密评等级" class="headerlink" title="密评等级"></a>密评等级</h2><p>密评等级与等保等级保持一致</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="商用密码"><a href="#商用密码" class="headerlink" title="商用密码"></a>商用密码</h1><h2 id="术语定义"><a href="#术语定义" class="headerlink" title="术语定义"></a>术语定义</h2><p>机密性</p>
+<blockquote>
+<p>保证信息不被泄露给非授权实体的性质</p>
+</blockquote>
+<p>数据完整性</p>
+<blockquote>
+<p>数据没有遭受以非授权方式所作的改变的性质</p>
+</blockquote>
+<p>不可否认性</p>
+<blockquote>
+<p>证明一个已经发生的操作行为无法否认的性质</p>
+</blockquote>
+<p>加密</p>
+<blockquote>
+<p>对数据进行密码变换以产生密文的过程</p>
+</blockquote>
+<p>密钥</p>
+<blockquote>
+<p>控制密码算法运算的关键信息或参数</p>
+</blockquote>
+<p>消息鉴别码（MAC）</p>
+<blockquote>
+<p>利用对称密码技术或密码杂凑技术，在秘密密钥参与下，由消息所导出的数据项。任何持有这一秘密密钥的实体，可利用消息鉴别码检查消息的完整性和始发者身份</p>
+</blockquote>
+<p>机密性技术要求保护对象</p>
+<blockquote>
+<p>使用密码技术的加解密功能实现机密性</p>
+</blockquote>
+<ol>
+<li>身份鉴别信息</li>
+<li>密钥数据</li>
+<li>传输的重要数据</li>
+<li>信息系统应用中所有存储的重要数据</li>
+</ol>
+<p>完整性技术要求保护对象</p>
+<blockquote>
+<p>使用基于对称密码算法或密码杂凑算法的消息鉴别码机制、基于公钥密码算法的数字签名机制等密码技术实现完整性</p>
+</blockquote>
+<ol>
+<li>身份鉴别信息</li>
+<li>密钥数据</li>
+<li>日志记录</li>
+<li>访问控制信息</li>
+<li>重要信息资源安全标记</li>
+<li>重要可执行程序</li>
+<li>视频监控音像记录</li>
+<li>电子门禁系统进出记录</li>
+<li>传输的重要数据</li>
+<li>信息系统应用中所有存储的重要数据</li>
+</ol>
+<h2 id="密评等级"><a href="#密评等级" class="headerlink" title="密评等级"></a>密评等级</h2><p>密评等级与等保等级保持一致</p>
 <blockquote>
 <p>未完成网络安全等级保护定级的系统，以拟定等级开展密评；无拟定等级的系统，密码应用等级至少为第三级</p>
 <p>被测系统有高安全保护需求或高安全标准等特殊情况，信息系统的密码应用等级可以高于等保定级</p>
@@ -3510,11 +3560,15 @@
 <span id="more"></span>
 
 <h2 id="测评力度"><a href="#测评力度" class="headerlink" title="测评力度"></a>测评力度</h2><p>主要通过指标中“应”、“宜“、”可“进行区分</p>
+<p>“应”表示应该、只准许；</p>
+<p>“宜”表示推荐、建议；</p>
+<p>“可”表示可以、允许；</p>
+<blockquote>
 <ol>
 <li>若信息系统未编制密码应用方案或在方案中未对“宜”的指标要求做明确说明，则“宜”的指标要求纳入标准符合性测评范围。</li>
 <li>若信息系统编制了密码应用方案，且方案通过评估，方案中明确了不适用的“宜”的指标要求项，且有对应的风险控制措施说明的情况下。密评人员在测评时，应根据信息系统的密码应用方案和方案评估报告/评审意见，核实方案中的不适用指标要求项所采用的风险控制措施的适用条件，在实际的信息系统中是否被满足，且信息系统的实施情况与方案中所描述的风险控制措施是否一致，若满足适用条件，该测评指标为“不适用”；若不满足适用条件，则应纳入标准符合性测评范围，进行测评和结果判定。</li>
 </ol>
-<p>PS：双因素认证，第二因素口令如何进行的加密</p>
+</blockquote>
 <h3 id="动态令牌基本原理"><a href="#动态令牌基本原理" class="headerlink" title="动态令牌基本原理"></a>动态令牌基本原理</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p><code>OTP</code> 是 One-Time Password的简写，表示一次性密码。</p>
 <p><code>HOTP</code> 是HMAC-based One-Time Password的简写，表示基于HMAC算法加密的一次性密码。</p>
 <blockquote>
@@ -3555,6 +3609,152 @@
 ]]></content>
       <tags>
         <tag>密码学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据安全风险评估办法</title>
+    <url>/2024/01/09/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>数据保密性、完整性、可用性、数据处理合理性角度分析各项风险源可能引发的数据安全风险</p>
+<span id="more"></span>
+
+<h2 id="数据处理者与数据控制者"><a href="#数据处理者与数据控制者" class="headerlink" title="数据处理者与数据控制者"></a>数据处理者与数据控制者</h2><h3 id="数据处理者"><a href="#数据处理者" class="headerlink" title="数据处理者"></a>数据处理者</h3><p><strong>定义</strong></p>
+<p>代表数据控制者来处理个人数据</p>
+<h3 id="数据控制者"><a href="#数据控制者" class="headerlink" title="数据控制者"></a>数据控制者</h3><p><strong>定义</strong></p>
+<p>决定数据处理的目的和方式的自然人、法人、公共机构或其他实体</p>
+<h2 id="数据安全风险评估原理"><a href="#数据安全风险评估原理" class="headerlink" title="数据安全风险评估原理"></a>数据安全风险评估原理</h2><p><img src="/./../images/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0%E5%8A%9E%E6%B3%95/image-20240109134642107.png" alt="image-20240109134642107"></p>
+<ol>
+<li><p>风险识别</p>
+</li>
+<li><p>风险归类分析</p>
+<blockquote>
+<p>分析风险类型、风险源、涉及到的数据及类型、涉及到的数据处理活动</p>
+</blockquote>
+</li>
+<li><p>危害程度分析或发生可能性分析</p>
+<blockquote>
+<p>危害程度分析：根据数据价值和风险源严重程度分析，根据影响的主体划分等级：国家安全、社会秩序、组织或个人利益</p>
+<p>发生可能性分析：风险源发生频率、安全措施有效性和完备性、风险源关联性</p>
+</blockquote>
+</li>
+<li><p>数据安全风险逐项评价</p>
+<blockquote>
+<p>分析可能存在的安全风险等级，分为重大、高、中、低、轻微安全风险</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="风险识别"><a href="#风险识别" class="headerlink" title="风险识别"></a>风险识别</h2><ul>
+<li>数据收集安全<ul>
+<li>数据收集合法正当性、通过第三方收集数据安全、数据质量控制、数据收集方式、数据收集设备 及环境安全</li>
+</ul>
+</li>
+<li>数据存储安全<ul>
+<li>数据存储适当性、逻辑存储安全、存储介质安全</li>
+</ul>
+</li>
+<li>数据传输安全<ul>
+<li>传输链路安全性、传输链路可靠性</li>
+</ul>
+</li>
+<li>数据使用和加工安全<ul>
+<li>数据使用和加工合法性、数据正当使用、数据导入导出、数据处理环境、数据使用和加工安全措施</li>
+</ul>
+</li>
+<li>数据提供安全<ul>
+<li>数据提供合法正当必要性、数据提供管理、数据提供技术措、数据接收方、数据转移安全、数据出境安全</li>
+</ul>
+</li>
+<li>数据公开安全<ul>
+<li>数据公开适当性、数据公开管理</li>
+</ul>
+</li>
+<li>数据删除安全<ul>
+<li>数据删除管理、存储介质销毁</li>
+</ul>
+</li>
+<li>其他数据处理活动安全<ul>
+<li>主要针对即时通信、快递物流、网上购物、网络支付、网络音视频、汽车、网络预约汽车服务等数据处理活动</li>
+</ul>
+</li>
+</ul>
+<h2 id="风险归类分析"><a href="#风险归类分析" class="headerlink" title="风险归类分析"></a>风险归类分析</h2><ul>
+<li>风险类型：数据泄露风险等</li>
+<li>风险描述</li>
+<li>风险源描述</li>
+<li>涉及的数据及类型</li>
+<li>涉及到数据处理活动：数据收集、存储、使用和加工</li>
+</ul>
+<h2 id="风险危害程序分析"><a href="#风险危害程序分析" class="headerlink" title="风险危害程序分析"></a>风险危害程序分析</h2><ul>
+<li>数据价值</li>
+<li>风险源严重程度</li>
+</ul>
+<blockquote>
+<p>结合数据级别、规模、种类、处理目的、方式、范围等情况，分析数据安全风险发生后将会导致的危害程度</p>
+</blockquote>
+<h3 id="分析方法"><a href="#分析方法" class="headerlink" title="分析方法"></a>分析方法</h3><ol>
+<li><p>数据价值从数据分级、经济效益、业务效益、投入成本计量等方面分析。</p>
+<blockquote>
+<p>个人信息规模和数据敏感程度可以作为数据价值判断的衡量因素</p>
+</blockquote>
+</li>
+<li><p>风险源严重程度，主要考虑风险源对数据处理者带来的危害程度。</p>
+</li>
+</ol>
+<p><img src="/./../images/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0%E5%8A%9E%E6%B3%95/image-20240109133456078.png" alt="image-20240109133456078"></p>
+<h2 id="风险发生可能性分析"><a href="#风险发生可能性分析" class="headerlink" title="风险发生可能性分析"></a>风险发生可能性分析</h2><p>风险源发生频率</p>
+<blockquote>
+<p>被评估对象发生相关数据安全事件的次数及频率、同行业或业务模式相似的单位发生相关数据安全事件的次数及频率等</p>
+</blockquote>
+<p>安全措施有效性和完备性</p>
+<blockquote>
+<p>数据安全措施应对风险源的有效性、全面性</p>
+</blockquote>
+<p>风险源关联性</p>
+<blockquote>
+<p>风险源清单关联分析，发现多个风险源组合后可能引发的数据安全风险，判断风险发生可能性</p>
+</blockquote>
+<p>将可能性分为低、中、高3个级别，等级越高代表措施完备性、有效性越低，风险越可能发生</p>
+<table>
+<thead>
+<tr>
+<th>等级</th>
+<th>风险发生可能性描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>高</td>
+<td>涉及违法违规行为、缺少数据安全措施或安全措施有效性较弱，被评估方已经发生或在通常条件下会发生。本单位、国内相同或相似业务模式的单位多次高频发生同类安全事件，或容易与其他风险源结合引发风险，</td>
+</tr>
+<tr>
+<td>中</td>
+<td>数据安全风险事件发生的可能性一般。或有一定数据安全措施，但有效性不足，被评估对象在一定条件下会发生，本单位、国内相同或相似业务模式的单位发生相关风险源，或有一定概率与其他风险源结合引发风险，</td>
+</tr>
+<tr>
+<td>低</td>
+<td>数据安全措施完备、有效，被评估对象或同类组织很少或在较苛刻条件下才会发生相关风险事件，或很难与其他风险源结合引发风险，风险隐患发生可能性低（例如几乎不可能发生，或仅可能在非常罕见和例外的情况下发生）。</td>
+</tr>
+</tbody></table>
+<h2 id="数据安全风险评价"><a href="#数据安全风险评价" class="headerlink" title="数据安全风险评价"></a>数据安全风险评价</h2><p>重大安全风险：可能直接影响国家安全</p>
+<p>高安全风险：可能直接影响经济运行、社会稳定、公共健康安全，以及较为广泛的公众权益，或对国家安全造成间接影响</p>
+<p>中安全风险：可能直接对企业合法权限造成较为严重的影响</p>
+<p>低安全风险：可能直接对企业合法权益造成一般影响</p>
+<p>轻微安全风险：可能直接对企业合法权益造成一半或较小影响</p>
+<p><img src="/./../images/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0%E5%8A%9E%E6%B3%95/17efadfa90bd2fe076c0e4858e5c558.jpg" alt="17efadfa90bd2fe076c0e4858e5c558"></p>
+<h2 id="风险处置建议"><a href="#风险处置建议" class="headerlink" title="风险处置建议"></a>风险处置建议</h2><ul>
+<li>停止收集某些类型数据</li>
+<li>预处理阶段对某些类型数据进行销毁。</li>
+<li>缩小处理范围。</li>
+<li>缩短存储期限。</li>
+<li>采取额外的技术措施。</li>
+<li>加强对应数据处理活动岗位人员培训。</li>
+<li>匿名化、去标识化。</li>
+<li>完善管理制度。</li>
+<li>采用其他数据处理技术。</li>
+<li>补充签署协议（针对数据转移）。</li>
+<li>修订隐私条款。</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>政策法规</tag>
       </tags>
   </entry>
 </search>
