@@ -20,18 +20,20 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","width":330,"display":"hide","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="术语定义机密性  保证信息不被泄露给非授权实体的性质  数据完整性  数据没有遭受以非授权方式所作的改变的性质">
+<meta name="description" content="术语定义保密性  保证信息不被泄露给非授权实体的性质  数据完整性  数据没有遭受以非授权方式所作的改变的性质">
 <meta property="og:type" content="article">
 <meta property="og:title" content="商用密码">
 <meta property="og:url" content="http://example.com/2024/01/05/%E5%95%86%E7%94%A8%E5%AF%86%E7%A0%81/index.html">
 <meta property="og:site_name" content="MizuGo学习档案">
-<meta property="og:description" content="术语定义机密性  保证信息不被泄露给非授权实体的性质  数据完整性  数据没有遭受以非授权方式所作的改变的性质">
+<meta property="og:description" content="术语定义保密性  保证信息不被泄露给非授权实体的性质  数据完整性  数据没有遭受以非授权方式所作的改变的性质">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/%E5%95%86%E7%94%A8%E5%AF%86%E7%A0%81/image-20240110135724709.png">
 <meta property="article:published_time" content="2024-01-05T01:18:05.304Z">
-<meta property="article:modified_time" content="2024-01-09T08:42:17.094Z">
+<meta property="article:modified_time" content="2024-01-12T02:20:11.117Z">
 <meta property="article:author" content="Yu Rui">
 <meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/%E5%95%86%E7%94%A8%E5%AF%86%E7%A0%81/image-20240110135724709.png">
 
 
 <link rel="canonical" href="http://example.com/2024/01/05/%E5%95%86%E7%94%A8%E5%AF%86%E7%A0%81/">
@@ -123,7 +125,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AF%E8%AF%AD%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">术语定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E8%AF%84%E7%AD%89%E7%BA%A7"><span class="nav-number">2.</span> <span class="nav-text">密评等级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%84%E5%8A%9B%E5%BA%A6"><span class="nav-number">3.</span> <span class="nav-text">测评力度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E4%BB%A4%E7%89%8C%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">动态令牌基本原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">3.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OTP%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">3.1.2.</span> <span class="nav-text">OTP基本原理</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AF%E8%AF%AD%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">术语定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E4%B8%89%E4%B8%AA%E6%A0%B8%E5%BF%83"><span class="nav-number">1.1.</span> <span class="nav-text">密码技术三个核心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="nav-number">1.2.</span> <span class="nav-text">数字签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">密码的分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E7%A0%81%E5%BA%94%E7%94%A8%E6%8A%80%E6%9C%AF%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">密码应用技术框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E8%AF%84%E7%AD%89%E7%BA%A7"><span class="nav-number">3.</span> <span class="nav-text">密评等级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%84%E5%8A%9B%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">测评力度</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -212,7 +214,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2024-01-09 16:42:17" itemprop="dateModified" datetime="2024-01-09T16:42:17+08:00">2024-01-09</time>
+        <time title="修改时间：2024-01-12 10:20:11" itemprop="dateModified" datetime="2024-01-12T10:20:11+08:00">2024-01-12</time>
       </span>
 
   
@@ -225,7 +227,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="术语定义"><a href="#术语定义" class="headerlink" title="术语定义"></a>术语定义</h2><p>机密性</p>
+        <h2 id="术语定义"><a href="#术语定义" class="headerlink" title="术语定义"></a>术语定义</h2><p>保密性</p>
 <blockquote>
 <p>保证信息不被泄露给非授权实体的性质</p>
 </blockquote>
@@ -251,9 +253,9 @@
 <blockquote>
 <p>利用对称密码技术或密码杂凑技术，在秘密密钥参与下，由消息所导出的数据项。任何持有这一秘密密钥的实体，可利用消息鉴别码检查消息的完整性和始发者身份</p>
 </blockquote>
-<p>机密性技术要求保护对象</p>
+<p>保密性技术要求保护对象</p>
 <blockquote>
-<p>使用密码技术的加解密功能实现机密性</p>
+<p>使用密码技术的加解密功能实现保密性</p>
 </blockquote>
 <ol>
 <li>身份鉴别信息</li>
@@ -277,6 +279,53 @@
 <li>传输的重要数据</li>
 <li>信息系统应用中所有存储的重要数据</li>
 </ol>
+<h3 id="密码技术三个核心"><a href="#密码技术三个核心" class="headerlink" title="密码技术三个核心"></a>密码技术三个核心</h3><ul>
+<li><p>密码算法</p>
+<blockquote>
+<p>实现密码对信息进行“明“、”密“变换、产生认证”标签“的一种特定规则</p>
+</blockquote>
+</li>
+<li><p>密钥管理</p>
+<blockquote>
+<p>根据安全策略，对密钥的产生、分发、存储、更新、归档、撤销、备份、恢复和销毁等密钥全生命周期的管理</p>
+</blockquote>
+</li>
+<li><p>密码协议</p>
+<blockquote>
+<p>两个或两个以上参与者使用密码算法，为达到加密保护或安全认证目的而约定的交互规则</p>
+</blockquote>
+<h3 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h3><blockquote>
+<p>公开密钥加密技术的实际应用</p>
+<p>信息摘要（Message Digest）：通过对构成明文的所有字符的编码进行某种运算就能得出该数值</p>
+<p>以明文形式进行数据传输，但是加密MD，并验证MD，以确保传输数据的完整性、有效性</p>
+</blockquote>
+<p><img src="/./../images/%E5%95%86%E7%94%A8%E5%AF%86%E7%A0%81/image-20240110135724709.png" alt="image-20240110135724709"></p>
+</li>
+</ul>
+<h3 id="密码的分类"><a href="#密码的分类" class="headerlink" title="密码的分类"></a>密码的分类</h3><ul>
+<li>核心密码</li>
+<li>普通密码</li>
+<li>商用密码（保护不属于国家秘密的信息）</li>
+</ul>
+<h2 id="密码应用技术框架"><a href="#密码应用技术框架" class="headerlink" title="密码应用技术框架"></a>密码应用技术框架</h2><ul>
+<li>密码资源<ul>
+<li>提供基础性的密码算法资源</li>
+</ul>
+</li>
+<li>密码支撑<ul>
+<li>提供密码资源调用</li>
+</ul>
+</li>
+<li>密码服务<ul>
+<li>提供密码应用接口，分为对称密码服务、公钥密码服务及其他密码服务三大类</li>
+<li></li>
+</ul>
+</li>
+<li>密码应用<ul>
+<li>调用密码服务层提供的密码应用接口，实现所需的数据加密和解密、数字签名和验签等功能</li>
+</ul>
+</li>
+</ul>
 <h2 id="密评等级"><a href="#密评等级" class="headerlink" title="密评等级"></a>密评等级</h2><p>密评等级与等保等级保持一致</p>
 <blockquote>
 <p>未完成网络安全等级保护定级的系统，以拟定等级开展密评；无拟定等级的系统，密码应用等级至少为第三级</p>
@@ -294,43 +343,6 @@
 <li>若信息系统编制了密码应用方案，且方案通过评估，方案中明确了不适用的“宜”的指标要求项，且有对应的风险控制措施说明的情况下。密评人员在测评时，应根据信息系统的密码应用方案和方案评估报告/评审意见，核实方案中的不适用指标要求项所采用的风险控制措施的适用条件，在实际的信息系统中是否被满足，且信息系统的实施情况与方案中所描述的风险控制措施是否一致，若满足适用条件，该测评指标为“不适用”；若不满足适用条件，则应纳入标准符合性测评范围，进行测评和结果判定。</li>
 </ol>
 </blockquote>
-<h3 id="动态令牌基本原理"><a href="#动态令牌基本原理" class="headerlink" title="动态令牌基本原理"></a>动态令牌基本原理</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p><code>OTP</code> 是 One-Time Password的简写，表示一次性密码。</p>
-<p><code>HOTP</code> 是HMAC-based One-Time Password的简写，表示基于HMAC算法加密的一次性密码。</p>
-<blockquote>
-<p>事件同步，通过某一特定的事件次序及相同的种子值作为输入，通过HASH算法运算出一致的密码。</p>
-</blockquote>
-<p><code>TOTP</code> 是Time-based One-Time Password的简写，表示基于时间戳算法的一次性密码。 </p>
-<blockquote>
-<p>时间同步，基于客户端的动态口令和动态口令验证服务器的时间比对，一般每60秒产生一个新口令，要求客户端和服务器能够十分精确的保持正确的时钟，客户端和服务端基于时间计算的动态口令才能一致。</p>
-</blockquote>
-<h4 id="OTP基本原理"><a href="#OTP基本原理" class="headerlink" title="OTP基本原理"></a>OTP基本原理</h4><p>公式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OTP(K,C)  =  Truncate(HMAC-SHA-1(K,C))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>K表示秘钥串；</p>
-<p>C是一个数字，表示随机数；</p>
-<p>HMAC-SHA-1表示使用SHA-1做HMAC(基于hash算法的MAC，MAC为消息认证码）；</p>
-<p>Truncate是一个函数，就是怎么截取加密后的串，并取加密后串的哪些字段组成一个数字。</p>
-<p>对HMAC-SHA-1方式加密来说，Truncate实现如下。</p>
-<p>HMAC-SHA-1加密后的长度得到一个20字节的密串；<br>取这个20字节的密串的最后一个字节，取这字节的低4位，作为截取加密串的下标偏移量；<br>按照下标偏移量开始，获取4个字节，按照大端方式组成一个整数；<br>截取这个整数的后6位或者8位转成字符串返回。</p>
-<p>PS:</p>
-<p>大端方式：数据的高字节部分保存在低地址</p>
-<p>小端方式：数据的低字节部分保存在高地址</p>
-</blockquote>
-<p>HOTP与TOTP原理与OTP一致</p>
-<ul>
-<li><p>HOTP将C替换为随机数，即为一个参数，获取动态密码</p>
-</li>
-<li><p>TOTP将C替换为由时间戳产生的数字，C是由时间戳计算得出</p>
-<ul>
-<li><pre><code>C = (T - T0) / X
-#T表示当前Unix时间戳，T0一般取值为0，X表示时间步数，即是时间间隔，默认为30秒
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-<p>参考链接<a target="_blank" rel="noopener" href="https://blog.csdn.net/JENREY/article/details/135315479">动态令牌的原理(OTP &amp; HOTP &amp;TOTP)-CSDN博客</a></p>
 
     </div>
 
